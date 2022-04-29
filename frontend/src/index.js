@@ -5,8 +5,7 @@ import { Provider } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
 import App from "./App";
 import { ModalProvider } from "./context/Modal";
-import { ChakraProvider } from "@chakra-ui/react"
-import { TimeIcon } from "@chakra-ui/icons"
+
 
 import configureStore from "./store";
 import { restoreCSRF, csrfFetch } from "./store/csrf";
@@ -27,9 +26,7 @@ function Root() {
     <Provider store={store}>
       <ModalProvider>
         <BrowserRouter>
-          <ChakraProvider>
-            <App />
-          </ChakraProvider>
+          <App />
         </BrowserRouter>
       </ModalProvider>
     </Provider>

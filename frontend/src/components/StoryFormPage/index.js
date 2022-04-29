@@ -1,24 +1,14 @@
-import {
-    FormControl,
-    FormLabel,
-    FormErrorMessage,
-    FormHelperText,
-    Input,
-    Container,
-} from '@chakra-ui/react'
-
 
 const StoryFormPage = () => {
     return (
-        <Container>
-            <FormControl isRequired>
-                <FormLabel htmlFor="title">
+        <div>
+            <form isRequired>
+                <label htmlFor="title">
                     Title
-                </FormLabel>
-                <Input id="title" type="text" />
-                <FormHelperText></FormHelperText>
-            </FormControl>
-        </Container>
+                </label>
+                <input id="title" type="text" />
+            </form>
+        </div>
     );
 };
 

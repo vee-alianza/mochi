@@ -1,7 +1,7 @@
 import React from "react";
 
 
-import { Container } from "@chakra-ui/react";
+
 import './Homepage.css'
 
 const Homepage = () => {
