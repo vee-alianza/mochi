@@ -23,12 +23,13 @@ function Navigation({ isLoaded }) {
             </>
         );
     }
-    // <NavLink exact to="/">Home</NavLink>
-    // {isLoaded && sessionLinks}
+
     return (
         <>
             <div className="navbar">
                 <div className="navbar__btn">
+                    <NavLink exact to="/">Home</NavLink>
+                    {isLoaded && sessionLinks}
                     <Image boxSize="155px" borderRadius="full" src="https://user-images.githubusercontent.com/92604480/165882725-37ad9f6f-cbb1-4389-aabb-1a88bfa3c309.png" alt="logo" />
                 </div>
                 <div className="navbar__btn">
