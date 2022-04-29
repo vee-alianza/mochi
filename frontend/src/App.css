@@ -1,0 +1,43 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&family=Poppins:wght@200&family=Sansita&display=swap');
+
+/* .App {
+    display: flex;
+    justify-content: flex-start;
+    height: 100%;
+
+
+    font-family: 'Poppins', sans-serif;
+    width: 100%;
+} */
+
+body {
+    padding: 50px;
+    font: 14px "Roboto";
+    width: 100vw;
+    height: 100vh;
+}
+
+/* h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+a,
+ol,
+li,
+ul,
+div,
+span,
+body,
+header,
+nav {
+    font-size: 1rem;
+    color: inherit;
+    background-color: transparent;
+    margin: 0;
+    padding: 0;
+    outline: 0;
+    font-weight: normal;
+    font-family: 'Days One';
+} */
