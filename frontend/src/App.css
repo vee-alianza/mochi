@@ -11,8 +11,19 @@
 } */
 
 body {
-    padding: 50px;
     font: 14px "Roboto";
+    width: 100vw;
+    height: 100vh;
+}
+
+#root {
+    width: 100vw;
+    height: 100vh;
+}
+
+.main__page {
+    border: 5px solid purple;
+    display: flex;
     width: 100vw;
     height: 100vh;
 }

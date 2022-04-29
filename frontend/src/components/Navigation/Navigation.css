@@ -1,0 +1,13 @@
+.navbar {
+    border: 2px solid red;
+    width: 15rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.navbar__btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
