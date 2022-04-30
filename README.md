@@ -29,8 +29,38 @@
 </h5> -->
 
 ### Getting Started
-1. Clone this repository
-   ```git clone git@github.com:vee-alianza/mochi.git```
+<!-- 1. Clone this repository
+</br> ```git clone git@github.com:vee-alianza/mochi.git```
+
 2. Install dependncies to your root directory
-3.
+</br> ```npm install```
+
+3. Create a ```.env``` file based on the ```.env.example``` given below:
+</br>
+```
+    PORT=«port number»
+    DB_USERNAME=«database user name»
+    DB_PASSWORD=«database user password»
+    DB_DATABASE=«database name»
+    DB_HOST=localhost
+    JWT_SECRET=«generate strong secret here»
+    JWT_EXPIRES_IN=«integer values in seconds»
+```
+
+4. Initialize Sequelize package to create the necessary dependencies
+</br> ```npx sequelize init```
+
+5. Create a user in Postgres and give the user the necessary privileges
+</br> ``` CREATE USER «username» WITH PASSWORD «password» CREATEDB;```
+
+6. Create Database, Migrate and Seed models
+</br> ```npx dotenv sequelize db:create```
+</br> ```npx dotenv sequelize db:migrate```
+</br> ```npx dotenv sequelize db:seed:all```
+
+7. Start the app using:
+</br> ```npm start```
+
+8. Log in as a Demo user or create an account. -->
+
 ### Features
