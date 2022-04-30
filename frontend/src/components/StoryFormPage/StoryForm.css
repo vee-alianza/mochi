@@ -1,0 +1,17 @@
+.recipe__container {
+    height: 100%;
+    width: 100%;
+}
+
+.recipe__form {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+}
+
+.recipe__box {
+    text-overflow: clip;
+    overflow: hidden;
+    width: 50rem;
+}

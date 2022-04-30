@@ -33,7 +33,7 @@ function SignupFormPage() {
 
     <div className="signup__container">
       <h2>SIGN UP!</h2>
-      <image src="https://user-images.githubusercontent.com/92604480/165845450-6833a472-12ee-4b32-ba4e-0b2db843e9ea.jpg" alt="signup__left__container" />
+      <image src="https://user-images.githubusercontent.com/92604480/165845450-6833a472-12ee-4b32-ba4e-0b2db843e9ea.jpg" alt="signup__left__container" width="100px;" />
       <form onSubmit={handleSubmit} className="signup__form">
         <ul>
           {errors.map((error, idx) => <li key={idx}>{error}</li>)}

@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { Route, Switch } from "react-router-dom";
-import SignupFormPage from "./components/SignupFormPage";
+import SignupForm from "./components/SignupFormModal";
+import LoginForm from "./components/LoginFormModal"
 import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation";
 import './App.css';
 import Homepage from "./components/Homepage";
 import StoryFormPage from "./components/StoryFormPage";
-import LoginForm from "./components/LoginFormModal/LoginForm";
 
 function App() {
   const dispatch = useDispatch();
@@ -28,7 +28,7 @@ function App() {
             <LoginForm />
           </Route>
           <Route path="/signup">
-            <SignupFormPage />
+            <SignupForm />
           </Route>
           <Route path="/stories/:userId">
             <StoryFormPage />
