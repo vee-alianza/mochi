@@ -14,7 +14,7 @@
 
 ### About
 ### Technologies Used
-
+<!-- <h5 align= "left" dir="auto">
 <img src="https://user-images.githubusercontent.com/92604480/165961417-c06bb493-af3d-48e7-99eb-27be08e2b2e1.png" alt="react" width="40"/>
 <img src="https://user-images.githubusercontent.com/92604480/165955681-9792572f-c7bd-4ffb-a97a-56e278c46c90.png" alt="redux" width="40"/>
 <img src="https://user-images.githubusercontent.com/92604480/165967312-f7b9d82b-535a-492a-a427-f87c8d5084aa.png" alt="postgres" width="40"/>
@@ -26,6 +26,7 @@
 <img src="https://user-images.githubusercontent.com/92604480/165958448-6a0d3542-cf5f-44d6-b9c8-def152ae3f6c.png" alt="CSS" width="40"/>
 <img src="https://user-images.githubusercontent.com/92604480/165955147-b155e83b-ee1c-4f8b-94c1-f7472a6c09b0.png" alt="git" width="40"/>
 <img src="https://user-images.githubusercontent.com/92604480/165955457-aeff7618-df2f-4003-991d-d53259df541a.png" alt="heroku" width="40"/>
+</h5> -->
 
 ### Getting Started
 ### Features
