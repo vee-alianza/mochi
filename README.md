@@ -29,4 +29,8 @@
 </h5> -->
 
 ### Getting Started
+1. Clone this repository
+   ```git clone git@github.com:vee-alianza/mochi.git```
+2. Install dependncies to your root directory
+3.
 ### Features

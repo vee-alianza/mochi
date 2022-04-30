@@ -31,6 +31,10 @@ const StoryFormPage = () => {
                 >
                     Title:
                 </label>
+                <input
+                    type="text"
+                    id="recipe__title"
+                />
                 Category:
                 <select
                     name="category"
@@ -40,7 +44,7 @@ const StoryFormPage = () => {
                         value=""
                         selected="selected"
                     >
-                        Select category
+                        Select region
                     </option>
                     <option
                         value="region1"
@@ -73,10 +77,6 @@ const StoryFormPage = () => {
                         South America
                     </option>
                 </select>
-                <input
-                    type="text"
-                    id="recipe__title"
-                />
                 <label
                     for="timeframe"
                 >
