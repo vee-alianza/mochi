@@ -5,14 +5,31 @@
   Created by:
       <a href="https://github.com/vee-alianza">Vee Alianza</a>
       </br>
-      <a href="">» Live Link «</a>
+      <a href="https://mochi-noms.herokuapp.com/">» Live Link «</a>
 </h5>
 
 <h4 align= "center" dir="auto">
-  <a href="">» Explore the Wiki «</a>
+  <a href="https://github.com/vee-alianza/mochi/wiki">» Explore the Wiki «</a>
 </h4>
 
 ### About
+Mochi is inspired by [Medium](https://medium.com/), where users from around the world can publish recipes and allows for interactivity between users.
+<!-- Curiouser and couriouser.
+Inspired by [Medium](https://medium.com/), users, such as, food enthusists, food connoisseur, novice homecooks can experience amazing food around the world with Mochi!
+
+Create an experience that awakens all senses -->
+
+### Index
+<h5 align= "center" dir="auto">
+      |
+      <a href="https://github.com/vee-alianza">Technologies Used</a>
+      |
+      <a href="">Getting Started</a>
+      |
+      <a href="">Features</a>
+      |
+</h5>
+
 ### Technologies Used
 <!-- <h5 align= "left" dir="auto">
 <img src="https://user-images.githubusercontent.com/92604480/165961417-c06bb493-af3d-48e7-99eb-27be08e2b2e1.png" alt="react" width="40"/>
