@@ -14,19 +14,19 @@ module.exports = {
       },
       recipe: {
         allowNull: false,
-        type: Sequelize.TEXT(255)
+        type: Sequelize.TEXT
       },
       ingredients: {
         allowNull: false,
-        type: Sequelize.TEXT(255)
+        type: Sequelize.TEXT
       },
       instructions: {
         allowNull: false,
-        type: Sequelize.TEXT(255)
+        type: Sequelize.TEXT
       },
       timeframe: {
         allowNull: false,
-        type: Sequelize.INTEGER
+        type: Sequelize.STRING(10)
       },
       image: {
         type: Sequelize.STRING(255)

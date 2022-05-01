@@ -48,16 +48,33 @@ module.exports = (sequelize, DataTypes) => {
     });
 
   User.associate = function (models) {
+    User.hasMany(models.Story, { foreignKey: "userId" });
+    User.hasMany(models.Comment, { foreignKey: "userId" });
     User.belongsToMany(models.Comment, {
       through: "commentLikes",
       foreignKey: "userId",
       otherKey: "commentId"
-    })
+    });
     User.belongstoMany(models.Story, {
       through: "storyLikes",
       foreignKey: "userId",
       otherKey: "storyId"
-    })
+    });
+    User.belongsToMany(models.Story, {
+      through: "bookmarks",
+      foreignKey: "userId",
+      otherKey: "storyId"
+    });
+    User.belongsToMany(models.User, {
+      through: "follows",
+      foreignKey: "userId",
+      otherKey: "followerId"
+    });
+    User.belongsToMany(models.User, {
+      through: "follows",
+      foreignKey: "followerId",
+      otherKey: "userId"
+    });
   };
 
   User.prototype.toSafeObject = function () { // remember, this cannot be an arrow function

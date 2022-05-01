@@ -11,12 +11,12 @@ module.exports = {
       commentId: {
         allowNull: false,
         type: Sequelize.INTEGER,
-        references: { models: "Comments" }
+        references: { model: "Comments" }
       },
       userId: {
         allowNull: false,
         type: Sequelize.INTEGER,
-        references: { models: "Users" }
+        references: { model: "Users" }
       },
       createdAt: {
         allowNull: false,

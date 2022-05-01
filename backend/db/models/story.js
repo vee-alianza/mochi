@@ -7,19 +7,19 @@ module.exports = (sequelize, DataTypes) => {
     },
     recipe: {
       allowNull: false,
-      type: DataTypes.TEXT(255)
+      type: DataTypes.TEXT
     },
     ingredients: {
       allowNull: false,
-      type: DataTypes.TEXT(255)
+      type: DataTypes.TEXT
     },
     instructions: {
       allowNull: false,
-      type: DataTypes.TEXT(255)
+      type: DataTypes.TEXT
     },
     timeframe: {
       allowNull: false,
-      type: DataTypes.INTEGER
+      type: DataTypes.STRING(10)
     },
     image: {
       type: DataTypes.STRING(255)
@@ -31,17 +31,22 @@ module.exports = (sequelize, DataTypes) => {
     },
   }, {});
   Story.associate = function (models) {
+    Story.hasMany(models.Comment, { foreignKey: "storyId" });
     Story.belongsToMany(models.User, {
       through: "storyLikes",
       foreignKey: "storyId",
       otherKey: "userId"
-    })
+    });
+    Story.belongsToMany(models.User, {
+      through: "bookmarks",
+      foreignKey: "storyId",
+      otherKey: "userId"
+    });
     Story.belongsToMany(models.Categorgy, {
       through: "storyCategories",
       foreignKey: "storyId",
       otherKey: "categoryId"
-    })
-
+    });
   };
   return Story;
 };

@@ -13,9 +13,7 @@ module.exports = (sequelize, DataTypes) => {
     }
   }, {});
   storyCategory.associate = function (models) {
-    storyCategory.belongsTo(models.Story, { foreignKey: "storyId" })
-    storyCategory.hasMany(models.Category, { foreignKey: "categoryId" })
-
+    // associations can be defined here
   };
   return storyCategory;
 };
