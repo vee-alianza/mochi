@@ -38,11 +38,11 @@ module.exports = (sequelize, DataTypes) => {
       otherKey: "userId"
     });
     Story.belongsToMany(models.User, {
-      through: "bookmarks",
+      through: "Bookmarks",
       foreignKey: "storyId",
       otherKey: "userId"
     });
-    Story.belongsToMany(models.Categorgy, {
+    Story.belongsToMany(models.Category, {
       through: "storyCategories",
       foreignKey: "storyId",
       otherKey: "categoryId"
