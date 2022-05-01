@@ -8,7 +8,11 @@ module.exports = (sequelize, DataTypes) => {
     },
   }, {});
   Category.associate = function (models) {
-
+    Category.belongsToMany(models.Story, {
+      through: "storyCategories",
+      foreignKey: "categoryId",
+      otherKey: "storyId"
+    })
   };
   return Category;
 };
