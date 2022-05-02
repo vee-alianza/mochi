@@ -9,6 +9,7 @@ import './App.css';
 import Homepage from "./components/Homepage";
 import StoryFormPage from "./components/StoryFormPage";
 import StoryList from "./components/StoryList";
+import SplashPage from "./components/SplashPage";
 
 function App() {
   const dispatch = useDispatch();
@@ -22,6 +23,9 @@ function App() {
       <Navigation isLoaded={isLoaded} />
       {isLoaded && (
         <Switch>
+          <Route exact path="/">
+            <SplashPage />
+          </Route>
           <Route path="/home">
             <Homepage />
           </Route>

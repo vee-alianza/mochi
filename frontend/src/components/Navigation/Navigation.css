@@ -15,4 +15,16 @@
 img {
     width: 100px;
     height: 100px;
+    border-radius: 50%;
+}
+
+a {
+    text-decoration: none;
+    color: black
+}
+
+p {
+    font-family: "Sansita";
+    font-weight: "bold";
+    font-size: 1rem;
 }

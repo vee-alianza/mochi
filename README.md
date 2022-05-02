@@ -24,7 +24,7 @@
       |
       <a href="https://github.com/vee-alianza/mochi#features">Features</a>
       |
-</h4>
+  </h4>
 </h4>
 
 ## About
@@ -82,7 +82,6 @@ Share and discover culinary experiences that awakens all senses with <span style
   JWT_SECRET=«generate strong secret here»
   JWT_EXPIRES_IN=«integer values in seconds»
   ```
-
 4. Initialize Sequelize package to create the necessary dependencies.
 </br> ```npx sequelize init```
 

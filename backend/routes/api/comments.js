@@ -8,14 +8,14 @@ const router = require("./stories");
 
 // GET comments
 router.post('/', requireAuth, asyncHandler(async (req, res) => {
-    const { storyId, content, userId } = req.body;
-    // const story
-    const comments = await Comment.findAll({
-        order: [["createdAt", "DESC"]],
-    });
-    return res.json({
-        comments,
-    })
+  const { storyId, content, userId } = req.body;
+  // const story
+  const comments = await Comment.findAll({
+    order: [["createdAt", "DESC"]],
+  });
+  return res.json({
+    comments,
+  })
 
 }));
 
