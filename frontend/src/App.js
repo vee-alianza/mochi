@@ -8,6 +8,7 @@ import Navigation from "./components/Navigation";
 import './App.css';
 import Homepage from "./components/Homepage";
 import StoryFormPage from "./components/StoryFormPage";
+import StoryList from "./components/StoryList";
 
 function App() {
   const dispatch = useDispatch();
@@ -32,6 +33,9 @@ function App() {
           </Route>
           <Route path="/stories/:userId">
             <StoryFormPage />
+          </Route>
+          <Route path="/stories">
+            <StoryList />
           </Route>
         </Switch>
       )}

@@ -37,7 +37,7 @@ const initialState = {};
 const storyReducer = (stories = initialState, action) => {
   switch (action.type) {
     case SET_STORIES:
-      const stories = action.payload;
+      const storiesPayload = action.payload;
       // return stories.reduce((newStories, story) => {
       //   return {
       //     ...newStories,
@@ -46,7 +46,7 @@ const storyReducer = (stories = initialState, action) => {
       // }, {});
 
       const newStories = {};
-      for (const story of stories) {
+      for (const story of storiesPayload) {
         newStories[story.id] = story;
       }
       return newStories;
