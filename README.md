@@ -5,24 +5,39 @@
   Created by:
       <a href="https://github.com/vee-alianza">Vee Alianza</a>
       </br>
+      </br>
       <a href="https://mochi-noms.herokuapp.com/">» Live Link «</a>
 </h5>
 
 <h4 align= "center" dir="auto">
   <a href="https://github.com/vee-alianza/mochi/wiki">» Explore the Wiki «</a>
 </h4>
+<h4 align= "center" dir="auto">
+  <a href="https://github.com/vee-alianza/mochi#index">» Index «</a>
+  <h4 align= "center" dir="auto">
+      |
+      <a href="https://github.com/vee-alianza/mochi#about">About</a>
+      |
+      <a href="https://github.com/vee-alianza/mochi#technologies-used">Technologies Used</a>
+      |
+      <a href="https://github.com/vee-alianza/mochi#getting-started">Getting Started</a>
+      |
+      <a href="https://github.com/vee-alianza/mochi#features">Features</a>
+      |
+</h4>
+</h4>
 
-### About
-<!-- <hr style="border: 1px solid gray"> -->
----
-<!-- Mochi is inspired by [Medium](https://medium.com/), where users from around the world can publish recipes and allows for interactivity between users. -->
-<!-- Curiouser and couriouser.
-Inspired by [Medium](https://medium.com/), users, such as, food enthusists, food connoisseur, novice homecooks can experience amazing food around the world with Mochi!
+## About
+Share and discover culinary experiences that awakens all senses with <span style= "color:#A020F0; font-weight:bold">*Mochi*</span>!
 
-Create an experience that awakens all senses -->
+<!-- A food blogger's paradise. A hubspot for food enthusists and food connoisseurs, inspired by [Medium](https://medium.com/), where users can publish recipes of amazing food around the world.  -->
 
-### Index
----
+
+<!-- ### Welcome View:
+### Home View: -->
+
+
+<!-- ## Index -->
 <!-- <h4 align= "center" dir="auto">
       |
       <a href="https://github.com/vee-alianza">Technologies Used</a>
@@ -33,9 +48,9 @@ Create an experience that awakens all senses -->
       |
 </h4> -->
 
-### Technologies Used
----
-<!-- <h5 align= "left" dir="auto">
+## Technologies Used
+
+<h5 align= "left" dir="auto">
 <img src="https://user-images.githubusercontent.com/92604480/165961417-c06bb493-af3d-48e7-99eb-27be08e2b2e1.png" alt="react" width="40"/>
 <img src="https://user-images.githubusercontent.com/92604480/165955681-9792572f-c7bd-4ffb-a97a-56e278c46c90.png" alt="redux" width="40"/>
 <img src="https://user-images.githubusercontent.com/92604480/165967312-f7b9d82b-535a-492a-a427-f87c8d5084aa.png" alt="postgres" width="40"/>
@@ -47,14 +62,14 @@ Create an experience that awakens all senses -->
 <img src="https://user-images.githubusercontent.com/92604480/165958448-6a0d3542-cf5f-44d6-b9c8-def152ae3f6c.png" alt="CSS" width="40"/>
 <img src="https://user-images.githubusercontent.com/92604480/165955147-b155e83b-ee1c-4f8b-94c1-f7472a6c09b0.png" alt="git" width="40"/>
 <img src="https://user-images.githubusercontent.com/92604480/165955457-aeff7618-df2f-4003-991d-d53259df541a.png" alt="heroku" width="40"/>
-</h5> -->
+</h5>
 
-### Getting Started
----
-<!-- 1. Clone this repository
+## Getting Started
+
+1. Clone this repository
 </br> ```git clone git@github.com:vee-alianza/mochi.git```
 
-2. Install dependncies to your root directory.
+1. Install dependncies to your root directory.
 </br> ```npm install```
 
 3. Create a ```.env``` file based on the ```.env.example``` given below:
@@ -83,7 +98,6 @@ Create an experience that awakens all senses -->
 7. Start the app using:
 </br> ```npm start```
 
-8. Log in as a Demo user or create an account. -->
+8. Log in as a Demo user or create an account.
 
-### Features
----
+## Features
