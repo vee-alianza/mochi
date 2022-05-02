@@ -13,7 +13,8 @@ module.exports = (sequelize, DataTypes) => {
     }
   }, {});
   commentLike.associate = function (models) {
-    // associations can be defined here
+    commentLike.belongsTo(models.Comment, { foreignKey: "commentId" })
+    commentLike.belongsTo(models.User, { foreignKey: "userId" })
   };
   return commentLike;
 };

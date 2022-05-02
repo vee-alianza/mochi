@@ -32,16 +32,9 @@ module.exports = (sequelize, DataTypes) => {
   }, {});
   Story.associate = function (models) {
     Story.hasMany(models.Comment, { foreignKey: "storyId" });
-    Story.belongsToMany(models.User, {
-      through: "storyLikes",
-      foreignKey: "storyId",
-      otherKey: "userId"
-    });
-    Story.belongsToMany(models.User, {
-      through: "Bookmarks",
-      foreignKey: "storyId",
-      otherKey: "userId"
-    });
+    Story.hasMany(models.storyLike, { foreignKey: "storyId" });
+    Story.hasMany(models.Bookmark, { foreignKey: "storyId" });
+    Story.belongsTo(models.User, { foreignKey: "userId" });
     Story.belongsToMany(models.Category, {
       through: "storyCategories",
       foreignKey: "storyId",
