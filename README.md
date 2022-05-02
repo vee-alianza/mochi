@@ -75,13 +75,13 @@ Share and discover culinary experiences that awakens all senses with <span style
 3. Create a ```.env``` file based on the ```.env.example``` given below:
 </br>
 ```
-    PORT=«port number»
-    DB_USERNAME=«database user name»
-    DB_PASSWORD=«database user password»
-    DB_DATABASE=«database name»
-    DB_HOST=localhost
-    JWT_SECRET=«generate strong secret here»
-    JWT_EXPIRES_IN=«integer values in seconds»
+PORT=«port number»
+DB_USERNAME=«database user name»
+DB_PASSWORD=«database user password»
+DB_DATABASE=«database name»
+DB_HOST=localhost
+JWT_SECRET=«generate strong secret here»
+JWT_EXPIRES_IN=«integer values in seconds»
 ```
 
 4. Initialize Sequelize package to create the necessary dependencies.
