@@ -73,17 +73,17 @@ Share and discover culinary experiences that awakens all senses with <span style
 </br> ```npm install```
 
 3. Create a ```.env``` file based on the ```.env.example``` given below:
-```
-PORT=«port number»
-DB_USERNAME=«database user name»
-DB_PASSWORD=«database user password»
-DB_DATABASE=«database name»
-DB_HOST=localhost
-JWT_SECRET=«generate strong secret here»
-JWT_EXPIRES_IN=«integer values in seconds»
-```
+  ```
+  PORT=«port number»
+  DB_USERNAME=«database user name»
+  DB_PASSWORD=«database user password»
+  DB_DATABASE=«database name»
+  DB_HOST=localhost
+  JWT_SECRET=«generate strong secret here»
+  JWT_EXPIRES_IN=«integer values in seconds»
+  ```
 
-1. Initialize Sequelize package to create the necessary dependencies.
+4. Initialize Sequelize package to create the necessary dependencies.
 </br> ```npx sequelize init```
 
 5. Create a user in Postgres and give the user the necessary privileges.
