@@ -48,16 +48,16 @@ module.exports = (sequelize, DataTypes) => {
     });
 
   User.associate = function (models) {
-    User.hasMany(models.Story, { foreignKey: "userId" });
-    User.hasMany(models.Comment, { foreignKey: "userId" });
-    User.hasMany(models.commentLike, { foreignKey: "userId" });
-    User.hasMany(models.storyLike, { foreignKey: "userId" });
-    User.hasMany(models.Bookmark, { foreignKey: "userId" });
+    User.hasMany(models.Story, { foreignKey: "userId", onDelete: "cascade", hooks: true });
+    User.hasMany(models.Comment, { foreignKey: "userId", onDelete: "cascade", hooks: true });
+    User.hasMany(models.commentLike, { foreignKey: "userId", onDelete: "cascade", hooks: true });
+    User.hasMany(models.storyLike, { foreignKey: "userId", onDelete: "cascade", hooks: true });
+    User.hasMany(models.Bookmark, { foreignKey: "userId", onDelete: "cascade", hooks: true });
     User.hasMany(models.Follow, {
-      foreignKey: "userId", as: "following"
+      foreignKey: "userId", as: "following", onDelete: "cascade", hooks: true
     });
     User.hasMany(models.Follow, {
-      foreignKey: "followerId", as: "followers"
+      foreignKey: "followerId", as: "followers", onDelete: "cascade", hooks: true
     });
   };
 

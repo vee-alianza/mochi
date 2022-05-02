@@ -3,7 +3,7 @@ module.exports = (sequelize, DataTypes) => {
   const Story = sequelize.define('Story', {
     title: {
       allowNull: false,
-      type: DataTypes.STRING(100)
+      type: DataTypes.STRING
     },
     recipe: {
       allowNull: false,
@@ -19,9 +19,10 @@ module.exports = (sequelize, DataTypes) => {
     },
     timeframe: {
       allowNull: false,
-      type: DataTypes.STRING(10)
+      type: DataTypes.STRING
     },
     image: {
+      allowNull: false,
       type: DataTypes.STRING(255)
     },
     userId: {
@@ -29,17 +30,18 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.INTEGER,
       references: { model: "Users" }
     },
+    categoryId: {
+      allowNull: false,
+      type: DataTypes.INTEGER,
+      references: { model: "Categories" }
+    },
   }, {});
   Story.associate = function (models) {
-    Story.hasMany(models.Comment, { foreignKey: "storyId" });
-    Story.hasMany(models.storyLike, { foreignKey: "storyId" });
-    Story.hasMany(models.Bookmark, { foreignKey: "storyId" });
+    Story.hasMany(models.Comment, { foreignKey: "storyId", onDelete: "cascade", hooks: true });
+    Story.hasMany(models.storyLike, { foreignKey: "storyId", onDelete: "cascade", hooks: true });
+    Story.hasMany(models.Bookmark, { foreignKey: "storyId", onDelete: "cascade", hooks: true });
     Story.belongsTo(models.User, { foreignKey: "userId" });
-    Story.belongsToMany(models.Category, {
-      through: "storyCategories",
-      foreignKey: "storyId",
-      otherKey: "categoryId"
-    });
+    Story.belongsTo(models.Category, { foreignKey: "categoryId" });
   };
   return Story;
 };

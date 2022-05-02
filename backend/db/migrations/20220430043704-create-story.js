@@ -10,7 +10,7 @@ module.exports = {
       },
       title: {
         allowNull: false,
-        type: Sequelize.STRING(100)
+        type: Sequelize.STRING
       },
       recipe: {
         allowNull: false,
@@ -26,7 +26,7 @@ module.exports = {
       },
       timeframe: {
         allowNull: false,
-        type: Sequelize.STRING(10)
+        type: Sequelize.STRING
       },
       image: {
         type: Sequelize.STRING(255)
@@ -35,6 +35,11 @@ module.exports = {
         allowNull: false,
         type: Sequelize.INTEGER,
         references: { model: "Users" }
+      },
+      categoryId: {
+        allowNull: false,
+        type: Sequelize.INTEGER,
+        references: { model: "Categories" }
       },
       createdAt: {
         allowNull: false,

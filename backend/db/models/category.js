@@ -3,16 +3,12 @@ module.exports = (sequelize, DataTypes) => {
   const Category = sequelize.define('Category', {
     title: {
       allowNull: false,
-      type: DataTypes.STRING(20),
+      type: DataTypes.STRING,
       unique: true
     },
   }, {});
   Category.associate = function (models) {
-    Category.belongsToMany(models.Story, {
-      through: "storyCategories",
-      foreignKey: "categoryId",
-      otherKey: "storyId"
-    })
+    Category.hasMany(models.Story, { foreignKey: "categoryId" });
   };
   return Category;
 };
