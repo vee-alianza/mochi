@@ -1,34 +1,34 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-// import ProfileButton from './ProfileButton';
-// import LoginFormModal from '../LoginFormModal';
+import ProfileButton from './ProfileButton';
+import LoginFormModal from '../LoginFormModal';
 import './Navigation.css';
 
 
 function Navigation({ isLoaded }) {
-  // const sessionUser = useSelector(state => state.session.user);
+  const sessionUser = useSelector(state => state.session.user);
 
-  // let sessionLinks;
-  // if (sessionUser) {
-  //   sessionLinks = (
-  //     <ProfileButton user={sessionUser} />
-  //   );
-  // } else {
-  //   sessionLinks = (
-  //     <>
-  //       <LoginFormModal />
-  //       <NavLink to="/signup">Sign Up</NavLink>
-  //     </>
-  //   );
-  // }
+  let sessionLinks;
+  if (sessionUser) {
+    sessionLinks = (
+      <ProfileButton user={sessionUser} />
+    );
+  } else {
+    sessionLinks = (
+      <>
+        <LoginFormModal />
+        <NavLink to="/signup">Sign Up</NavLink>
+      </>
+    );
+  }
 
   return (
     <>
       <div className="navbar">
         <div className="navbar__btn">
-          {/* <NavLink exact to="/">Home</NavLink>
-                    {isLoaded && sessionLinks} */}
+          <NavLink exact to="/">Home</NavLink>
+          {isLoaded && sessionLinks}
           <a href="/">
             <img boxSize="155px" borderRadius="full" src="https://user-images.githubusercontent.com/92604480/165882725-37ad9f6f-cbb1-4389-aabb-1a88bfa3c309.png" alt="logo" />
           </a>
@@ -41,10 +41,8 @@ function Navigation({ isLoaded }) {
           <img boxSize="100px" objectFit="cover" src="https://user-images.githubusercontent.com/92604480/165879974-08803a96-c31c-4e2e-9fa5-268a65f62375.svg" alt="all recipes" />
           <p>all recipes</p>
 
-          <a href="api/stories/new">
-            <img boxSize="120px" objectFit="cover" src="https://user-images.githubusercontent.com/92604480/165881766-efe5572f-17e9-4ef8-983e-5298f11c5f53.svg" alt="add stories" />
-            <p>spill the tea</p>
-          </a>
+          <img boxSize="120px" objectFit="cover" src="https://user-images.githubusercontent.com/92604480/165881766-efe5572f-17e9-4ef8-983e-5298f11c5f53.svg" alt="add stories" />
+          <p>spill the tea</p>
 
         </div>
         <div className="navbar__btn">

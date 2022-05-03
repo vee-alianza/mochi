@@ -24,7 +24,7 @@ a {
 }
 
 p {
-    font-family: "Sansita";
+    font-family: 'Sansita', sans-serif;
     font-weight: "bold";
     font-size: 1rem;
 }

@@ -4,6 +4,7 @@ import { Route, Switch } from "react-router-dom";
 import SignupForm from "./components/SignupFormModal";
 import LoginForm from "./components/LoginFormModal"
 import * as sessionActions from "./store/session";
+// import * as storyActions from "./store/stories";
 import Navigation from "./components/Navigation";
 import './App.css';
 import Homepage from "./components/Homepage";
@@ -16,6 +17,8 @@ function App() {
   const [isLoaded, setIsLoaded] = useState(false);
   useEffect(() => {
     dispatch(sessionActions.restoreUser()).then(() => setIsLoaded(true));
+    // dispatch(storyActions.getStories())
+    dispatch(getStories())
   }, [dispatch]);
 
   return (

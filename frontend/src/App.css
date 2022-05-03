@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat&family=Poppins:wght@200&family=Sansita&display=swap');
 
 body {
-    font: 14px "Roboto";
+    font: 14px 'Sansita', sans-serif;
     width: 100vw;
     height: 100vh;
 }
@@ -16,4 +16,16 @@ body {
     display: flex;
     width: 100vw;
     height: 100vh;
+}
+
+p {
+    font-family: 'Sansita', sans-serif;
+}
+
+h1 {
+    font-family: 'Monsterrat', sans-serif;
+}
+
+h2 {
+    font-family: 'Poppins';
 }
