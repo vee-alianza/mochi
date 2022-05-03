@@ -1,8 +1,10 @@
 import { useState, useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { getStories, readStory, updateStory, deleteStory } from "../../store/stories";
 import "./StoryForm.css"
 
-const StoryFormPage = () => {
-    // const [title, setTitle] = useState();
+const StoryList = () => {
+    // const [title, setTitle] = useState(story.title);
     // const [category, setCategory] = useState();
     // const [timeframe, setTimeframe] = useState();
     // const [story, setStory] = useState();
@@ -10,15 +12,32 @@ const StoryFormPage = () => {
     // const [instructions, setInstructions] = useState();
     // const [errors, setErrors] = useSate([]);
 
+    // const stories = useSelector(state => state.stories);
+    // console.log("stories", stories);
+    // const dispatch = useDispatch();
+
     // useEffect(() => {
-    //     const errors = []
-    //     if()
+    //     dispatch(getStories());
+    // }, [dispatch]);
+
+    // useEffect(() => {
+    //     const errors = [];
+
+    // })
+
+    // const storyElements = Object.values(stories).map(story => {
+    //     return (
+    //         <li>{story.title}</li>
+    //     )
     // })
 
     return (
         <div className="recipe__container">
-            <form className="recipe__form">
-                {/*
+            <form className="recipe__form"> */
+                {/* <ul>
+                {storyElements}
+            </ul>
+            {/*
                 <form onSubmit={handleSubmit}>
                     <ul>
                     {errors.map((error, idx) => (
@@ -135,4 +154,4 @@ const StoryFormPage = () => {
     );
 };
 
-export default StoryFormPage;
+export default StoryList;

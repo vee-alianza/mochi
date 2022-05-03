@@ -3,13 +3,11 @@ import { NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import ProfileButton from '../Navigation/ProfileButton';
 import LoginFormModal from '../LoginFormModal';
-
-
-import './SplashPage.css'
+// import { useEffect, useState } from 'react';
+// import './SplashPage.css'
 
 const SplashPage = (isLoaded) => {
   const sessionUser = useSelector(state => state.session.user);
-
   let sessionLinks;
   if (sessionUser) {
     sessionLinks = (
@@ -26,7 +24,8 @@ const SplashPage = (isLoaded) => {
 
   return (
     <>
-      <div className="splash__page">
+
+      {/* <div className="splash__page">
 
         <div className="splash__left__box">
           <h1>Curiouser and Curiouser</h1>
@@ -40,7 +39,7 @@ const SplashPage = (isLoaded) => {
             </g>
           </svg>
         </div>
-      </div >
+      </div > */}
     </>
   )
 }

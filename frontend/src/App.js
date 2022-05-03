@@ -6,11 +6,11 @@ import LoginForm from "./components/LoginFormModal"
 import * as sessionActions from "./store/session";
 // import * as storyActions from "./store/stories";
 import Navigation from "./components/Navigation";
-import './App.css';
-import Homepage from "./components/Homepage";
-import StoryFormPage from "./components/StoryFormPage";
-import StoryList from "./components/StoryList";
 import SplashPage from "./components/SplashPage";
+import Homepage from "./components/Homepage";
+import StoryFormPage from "./components/StoryFormPage"
+import StoryList from "./components/StoryFormPage";
+import './App.css';
 
 function App() {
   const dispatch = useDispatch();
@@ -18,7 +18,7 @@ function App() {
   useEffect(() => {
     dispatch(sessionActions.restoreUser()).then(() => setIsLoaded(true));
     // dispatch(storyActions.getStories())
-    dispatch(getStories())
+    // dispatch(getStories())
   }, [dispatch]);
 
   return (

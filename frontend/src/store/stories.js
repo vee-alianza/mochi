@@ -40,25 +40,13 @@ const setStory = (stories) => {
   };
 };
 
-// export const addStory = (story) => {
-//   return {
-//     type: ADD_STORY,
-//     payload: story
-//   }
-// }
-
-// export const setStories = (stories) => {
-//   return {
-//     type: SET_STORIES,
-//     payload: stories
-//   }
-// }
-
 
 // Thunks (Async Actions)
 // Thunk middleware = dispatch
 export const getStories = () => async dispatch => {
+  console.log("***********")
   const response = await csrfFetch('/api/stories');
+  console.log("/////MESSED UP BACKEND")
   if (response.ok) {
     const stories = await response.json();
     dispatch(setStory(stories));
@@ -113,13 +101,17 @@ const storyReducer = (stories = initialState, action) => {
   let newStories;
   switch (action.type) {
     case SET_STORIES:
-      const stories = action.payload;
-      return stories.reduce((newStories, story) => {
-        return {
-          ...newStories,
-          [story.id]: story
-        }
-      }, {});
+      newStories = { ...stories };
+      console.log(action.payload, "=========")
+      newStories = action.payload;
+      return newStories;
+    // stories = action.payload;
+    // return stories.reduce((newStories, story) => {
+    //   return {
+    //     ...newStories,
+    //     [story.id]: story
+    //   }
+    // }, {});
 
     // const newStories = {};
     // for (const story of storiesPayload) {
@@ -144,25 +136,3 @@ const storyReducer = (stories = initialState, action) => {
 };
 
 export default storyReducer;
-
-// const storyReducer = (state = initialState, action) => {
-//   switch (action.type) {
-//     case SET_STORIES:
-//       // const storiesPayload = action.payload;
-//       // const newStories = {};
-//       // for (const story of storiesPayload) {
-//       //   newStories[story.id] = story;
-//       // }
-//       const newState = Object.assign({}, state);
-//       action.payload.forEach((story) => {
-//         newState[story.id] = story
-//       })
-//       console.log(newState, "==========")
-
-//       return newState;
-//     case ADD_STORY:
-//       return
-//     default:
-//       return state;
-//   }
-// };
