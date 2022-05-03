@@ -46,7 +46,7 @@ const setStory = (stories) => {
 export const getStories = () => async dispatch => {
   console.log("***********")
   const response = await csrfFetch('/api/stories');
-  console.log("/////MESSED UP BACKEND")
+  console.log("EEFFFED BACKEND")
   if (response.ok) {
     const stories = await response.json();
     dispatch(setStory(stories));

@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Route, Switch } from "react-router-dom";
-import SignupForm from "./components/SignupFormModal";
 import LoginForm from "./components/LoginFormModal"
+import SignupForm from "./components/SignupFormModal";
 import * as sessionActions from "./store/session";
-// import * as storyActions from "./store/stories";
 import Navigation from "./components/Navigation";
 import SplashPage from "./components/SplashPage";
 import Homepage from "./components/Homepage";
@@ -14,11 +13,10 @@ import './App.css';
 
 function App() {
   const dispatch = useDispatch();
+  const sessionUser = useSelector(state => state.session.user);
   const [isLoaded, setIsLoaded] = useState(false);
   useEffect(() => {
     dispatch(sessionActions.restoreUser()).then(() => setIsLoaded(true));
-    // dispatch(storyActions.getStories())
-    // dispatch(getStories())
   }, [dispatch]);
 
   return (
@@ -38,7 +36,7 @@ function App() {
           <Route path="/signup">
             <SignupForm />
           </Route>
-          <Route path="/stories/:userId">
+          <Route path="/stories/new">
             <StoryFormPage />
           </Route>
           <Route path="/stories">
