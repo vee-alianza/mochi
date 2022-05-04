@@ -1,4 +1,5 @@
 import React from "react";
+import StoryList from "../StoryList";
 
 import './Homepage.css'
 
@@ -9,7 +10,7 @@ const Homepage = () => {
     return (
         <div className="main__container">
             <div className="left__container">
-
+                <StoryList />
             </div>
             <div className="right__container">
 

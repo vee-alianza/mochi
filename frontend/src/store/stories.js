@@ -77,18 +77,20 @@ export const editStory = (story, id) => async dispatch => {
     method: 'PATCH',
     body: JSON.stringify(story)
   })
-  const stories = await response.json();
-  dispatch(updateStory(stories));
-  return (stories);
+  const data = await response.json();
+  dispatch(updateStory(data.result));
 }
 
-export const deleteStory = (story) => async dispatch => {
-  const response = await csrfFetch(`/api/stories/edit/${story.id}`, {
+export const deleteStory = (storyId) => async dispatch => {
+  const response = await csrfFetch(`/api/stories/${storyId}`, {
     method: 'DELETE',
-    body: JSON.stringify(story)
   })
-  const stories = await response.json();
-  dispatch(removeStory(stories));
+  console.log(response, "hitting delete thunk");
+  if (response.ok) {
+    dispatch(removeStory(storyId));
+  }
+  // const stories = await response.json();
+  // dispatch(removeStory(stories));
   return (response);
 }
 
@@ -126,11 +128,19 @@ const storyReducer = (state = initialState, action) => {
       return newState
     case UPDATE_STORY:
       newState = Object.assign({}, state);
-      newState[action.story.id] = action.story;
+      newState.allStories = state.allStories.map((story) => {
+        if (story.id === action.payload.id) {
+          return action.payload;
+        } else {
+          return story;
+        }
+      });
       return newState
     case REMOVE_STORY:
       newState = Object.assign({}, state);
-      delete newState[action.story.id];
+      newState.allStories = state.allStories.filter(story => {
+        return story.id !== action.payload;
+      });
       return newState;
     default:
       return state;

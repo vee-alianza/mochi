@@ -1,11 +1,11 @@
 import { useState, useEffect } from "react";
-import { useDispatch } from "react-redux";
-import { useHistory, useParams } from "react-router-dom";
-import { getStories, readStory, editStory, deleteStory } from "../../store/stories";
+import { useDispatch, useSelector } from "react-redux";
+import { useHistory } from "react-router-dom";
+import { getStories, newStory, editStory } from "../../store/stories";
 import "./StoryForm.css"
 
-const StoryForm = () => {
-  const { id } = useParams();
+const StoryForm = ({ props }) => {
+  const { edit, setShowModal, storyId } = props;
   const dispatch = useDispatch();
   const [title, setTitle] = useState("");
   const [category, setCategory] = useState("");
@@ -13,29 +13,46 @@ const StoryForm = () => {
   const [story, setStory] = useState("");
   const [ingredients, setIngredients] = useState("");
   const [instructions, setInstructions] = useState("");
+  const [image, setImage] = useState("");
   const [errors, setErrors] = useState([]);
   const history = useHistory();
+  const allStories = useSelector(state => state.stories.allStories);
+  const storyRecipe = allStories?.find(story => story.id === storyId);
 
-  // const stories = useSelector(state => state.stories);
-  // console.log("stories", stories);
-  // const dispatch = useDispatch();
+  console.log(props, "PROPS")
+  // if (storyId) {
+
+  // }
+
+  const setData = () => {
+    setTitle(storyRecipe.title);
+    setCategory(storyRecipe.category);
+    setTimeframe(storyRecipe.timeframe);
+    setStory(storyRecipe.recipe);
+    setIngredients(storyRecipe.ingredients);
+    setInstructions(storyRecipe.instructions);
+    setImage(storyRecipe.image);
+  }
 
   useEffect(() => {
-    dispatch(getStories());
-  }, [dispatch]);
+    if (!allStories) {
+      dispatch(getStories());
+    }
+    if (edit) {
+      setData();
+    }
+  }, [allStories]);
 
-  useEffect(() => {
-    dispatch(readStory(story.id));
-  }, [dispatch, id, story.id]);
 
   useEffect(() => {
     const errors = [];
     if (title.length < 50) {
       errors.push("Title must be 5 or more characters")
     }
-    if (category.length < 50) {
-      errors.push("Please enter category")
-    }
+    // console.log(category, "CATEGORY")
+    // if (category.length < 50) {
+    //   errors.push("Please enter category")
+    // }
     if (timeframe.length < 50) {
       errors.push("Please enter timeframe")
     }
@@ -49,34 +66,51 @@ const StoryForm = () => {
       errors.push("Write instructions")
     }
     setErrors(errors);
-  }, [title, category, timeframe, story, ingredients, instructions]);
+  }, [title, timeframe, story, ingredients, instructions, image]);
 
   const handleSubmit = async (e) => {
+
+    console.log("HANDLESUBMIT")
     e.preventDefault();
 
     const storyBox = {
       title,
       category,
       timeframe,
-      story,
+      recipe: story,
       ingredients,
-      instructions
+      instructions,
+      image
     };
 
-    let newStory = await dispatch(editStory(storyBox, story.id));
+    if (!edit) {
+      await dispatch(newStory(storyBox));
+
+    } else {
+      dispatch(editStory(storyBox, storyId));
+    }
     setTitle("");
     setCategory("");
     setTimeframe("");
     setStory("");
     setIngredients("");
     setInstructions("");
-  }
+    setImage("");
 
-  // const storyElements = Object.values(stories).map(story => {
-  //     return (
-  //         <li>{story.title}</li>
-  //     )
-  // })
+    if (!edit) {
+      history.push('/home');
+    } else {
+      setShowModal(false);
+    }
+  };
+
+  const handleCancel = () => {
+    if (!edit) {
+      history.push('/home');
+    } else {
+      setShowModal(false);
+    }
+  };
 
   return (
     <>
@@ -100,11 +134,15 @@ const StoryForm = () => {
             <input
               type="text"
               id="recipe__title"
+              onChange={(e) => setTitle(e.target.value)}
+              value={title}
             />
             Category:
             <select
               name="category"
               id="recipe_box"
+              onChange={(e) => setCategory(e.target.value)}
+              value={category}
             >
               <option
                 value=""
@@ -113,32 +151,32 @@ const StoryForm = () => {
                 Select region
               </option>
               <option
-                value="region1"
+                value="Africa"
               >
                 Africa
               </option>
               <option
-                value="region2"
+                value="Asia"
               >
                 Asia
               </option>
               <option
-                value="region3"
+                value="Australia"
               >
                 Australia
               </option>
               <option
-                value="region4"
+                value="Europe"
               >
                 Europe
               </option>
               <option
-                value="region5"
+                value="North America"
               >
                 North America
               </option>
               <option
-                value="region6"
+                value="South America"
               >
                 South America
               </option>
@@ -151,6 +189,19 @@ const StoryForm = () => {
             <input
               type="text"
               id="recipe__timeframe"
+              onChange={(e) => setTimeframe(e.target.value)}
+              value={timeframe}
+            />
+            <label
+              for="image"
+            >
+              Image:
+            </label>
+            <input
+              type="text"
+              id="recipe__image"
+              onChange={(e) => setImage(e.target.value)}
+              value={image}
             />
             <label
               for="story"
@@ -160,6 +211,8 @@ const StoryForm = () => {
             <textarea
               name="recipe__story"
               id="recipe__box"
+              onChange={(e) => setStory(e.target.value)}
+              value={story}
             >
             </textarea>
             <label
@@ -170,6 +223,8 @@ const StoryForm = () => {
             <textarea
               name="recipe__ingredients"
               id="recipe__box"
+              onChange={(e) => setIngredients(e.target.value)}
+              value={ingredients}
             >
             </textarea>
             <label
@@ -180,11 +235,14 @@ const StoryForm = () => {
             <textarea
               name="recipe__instructions"
               id="recipe__box"
+              onChange={(e) => setInstructions(e.target.value)}
+              value={instructions}
             >
             </textarea>
             <button
-              type="submit"
+              type="button"
               className="btn__cancel"
+              onClick={handleCancel}
             >
               Cancel
             </button>
@@ -195,10 +253,6 @@ const StoryForm = () => {
               Publish
             </button>
           </form>
-          <button className="btn__delete" onClick={() => {
-            dispatch(deleteStory(story))
-            history.push("/stories")
-          }}>Delete</button>
         </div >
       </div>
     </>

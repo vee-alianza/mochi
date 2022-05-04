@@ -13,6 +13,7 @@ const router = express.Router();
 router.get('/', asyncHandler(async (req, res) => {
     const stories = await Story.findAll({
         order: [["createdAt", "DESC"]],
+        include: [Category]
     });
     return res.json({
         stories,
@@ -78,8 +79,8 @@ router.patch('/edit/:id(\\d+)', requireAuth, asyncHandler(async (req, res) => {
                     title: category
                 });
             }
-            if (story && category && category.id !== story.categoryId) {
-                story.categoryId = category.id;
+            if (story && category && findCategory.id !== story.categoryId) {
+                story.categoryId = findCategory.id;
                 updated = true;
             }
         }
@@ -113,7 +114,10 @@ router.patch('/edit/:id(\\d+)', requireAuth, asyncHandler(async (req, res) => {
             story.updatedAt = new Date();
             await story.save();
         }
-        return res.json({ story });
+        const result = await Story.findByPk(story.id, {
+            include: [Category]
+        });
+        return res.json({ result });
     } catch (error) {
         res.status(500);
         res.send(`${error}`);
@@ -124,7 +128,7 @@ router.patch('/edit/:id(\\d+)', requireAuth, asyncHandler(async (req, res) => {
 router.delete('/:id(\\d+)', requireAuth, asyncHandler(async (req, res) => {
     const userId = req.user.id;
     const { id } = req.params;
-
+    console.log("delete route backend")
     try {
         const story = await Story.findByPk(id);
         if (userId !== story.userId) {
