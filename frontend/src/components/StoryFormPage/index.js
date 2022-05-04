@@ -20,9 +20,6 @@ const StoryForm = ({ props }) => {
   const storyRecipe = allStories?.find(story => story.id === storyId);
 
   console.log(props, "PROPS")
-  // if (storyId) {
-
-  // }
 
   const setData = () => {
     setTitle(storyRecipe.title);
@@ -42,7 +39,6 @@ const StoryForm = ({ props }) => {
       setData();
     }
   }, [allStories]);
-
 
   useEffect(() => {
     const errors = [];
@@ -116,9 +112,6 @@ const StoryForm = ({ props }) => {
     <>
       <div className="recipe__container">
         <div className="recipe__form">
-          {/* <ul>
-            {storyElements}
-          </ul> */}
           <form onSubmit={handleSubmit}>
             <ul>
               {errors.map((error, idx) => (

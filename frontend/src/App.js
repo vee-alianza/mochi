@@ -43,9 +43,6 @@ function App() {
           <Route path="/stories">
             <StoryList />
           </Route>
-          <Route path="/comments">
-            <CommentForm />
-          </Route>
         </Switch>
       )}
     </div>

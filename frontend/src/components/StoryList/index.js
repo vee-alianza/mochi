@@ -1,12 +1,15 @@
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect } from "react";
+import { useHistory } from "react-router-dom";
 import { getStories, deleteStory } from "../../store/stories";
 import EditFormModal from "../EditFormModal";
 import "./StoryList.css"
+import CommentForm from "../CommentForm";
 
 const StoryList = () => {
   const dispatch = useDispatch();
   const user = useSelector(state => state.session.user);
+  const history = useHistory();
   const allStories = useSelector(state => state.stories.allStories);
   console.log(allStories, "eeewwwww")
 
@@ -59,13 +62,21 @@ const StoryList = () => {
                   </>
                 }
               </div>
-
             )
           })
-        }
+        };
       </div>
     </>
   );
 };
 
 export default StoryList;
+
+{/* <button className="delete__btn" onClick={() => {
+  dispatch(deleteStory(story))
+  history.push("/stories");
+}}
+>
+  Delete
+</button>
+<CommentForm story={story} /> */}
