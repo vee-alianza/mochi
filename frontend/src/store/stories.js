@@ -44,7 +44,7 @@ const setStory = (stories) => {
 // Thunks (Async Actions)
 // Thunk middleware = dispatch
 export const getStories = () => async dispatch => {
-  console.log("***********")
+  console.log("****getStories thunk*******")
   const response = await csrfFetch('/api/stories');
   console.log("EEFFFED BACKEND")
   if (response.ok) {
@@ -109,19 +109,6 @@ const storyReducer = (state = initialState, action) => {
       console.log(action.payload, "=========")
       newState.allStories = action.payload;
       return newState;
-    // stories = action.payload;
-    // return stories.reduce((newState, story) => {
-    //   return {
-    //     ...newStories,
-    //     [story.id]: story
-    //   }
-    // }, {});
-
-    // const newStories = {};
-    // for (const story of storiesPayload) {
-    //   newStories[story.id] = story;
-    // }
-    // return newStories;
     case VIEW_STORY:
       newState = {};
       newState[action.story.id] = action.story;

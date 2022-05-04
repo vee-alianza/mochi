@@ -10,6 +10,7 @@ import Homepage from "./components/Homepage";
 import StoryFormPage from "./components/StoryFormPage"
 import StoryList from "./components/StoryList";
 import './App.css';
+import CommentForm from "./components/CommentForm";
 
 function App() {
   const dispatch = useDispatch();
@@ -41,6 +42,9 @@ function App() {
           </Route>
           <Route path="/stories">
             <StoryList />
+          </Route>
+          <Route path="/comments">
+            <CommentForm />
           </Route>
         </Switch>
       )}
