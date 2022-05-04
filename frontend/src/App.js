@@ -8,7 +8,7 @@ import Navigation from "./components/Navigation";
 import SplashPage from "./components/SplashPage";
 import Homepage from "./components/Homepage";
 import StoryFormPage from "./components/StoryFormPage"
-import StoryList from "./components/StoryFormPage";
+import StoryList from "./components/StoryList";
 import './App.css';
 
 function App() {

@@ -48,8 +48,8 @@ export const getStories = () => async dispatch => {
   const response = await csrfFetch('/api/stories');
   console.log("EEFFFED BACKEND")
   if (response.ok) {
-    const stories = await response.json();
-    dispatch(setStory(stories));
+    const data = await response.json();
+    dispatch(setStory(data.stories));
   }
 };
 
@@ -94,19 +94,21 @@ export const deleteStory = (story) => async dispatch => {
 
 // Reducer
 // normalizing state happens in Reducer
-const initialState = {};
+const initialState = {
+  allStories: null
+};
 
-const storyReducer = (stories = initialState, action) => {
+const storyReducer = (state = initialState, action) => {
   //newStories = newState
-  let newStories;
+  let newState;
   switch (action.type) {
     case SET_STORIES:
-      newStories = { ...stories };
+      newState = { ...state };
       console.log(action.payload, "=========")
-      newStories = action.payload;
-      return newStories;
+      newState.allStories = action.payload;
+      return newState;
     // stories = action.payload;
-    // return stories.reduce((newStories, story) => {
+    // return stories.reduce((newState, story) => {
     //   return {
     //     ...newStories,
     //     [story.id]: story
@@ -119,19 +121,19 @@ const storyReducer = (stories = initialState, action) => {
     // }
     // return newStories;
     case VIEW_STORY:
-      newStories = {};
-      newStories[action.story.id] = action.story;
-      return newStories
+      newState = {};
+      newState[action.story.id] = action.story;
+      return newState
     case UPDATE_STORY:
-      newStories = Object.assign({}, stories);
-      newStories[action.story.id] = action.story;
-      return newStories
+      newState = Object.assign({}, state);
+      newState[action.story.id] = action.story;
+      return newState
     case REMOVE_STORY:
-      newStories = Object.assign({}, stories);
-      delete newStories[action.story.id];
-      return newStories;
+      newState = Object.assign({}, state);
+      delete newState[action.story.id];
+      return newState;
     default:
-      return stories;
+      return state;
   }
 };
 

@@ -10,6 +10,7 @@
 }
 
 #modal-background {
+
     position: fixed;
     top: 0;
     right: 0;
@@ -19,6 +20,7 @@
 }
 
 #modal-content {
+    background-image: url("https://user-images.githubusercontent.com/92604480/165845450-6833a472-12ee-4b32-ba4e-0b2db843e9ea.jpg");
     position: absolute;
     background-color: white;
     height: 50%;
