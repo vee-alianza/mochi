@@ -4,7 +4,7 @@
 }
 
 .signup__container {
-    box-shadow: 10px 5px 5px red;
+    box-shadow: 10px 5px 5px gray;
     height: 30rem;
     width: 20rem;
     display: flex;
@@ -14,6 +14,8 @@
     border-top-right-radius: 25px;
     border-bottom-right-radius: 25px;
     /* border: 2px solid black; */
+    margin-left: 30rem;
+    background-color: white;
 
 }
 

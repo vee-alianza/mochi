@@ -37,7 +37,7 @@ function App() {
             <SignupForm />
           </Route>
           <Route path="/stories/new">
-            <StoryFormPage />
+            <StoryFormPage props={{ edit: false, setShowModal: null, storyId: null }} />
           </Route>
           <Route path="/stories">
             <StoryList />
