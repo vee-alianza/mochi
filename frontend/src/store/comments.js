@@ -4,6 +4,7 @@ const GET_COMMENT = "comment/create";
 const ADD_COMMENT = "comment/add";
 const REMOVE_COMMENT = "comment/add";
 
+
 const getComment = (comments) => {
     return {
         type: GET_COMMENT,
@@ -24,6 +25,8 @@ const removeComment = (id) => {
         payload: id
     };
 };
+
+
 
 
 export const createComment = () => async dispatch => {
@@ -74,22 +77,20 @@ const commentReducer = (state = initialState, action) => {
     switch (action.type) {
         case GET_COMMENT:
             newState = { ...state };
-            newState.comments = action.payload
-            // action.comments.forEach(comment => {
-            //     newState[comment.id] = comment;
-            // });
+            action.payload.comments.forEach(comment => {
+                newState[comment.id] = comment;
+            });
+            console.log(action, "------getComment-----")
             return newState;
         case ADD_COMMENT:
-            // newState = {
-            //     ...state,
-            //     [action.comment.id]: action.comment,
-            // };
-            newState = { ...state };
-            newState[action.payload.id] = action.payload;
+            newState = {
+                ...state,
+                [action.payload.id]: action.payload,
+            };
             return newState;
         case REMOVE_COMMENT:
             newState = { ...state };
-            delete newState[action.payload.id];
+            delete newState[action.payload.comments.id];
             return newState;
         default:
             return state

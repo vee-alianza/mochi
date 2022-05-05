@@ -29,7 +29,6 @@ const CommentForm = ({ story }) => {
       storyId: id,
       content
     };
-    console.log("HEELLLLOO")
     let newestComment = await dispatch(postComment(comment))
       .catch(async (res) => {
         const data = await res.json();
@@ -37,9 +36,11 @@ const CommentForm = ({ story }) => {
           setErrors(data.errors);
         }
       })
-    // if (errors.length && newestComment) {
-    //   history.push(`/stories/${id}`)
-    // };
+    await dispatch(createComment());
+
+    if (errors.length && newestComment) {
+      history.push(`/stories/${id}`)
+    };
   };
 
   return (
