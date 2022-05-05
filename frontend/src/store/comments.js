@@ -2,7 +2,7 @@ import { csrfFetch } from './csrf';
 
 const GET_COMMENT = "comment/create";
 const ADD_COMMENT = "comment/add";
-const REMOVE_COMMENT = "comment/add";
+const REMOVE_COMMENT = "comment/remove";
 
 
 const getComment = (comments) => {
@@ -25,8 +25,6 @@ const removeComment = (id) => {
         payload: id
     };
 };
-
-
 
 
 export const createComment = () => async dispatch => {
@@ -80,7 +78,7 @@ const commentReducer = (state = initialState, action) => {
             action.payload.comments.forEach(comment => {
                 newState[comment.id] = comment;
             });
-            console.log(action, "------getComment-----")
+            console.log(action, "------get comment-----")
             return newState;
         case ADD_COMMENT:
             newState = {
@@ -90,7 +88,8 @@ const commentReducer = (state = initialState, action) => {
             return newState;
         case REMOVE_COMMENT:
             newState = { ...state };
-            delete newState[action.payload.comments.id];
+            console.log(action.payload, "------remove comment-----")
+            delete newState[action.payload];
             return newState;
         default:
             return state

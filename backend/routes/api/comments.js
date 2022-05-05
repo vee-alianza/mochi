@@ -54,10 +54,11 @@ router.post('/new', requireAuth, asyncHandler(async (req, res) => {
 
 //PATCH comment
 
-// DELETE comment
+// DELETE comments
 router.delete('/:id(\\d+)', requireAuth, asyncHandler(async (req, res) => {
   const userId = req.user.id;
   const { id } = req.params;
+  console.log("COMMENTS delete route backend")
   try {
     const comment = await Comment.findByPk(id);
     if (userId !== comment.userId) {

@@ -85,7 +85,7 @@ export const deleteStory = (storyId) => async dispatch => {
   const response = await csrfFetch(`/api/stories/${storyId}`, {
     method: 'DELETE',
   })
-  console.log(response, "------delete thunk------");
+  console.log(response, "------deleteStory thunk------");
   if (response.ok) {
     dispatch(removeStory(storyId));
   }

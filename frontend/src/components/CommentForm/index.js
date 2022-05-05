@@ -22,6 +22,16 @@ const CommentForm = ({ story }) => {
     dispatch(createComment());
   }, [dispatch]);
 
+
+  // const handleDelete = (commentId) => {
+  //   dispatch(deleteStory(commentId));
+  // };
+
+  const handleDelete = async (e, id) => {
+    e.preventDefault();
+    await dispatch(deleteComment(id))
+  };
+
   const newerComment = async (e) => {
     e.preventDefault();
     const comment = {
@@ -29,6 +39,7 @@ const CommentForm = ({ story }) => {
       storyId: id,
       content
     };
+
     let newestComment = await dispatch(postComment(comment))
       .catch(async (res) => {
         const data = await res.json();
@@ -36,7 +47,7 @@ const CommentForm = ({ story }) => {
           setErrors(data.errors);
         }
       })
-    await dispatch(createComment());
+    // await dispatch(createComment());
 
     if (errors.length && newestComment) {
       history.push(`/stories/${id}`)
@@ -52,14 +63,14 @@ const CommentForm = ({ story }) => {
             {comments?.map((comment) => {
               if (story.id === comment.storyId) {
                 return (
-                  <>
-                    <li className="comment__post" key={comment.id}>
+                  <div key={comment.id}>
+                    <li className="comment__post">
                       {comment.content}
                     </li>
                     {sessionUser.id === comment.userId && (
-                      <button className="btn__delete" onClick={() => dispatch(deleteComment(comment))}>Delete</button>
+                      <button className="btn__delete" onClick={(e) => handleDelete(e, comment.id)}>Delete</button>
                     )}
-                  </>
+                  </div>
                 )
               }
             })}
