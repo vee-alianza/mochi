@@ -23,10 +23,6 @@ const CommentForm = ({ story }) => {
   }, [dispatch]);
 
 
-  // const handleDelete = (commentId) => {
-  //   dispatch(deleteStory(commentId));
-  // };
-
   const handleDelete = async (e, id) => {
     e.preventDefault();
     await dispatch(deleteComment(id))
@@ -100,10 +96,5 @@ const CommentForm = ({ story }) => {
     </>
   )
 };
-
-
-
-
-
 
 export default CommentForm;

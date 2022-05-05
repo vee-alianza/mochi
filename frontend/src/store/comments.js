@@ -4,7 +4,6 @@ const GET_COMMENT = "comment/create";
 const ADD_COMMENT = "comment/add";
 const REMOVE_COMMENT = "comment/remove";
 
-
 const getComment = (comments) => {
     return {
         type: GET_COMMENT,
