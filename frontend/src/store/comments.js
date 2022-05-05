@@ -4,10 +4,10 @@ const GET_COMMENT = "comment/create";
 const ADD_COMMENT = "comment/add";
 const REMOVE_COMMENT = "comment/add";
 
-const getComment = (comment) => {
+const getComment = (comments) => {
     return {
         type: GET_COMMENT,
-        payload: comment
+        payload: comments
     };
 };
 
@@ -18,24 +18,28 @@ const addComment = (comment) => {
     };
 };
 
-const removeComment = (comment) => {
+const removeComment = (id) => {
     return {
         type: REMOVE_COMMENT,
-        payload: comment
+        payload: id
     };
 };
 
 
 export const createComment = () => async dispatch => {
+    console.log("------createComment thunk------")
     const response = await csrfFetch('/api/comments');
+    console.log("INFILTRATED BACKEND")
+
     if (response.ok) {
         const comments = await response.json();
         dispatch(getComment(comments))
         return comments;
     }
-}
+};
 
 export const postComment = (comment) => async dispatch => {
+    console.log("------postComment thunk------")
     const response = await csrfFetch('/api/comments/new', {
         method: 'POST',
         body: JSON.stringify(comment)
@@ -44,19 +48,24 @@ export const postComment = (comment) => async dispatch => {
         const newComment = await response.json();
         dispatch(addComment(newComment));
         return (newComment);
+    } else {
+        const error = await response.json();
+        Promise.reject(error.errors);
     }
-}
+};
 
 export const deleteComment = (commentId) => async dispatch => {
-    const response = await csrfFetch(`/api/stories/${commentId}`, {
+    const response = await csrfFetch(`/api/comments/${commentId}`, {
         method: 'DELETE',
     })
-    console.log(response, "hitting deleteComment thunk");
+    console.log(response, "------deleteComment thunk------");
     if (response.ok) {
+        // const remove = await response.json();
+        // dispatch(removeComment(remove));
         dispatch(removeComment(commentId));
     }
     return (response);
-}
+};
 
 const initialState = {};
 
@@ -65,19 +74,22 @@ const commentReducer = (state = initialState, action) => {
     switch (action.type) {
         case GET_COMMENT:
             newState = { ...state };
-            action.comments.forEach(comment => {
-                newState[comment.id] = comment;
-            });
+            newState.comments = action.payload
+            // action.comments.forEach(comment => {
+            //     newState[comment.id] = comment;
+            // });
             return newState;
         case ADD_COMMENT:
-            newState = {
-                ...state,
-                [action.comment.id]: action.comment,
-            };
+            // newState = {
+            //     ...state,
+            //     [action.comment.id]: action.comment,
+            // };
+            newState = { ...state };
+            newState[action.payload.id] = action.payload;
             return newState;
         case REMOVE_COMMENT:
             newState = { ...state };
-            delete newState[action.comment.id];
+            delete newState[action.payload.id];
             return newState;
         default:
             return state

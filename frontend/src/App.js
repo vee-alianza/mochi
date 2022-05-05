@@ -41,7 +41,7 @@ function App() {
           <Route path="/stories/new">
             <StoryFormPage props={{ edit: false, setShowModal: null, storyId: null }} />
           </Route>
-          <Route path="/test/:id">
+          <Route path="/stories/:id">
             <StoryView />
           </Route>
         </Switch>

@@ -11,7 +11,7 @@ const StoryList = () => {
   const user = useSelector(state => state.session.user);
   const history = useHistory();
   const allStories = useSelector(state => state.stories.allStories);
-  console.log(allStories, "eeewwwww")
+  console.log(allStories, "-----StoryList component-----")
 
   useEffect(() => {
     dispatch(getStories());
@@ -66,12 +66,3 @@ const StoryList = () => {
 };
 
 export default StoryList;
-
-{/* <button className="delete__btn" onClick={() => {
-  dispatch(deleteStory(story))
-  history.push("/stories");
-}}
->
-  Delete
-</button>
-<CommentForm story={story} /> */}

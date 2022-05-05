@@ -53,8 +53,11 @@ router.post('/new', requireAuth, asyncHandler(async (req, res) => {
             userId,
             categoryId: findCategory.id
         });
+
         const story = await Story.findByPk(newStory.id, { include: [User, Category] });
+
         return res.json({ story });
+
     } catch (error) {
         res.status(500);
         res.send(`${error}`);

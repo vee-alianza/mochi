@@ -44,9 +44,9 @@ const setStory = (stories) => {
 // Thunks (Async Actions)
 // Thunk middleware = dispatch
 export const getStories = () => async dispatch => {
-  console.log("****getStories thunk*******")
+  console.log("------getStories thunk------")
   const response = await csrfFetch('/api/stories');
-  console.log("EEFFFED BACKEND")
+  console.log("INFILTRATED BACKEND")
   if (response.ok) {
     const data = await response.json();
     dispatch(setStory(data.stories));
@@ -85,14 +85,14 @@ export const deleteStory = (storyId) => async dispatch => {
   const response = await csrfFetch(`/api/stories/${storyId}`, {
     method: 'DELETE',
   })
-  console.log(response, "hitting delete thunk");
+  console.log(response, "------delete thunk------");
   if (response.ok) {
     dispatch(removeStory(storyId));
   }
   // const stories = await response.json();
   // dispatch(removeStory(stories));
   return (response);
-}
+};
 
 // Reducer
 // normalizing state happens in Reducer
@@ -106,7 +106,7 @@ const storyReducer = (state = initialState, action) => {
   switch (action.type) {
     case SET_STORIES:
       newState = { ...state };
-      console.log(action.payload, "=========")
+      console.log(action.payload, "--------setStories storyReducer-------")
       newState.allStories = action.payload;
       return newState;
     case VIEW_STORY:

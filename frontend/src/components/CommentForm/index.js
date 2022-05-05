@@ -1,51 +1,97 @@
 import { useSelector, useDispatch } from "react-redux";
 import { useState, useEffect } from "react";
-import { useHistory } from "react-router-dom";
-import { createComment, deleteComment } from "../../store/comments";
+import { useHistory, useParams } from "react-router-dom";
+import { createComment, postComment, deleteComment } from "../../store/comments";
 import "./comments.css"
 
-const CommentForm = () => {
-    const dispatch = useDispatch();
-    const [content, setContent] = useState("");
-    const [errors, setErrors] = useState([]);
-    const comments = useSelector(state => Object.values(state.comments));
-    const sessionUser = useSelector(state => state.session.user);
-    const history = useHistory();
+const CommentForm = ({ story }) => {
+  const { id } = useParams();
+  const dispatch = useDispatch();
+  const [content, setContent] = useState("");
+  const [errors, setErrors] = useState([]);
+  const comments = useSelector(state => Object.values(state.comments));
+  const sessionUser = useSelector(state => state.session.user);
+  const history = useHistory();
+  console.log(comments, "-----CommentForm component-----")
 
-    if (!sessionUser) {
-        history.push("/home")
-    }
+  if (!sessionUser) {
+    history.push("/home")
+  }
 
-    useEffect(() => {
-        dispatch(createComment());
-    }, [dispatch]);
+  useEffect(() => {
+    dispatch(createComment());
+  }, [dispatch]);
 
-    const addCommet = async (e) => {
-        e.prevenDefault();
-
-    }
-
-    useEffect(() => {
-        const errors = [];
-        if (content.length < 50) {
-            errors.push("Content must be 5 or more characters")
+  const newerComment = async (e) => {
+    e.preventDefault();
+    const comment = {
+      userId: sessionUser.id,
+      storyId: id,
+      content
+    };
+    console.log("HEELLLLOO")
+    let newestComment = await dispatch(postComment(comment))
+      .catch(async (res) => {
+        const data = await res.json();
+        if (data && data.errors) {
+          setErrors(data.errors);
         }
-    })
+      })
+    // if (errors.length && newestComment) {
+    //   history.push(`/stories/${id}`)
+    // };
+  };
 
-    const handleSubmit = async (e) => {
-        e.prevenDefault();
-    }
+  return (
+    <>
+      <div className="comment__container">
+        <h4>COMMENT BOX</h4>
+        <div className="comment__box">
+          <div className="comments__list">
+            {comments?.map((comment) => {
+              if (story.id === comment.storyId) {
+                return (
+                  <>
+                    <li className="comment__post" key={comment.id}>
+                      {comment.content}
+                    </li>
+                    {sessionUser.id === comment.userId && (
+                      <button className="btn__delete" onClick={() => dispatch(deleteComment(comment))}>Delete</button>
+                    )}
+                  </>
+                )
+              }
+            })}
+          </div>
+        </div>
+        <form onSubmit={newerComment} className="comment__form">
+          <ul className="errors__message">
+            {errors.map(error => {
+              return (
+                <li key={error}>{error}</li>
+              )
+            })}
+          </ul>
+          <label>
+            <input
+              type="text"
+              placeholder='Leave a comment...'
+              onChange={(e) => setContent(e.target.value)}
+              value={content}
+              className="comment__input__box"
+            >
+            </input>
+          </label>
+          <button type="submit" className="new__comment">Submit</button>
+        </form>
+      </div>
+    </>
+  )
+};
 
-    return (
-        <>
-            <div className="comment__container">
-                <h4>COMMENT FORM</h4>
-                <div>
 
-                </div>
-            </div>
-        </>
-    )
-}
+
+
+
 
 export default CommentForm;

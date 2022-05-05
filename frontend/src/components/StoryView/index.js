@@ -8,6 +8,7 @@ import "./StoryView.css"
 
 const StoryView = () => {
   const { id } = useParams();
+  console.log(useParams());
   const dispatch = useDispatch();
   const user = useSelector(state => state.session.user);
   const history = useHistory();
@@ -19,12 +20,13 @@ const StoryView = () => {
   console.log(allStories, "STORY VIEW")
 
   useEffect(() => {
-    dispatch(getStories());
-    if (allStories) {
-      setStory(allStories.find(story => story.id === id));
+    if (!allStories) {
+      dispatch(getStories());
+    } else {
+      setStory(allStories.find(story => story.id === parseInt(id, 10)));
     }
     console.log("////////////")
-  }, []);
+  }, [allStories]);
 
   const handleDelete = (storyId) => {
     dispatch(deleteStory(storyId));
@@ -37,25 +39,28 @@ const StoryView = () => {
           <h4>VIEW STORY</h4>
           <div className="story__subcontainer">
             <div className="story__box">
-              {story.title}
+              <p>Title: {story.title}</p>
             </div>
             <div className="story__box">
-              {story.Category.title}
+              <p>Category: {story.Category.title} </p>
             </div>
             <div className="story__box">
-              {story.timeframe}
+              <p>Time: {story.timeframe}</p>
             </div>
             <div className="story__box">
               <p> Recipe: </p>
               {story.recipe}
             </div>
             <div className="story__box">
+              <p>Ingredients:</p>
               {story.ingredients}
             </div>
             <div className="story__box">
+              <p>Instructions:</p>
               {story.instructions}
             </div>
             <div className="story__box">
+              <p>Image</p>
               {story.image}
             </div>
             {story.userId === user.id &&
@@ -70,6 +75,7 @@ const StoryView = () => {
               </>
             }
           </div>
+          <CommentForm story={story} />
         </div>}
     </>
   );
