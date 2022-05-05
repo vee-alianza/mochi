@@ -4,7 +4,7 @@ import { useHistory } from "react-router-dom";
 import { getStories, deleteStory } from "../../store/stories";
 import EditFormModal from "../EditFormModal";
 import "./StoryList.css"
-import CommentForm from "../CommentForm";
+
 
 const StoryList = () => {
   const dispatch = useDispatch();
@@ -29,25 +29,20 @@ const StoryList = () => {
           allStories.map((story) => {
             return (
               <div className="story__subcontainer">
-                <div>
+                <div className="story__box">
                   {story.title}
                 </div>
-                <div>
+                <div className="story__box">
                   {story.Category.title}
                 </div>
-                <div>
+                <div className="story__box">
                   {story.timeframe}
                 </div>
-                <div>
+                <div className="story__box">
+                  <p> Recipe: </p>
                   {story.recipe}
                 </div>
-                <div>
-                  {story.ingredients}
-                </div>
-                <div>
-                  {story.instructions}
-                </div>
-                <div>
+                <div className="story__box">
                   {story.image}
                 </div>
                 {story.userId === user.id &&

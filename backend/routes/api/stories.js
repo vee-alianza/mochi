@@ -128,7 +128,7 @@ router.patch('/edit/:id(\\d+)', requireAuth, asyncHandler(async (req, res) => {
 router.delete('/:id(\\d+)', requireAuth, asyncHandler(async (req, res) => {
     const userId = req.user.id;
     const { id } = req.params;
-    console.log("delete route backend")
+    console.log("stories delete route backend")
     try {
         const story = await Story.findByPk(id);
         if (userId !== story.userId) {

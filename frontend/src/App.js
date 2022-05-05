@@ -8,9 +8,10 @@ import Navigation from "./components/Navigation";
 import SplashPage from "./components/SplashPage";
 import Homepage from "./components/Homepage";
 import StoryFormPage from "./components/StoryFormPage"
-import StoryList from "./components/StoryList";
+// import StoryList from "./components/StoryList";
+// import CommentForm from "./components/CommentForm";
+import StoryView from "./components/StoryView";
 import './App.css';
-import CommentForm from "./components/CommentForm";
 
 function App() {
   const dispatch = useDispatch();
@@ -40,8 +41,8 @@ function App() {
           <Route path="/stories/new">
             <StoryFormPage props={{ edit: false, setShowModal: null, storyId: null }} />
           </Route>
-          <Route path="/stories">
-            <StoryList />
+          <Route path="/test/:id">
+            <StoryView />
           </Route>
         </Switch>
       )}
