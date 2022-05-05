@@ -1,12 +1,18 @@
 import React, { useState } from "react";
 import * as sessionActions from "../../store/session";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { Redirect } from "react-router-dom";
 
 function LoginForm() {
   const dispatch = useDispatch();
+  const sessionUser = useSelector(state => state.session.user);
   const [credential, setCredential] = useState("");
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState([]);
+
+  if (sessionUser) return (
+    <Redirect to="/" />
+  );
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -19,6 +25,12 @@ function LoginForm() {
     );
   };
 
+  const demoUser = (e) => {
+    setCredential('Demo-lition');
+    setPassword('password');
+    e.submit();
+  }
+
   return (
     <>
 
@@ -30,34 +42,29 @@ function LoginForm() {
             <li key={idx}>{error}</li>
           ))}
         </ul>
-        <div class="mb-3">
+        <div class="login__form">
           <label
-            for="exampleInputEmail1"
-            class="form-label"
+            for="login__username__email"
+            class="login__box"
           >
             Username or Email
           </label>
           <input
             type="text"
-            class="form-control"
-            id="exampleInputEmail1"
-            aria-describedby="emailHelp"
             value={credential}
             onChange={(e) => setCredential(e.target.value)}
             required
           />
         </div>
-        <div class="mb-3">
+        <div class="login__form">
           <label
-            for="exampleInputPassword1"
-            class="form-label"
+            for="login__password"
+            class="login__box"
           >
             Password
           </label>
           <input
             type="password"
-            class="form-control"
-            id="exampleInputPassword1"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             required
@@ -65,9 +72,16 @@ function LoginForm() {
         </div>
         <button
           type="submit"
-          class="btn btn-primary"
+          class="login__btn"
         >
           Log In
+        </button>
+        <button
+          type="submit"
+          class="demo__btn"
+          onClick={demoUser} className="demo__btn"
+        >
+          DEMO
         </button>
       </form>
     </>

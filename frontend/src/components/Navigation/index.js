@@ -44,8 +44,7 @@ function Navigation({ isLoaded }) {
           <p>all recipes</p>
 
           <img src="https://user-images.githubusercontent.com/92604480/165881766-efe5572f-17e9-4ef8-983e-5298f11c5f53.svg" alt="add stories" />
-          <p>spill the tea</p>
-
+          <p>add story</p>
         </div>
         <div className="navbar__btn">
           <img src="https://user-images.githubusercontent.com/92604480/165881385-7923e4ee-80a4-4f08-9cce-1a300ec4957a.svg" alt="log out" />

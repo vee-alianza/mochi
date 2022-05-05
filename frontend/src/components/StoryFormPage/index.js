@@ -66,7 +66,7 @@ const StoryForm = ({ props }) => {
 
   const handleSubmit = async (e) => {
 
-    console.log("HANDLESUBMIT")
+    // console.log("HANDLESUBMIT")
     e.preventDefault();
 
     const storyBox = {

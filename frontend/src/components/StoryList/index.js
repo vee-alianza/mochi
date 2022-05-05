@@ -11,7 +11,7 @@ const StoryList = () => {
   const user = useSelector(state => state.session.user);
   const history = useHistory();
   const allStories = useSelector(state => state.stories.allStories);
-  console.log(allStories, "-----StoryList component-----")
+  // console.log(allStories, "-----StoryList component-----")
 
   useEffect(() => {
     dispatch(getStories());

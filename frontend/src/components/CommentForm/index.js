@@ -12,7 +12,7 @@ const CommentForm = ({ story }) => {
   const comments = useSelector(state => Object.values(state.comments));
   const sessionUser = useSelector(state => state.session.user);
   const history = useHistory();
-  console.log(comments, "-----CommentForm component-----")
+  // console.log(comments, "-----CommentForm component-----")
 
   if (!sessionUser) {
     history.push("/home")

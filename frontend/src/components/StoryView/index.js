@@ -17,7 +17,7 @@ const StoryView = () => {
   if (allStories !== null) {
 
   }
-  console.log(allStories, "STORY VIEW")
+  // console.log(allStories, "STORY VIEW")
 
   useEffect(() => {
     if (!allStories) {
@@ -25,7 +25,7 @@ const StoryView = () => {
     } else {
       setStory(allStories.find(story => story.id === parseInt(id, 10)));
     }
-    console.log("////////////")
+    // console.log("////////////")
   }, [allStories]);
 
   const handleDelete = (storyId) => {
