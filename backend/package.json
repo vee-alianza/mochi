@@ -32,7 +32,6 @@
     "@faker-js/faker": "^6.2.0"
   },
   "devDependencies": {
-    "@faker-js/faker": "^6.2.0",
     "dotenv-cli": "^5.1.0",
     "nodemon": "^2.0.15"
   }
