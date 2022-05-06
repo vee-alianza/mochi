@@ -9,6 +9,8 @@ import SplashPage from "./components/SplashPage";
 import Homepage from "./components/Homepage";
 import StoryFormPage from "./components/StoryFormPage"
 import StoryView from "./components/StoryView";
+import SignupFormModal from './components/SignupFormModal';
+import LoginFormModal from './components/LoginFormModal';
 import Footer from "./components/Footer";
 import './App.css';
 
@@ -22,28 +24,36 @@ function App() {
 
   return (
     <div className="main__page">
-      <Navigation isLoaded={isLoaded} />
-      {isLoaded && (
-        <Switch>
-          <Route exact path="/">
-            <SplashPage />
-          </Route>
-          <Route path="/home">
-            <Homepage />
-          </Route>
-          <Route path="/login">
-            <LoginForm />
-          </Route>
-          <Route path="/signup">
-            <SignupForm />
-          </Route>
-          <Route path="/stories/new">
-            <StoryFormPage props={{ edit: false, setShowModal: null, storyId: null }} />
-          </Route>
-          <Route path="/stories/:id">
-            <StoryView />
-          </Route>
-        </Switch>
+      {!sessionUser &&
+        <>
+          <LoginFormModal />
+          <SignupFormModal />
+        </>
+      }
+      {isLoaded && sessionUser && (
+        <>
+          <Navigation isLoaded={isLoaded} />
+          <Switch>
+            <Route exact path="/">
+              <SplashPage />
+            </Route>
+            <Route path="/home">
+              <Homepage />
+            </Route>
+            <Route path="/login">
+              <LoginForm />
+            </Route>
+            <Route path="/signup">
+              <SignupForm />
+            </Route>
+            <Route path="/stories/new">
+              <StoryFormPage props={{ edit: false, setShowModal: null, storyId: null }} />
+            </Route>
+            <Route path="/stories/:id">
+              <StoryView />
+            </Route>
+          </Switch>
+        </>
       )}
       < Footer />
     </div>

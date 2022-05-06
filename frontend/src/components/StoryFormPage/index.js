@@ -32,36 +32,35 @@ const StoryForm = ({ props }) => {
   }
 
   useEffect(() => {
-    if (!currentStory) {
+    if (!currentStory && edit) {
       dispatch(readStory(storyId));
-    } else {
+    } else if (edit) {
       setData();
     }
   }, [storyId, currentStory]);
 
   useEffect(() => {
-    const errors = [];
-    if (title.length < 50) {
-      errors.push("Title must be 5 or more characters")
+    if (title.length) {
+      setErrors(prevErrors => prevErrors.filter(error => error !== "Title must be 5 or more characters"));
     }
     // console.log(category, "CATEGORY")
-    // if (category.length < 50) {
-    //   errors.push("Please enter category")
-    // }
-    if (timeframe.length < 50) {
-      errors.push("Please enter timeframe")
+    if (category.length) {
+      setErrors(prevErrors => prevErrors.filter(error => error !== "Please enter category"));
     }
-    if (story.length < 50) {
-      errors.push("Need story")
+    if (timeframe.length) {
+      setErrors(prevErrors => prevErrors.filter(error => error !== "Please enter timeframe"));
     }
-    if (ingredients.length < 50) {
-      errors.push("Write ingredients")
+    if (story.length) {
+      setErrors(prevErrors => prevErrors.filter(error => error !== "Need story"));
     }
-    if (instructions.length < 50) {
-      errors.push("Write instructions")
+    if (ingredients.length) {
+      setErrors(prevErrors => prevErrors.filter(error => error !== "Write ingredients"));
     }
-    setErrors(errors);
-  }, [title, timeframe, story, ingredients, instructions, image]);
+    if (instructions.length) {
+      setErrors(prevErrors => prevErrors.filter(error => error !== "Write instructions"));
+    }
+    // setErrors(errors);
+  }, [title, timeframe, story, ingredients, instructions, image, category]);
 
   useEffect(() => {
     if (!category.length) {
@@ -70,9 +69,31 @@ const StoryForm = ({ props }) => {
   }, [category]);
 
   const handleSubmit = async (e) => {
-
-    // console.log("HANDLESUBMIT")
     e.preventDefault();
+
+    const errors = [];
+    if (!title.length) {
+      errors.push("Title must be 5 or more characters")
+    }
+    // console.log(category, "CATEGORY")
+    if (!category.length) {
+      errors.push("Please enter category")
+    }
+    if (!timeframe.length) {
+      errors.push("Please enter timeframe")
+    }
+    if (!story.length) {
+      errors.push("Need story")
+    }
+    if (!ingredients.length) {
+      errors.push("Write ingredients")
+    }
+    if (!instructions.length) {
+      errors.push("Write instructions")
+    }
+    setErrors(errors);
+
+    if (errors.length) return;
 
     const storyBox = {
       title,
@@ -127,17 +148,17 @@ const StoryForm = ({ props }) => {
     <>
       <div >
         <h3>Carbs look great on you!</h3>
-        {/* <ul>
+        <ul>
           {errors.map((error, idx) => (
             <li key={idx}>{error}</li>
           ))}
-        </ul> */}
+        </ul>
 
         <div className="recipe__container" onSubmit={handleSubmit}>
           <div className="storyform__left_container">
             <form>
               <label
-                for="title"
+                htmlFor="title"
               >
                 Title:
               </label>
@@ -150,7 +171,7 @@ const StoryForm = ({ props }) => {
               />
               <div className="display__categories">
                 <label
-                  for='category'
+                  htmlFor='category'
                 >
                   Category:
                 </label>
@@ -169,7 +190,7 @@ const StoryForm = ({ props }) => {
                   })}
               </div>
               <label
-                for="image"
+                htmlFor="image"
               >
                 Image:
               </label>
@@ -185,7 +206,7 @@ const StoryForm = ({ props }) => {
           <div className="storyform__right__container">
             <form>
               <label
-                for="timeframe"
+                htmlFor="timeframe"
               >
                 Timeframe:
               </label>
@@ -197,7 +218,7 @@ const StoryForm = ({ props }) => {
                 required
               />
               <label
-                for="story"
+                htmlFor="story"
               >
                 Recipe:
               </label>
@@ -210,7 +231,7 @@ const StoryForm = ({ props }) => {
               >
               </textarea>
               <label
-                for="ingredients"
+                htmlFor="ingredients"
               >
                 Ingredients:
               </label>
@@ -223,7 +244,7 @@ const StoryForm = ({ props }) => {
               >
               </textarea>
               <label
-                for="instructions"
+                htmlFor="instructions"
               >
                 Instructions:
               </label>

@@ -79,3 +79,8 @@ button.signup__btn {
     flex-direction: row;
     margin: 1rem;
 }
+
+.btn__signup {
+    height: 1.5rem;
+    width: 5rem;
+}

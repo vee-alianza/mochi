@@ -1,13 +1,16 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { NavLink, useHistory } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
 import ProfileButton from './ProfileButton';
 import LoginFormModal from '../LoginFormModal';
 import './Navigation.css';
 import SignupFormModal from '../SignupFormModal';
+import * as sessionActions from "../../store/session";
 
 
 function Navigation({ isLoaded }) {
+  const history = useHistory();
+  const dispatch = useDispatch();
   const sessionUser = useSelector(state => state.session.user);
 
   let sessionLinks;
@@ -23,6 +26,12 @@ function Navigation({ isLoaded }) {
         {/* <NavLink to="/signup"> nav Sign Up</NavLink> */}
       </>
     );
+  }
+
+  const logout = (e) => {
+    e.preventDefault();
+    dispatch(sessionActions.logout())
+    history.push('/');
   }
 
   return (
@@ -42,14 +51,21 @@ function Navigation({ isLoaded }) {
           <img src="https://user-images.githubusercontent.com/92604480/165879974-08803a96-c31c-4e2e-9fa5-268a65f62375.svg" alt="all recipes" />
           <p>all recipes</p>
 
-          <img src="https://user-images.githubusercontent.com/92604480/165881766-efe5572f-17e9-4ef8-983e-5298f11c5f53.svg" alt="add stories" />
-          <p>add story</p>
+          <div
+            onClick={() => history.push("/stories/new")}
+          >
+            <img src="https://user-images.githubusercontent.com/92604480/165881766-efe5572f-17e9-4ef8-983e-5298f11c5f53.svg" alt="add stories" />
+            <p>add story</p>
+          </div>
         </div>
-        <div className="navbar__btn__loggedIn">
+        <div
+          className="navbar__btn__loggedIn"
+          onClick={logout}
+        >
           <img src="https://user-images.githubusercontent.com/92604480/165881385-7923e4ee-80a4-4f08-9cce-1a300ec4957a.svg" alt="log out" />
+          <p>log out</p>
         </div>
         <div>
-          <p>log out</p>
           <img src="https://user-images.githubusercontent.com/92604480/165883308-5bae2d62-4598-453d-8bef-9693b98fcea3.jpg" alt="user image" />
         </div>
       </div>

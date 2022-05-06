@@ -28,7 +28,7 @@ const StoryList = () => {
         {allStories &&
           allStories.map((story) => {
             return (
-              <div className="story__subcontainer">
+              <div key={story.id} className="story__subcontainer">
                 <div className="story__box">
                   <p>Title: {story.title}</p>
                 </div>
@@ -45,7 +45,7 @@ const StoryList = () => {
                 <div className="story__box">
                   <img src={story.image} alt="" />
                 </div>
-                {story.userId === user.id &&
+                {user && story.userId === user.id &&
                   <>
                     <button
                       type="button"

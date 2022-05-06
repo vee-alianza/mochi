@@ -1,12 +1,13 @@
 import React, { useState } from "react";
 import * as sessionActions from "../../store/session";
 import { useDispatch, useSelector } from "react-redux";
-import { Redirect } from "react-router-dom";
+import { Redirect, useHistory } from "react-router-dom";
 import "./LoginForm.css";
 
 
-function LoginForm() {
+function LoginForm({ setShowModal }) {
   const dispatch = useDispatch();
+  const history = useHistory();
   const sessionUser = useSelector(state => state.session.user);
   const [credential, setCredential] = useState("");
   const [password, setPassword] = useState("");
@@ -28,18 +29,31 @@ function LoginForm() {
   };
 
   const demoUser = (e) => {
-    setCredential('Demo-lition');
-    setPassword('password');
-    e.submit();
+    e.preventDefault();
+    setErrors([]);
+    dispatch(sessionActions.login({ credential: 'Demo-lition', password: 'password' })).catch(
+      async (res) => {
+        const data = await res.json();
+        if (data && data.errors) setErrors(data.errors);
+      }
+    );
+    setShowModal(false);
+    history.push('/home');
   }
+
+
+
+  // const demoUser = (e) => {
+  //   setCredential('Demo-lition');
+  //   setPassword('password');
+  //   e.submit();
+  // }
 
   return (
     <>
       <div id="modal__login">
         <div id="modal__login__background" />
         <div id="modal__login__content">
-
-
 
           <form className="login__modal__container "
             onSubmit={handleSubmit}>
@@ -48,10 +62,10 @@ function LoginForm() {
                 <li key={idx}>{error}</li>
               ))}
             </ul>
-            <div class="login__form">
+            <div className="login__form">
               <label
-                for="login__username__email"
-                class="login__box"
+                htmlFor="login__username__email"
+                className="login__box"
               >
                 Username or Email
               </label>
@@ -62,10 +76,10 @@ function LoginForm() {
                 required
               />
             </div>
-            <div class="login__form">
+            <div className="login__form">
               <label
-                for="login__password"
-                class="login__box"
+                htmlFor="login__password"
+                className="login__box"
               >
                 Password
               </label>
@@ -79,21 +93,21 @@ function LoginForm() {
             <div className="login__btn__container">
               <button
                 type="submit"
-                class="login__btn"
+                className="login__btn"
               >
                 Log In
               </button>
               <button
                 type="submit"
-                class="demo__btn"
-                onClick={demoUser} className="demo__btn"
+                className="demo__btn"
+                onClick={demoUser}
               >
                 DEMO
               </button>
             </div>
           </form>
         </div>
-      </div>
+      </div >
     </>
 
   );

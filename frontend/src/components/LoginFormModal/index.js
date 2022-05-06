@@ -5,20 +5,20 @@ import './LoginForm.css';
 
 
 function LoginFormModal() {
-    const [showModal, setShowModal] = useState(false);
+  const [showModal, setShowModal] = useState(false);
 
-    return (
-        <>
-            <div className='login__right__container'>
-                <button onClick={() => setShowModal(true)}>Log In</button>
-                {showModal && (
-                    <Modal onClose={() => setShowModal(false)}>
-                        <LoginForm />
-                    </Modal>
-                )}
-            </div>
-        </>
-    );
+  return (
+    <>
+      <div className='login__right__container'>
+        <button onClick={() => setShowModal(true)}>Log In</button>
+        {showModal && (
+          <Modal onClose={() => setShowModal(false)}>
+            <LoginForm setShowModal={setShowModal} />
+          </Modal>
+        )}
+      </div>
+    </>
+  );
 }
 
 export default LoginFormModal;
