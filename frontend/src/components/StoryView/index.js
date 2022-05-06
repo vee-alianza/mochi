@@ -1,7 +1,7 @@
 import { useSelector, useDispatch } from "react-redux";
 import { useState, useEffect } from "react";
 import { useHistory, useParams } from "react-router-dom";
-import { getStories, deleteStory } from "../../store/stories";
+import { getStories, readStory, deleteStory } from "../../store/stories";
 import EditFormModal from "../EditFormModal";
 import CommentForm from "../CommentForm";
 import "./StoryView.css"
@@ -12,21 +12,15 @@ const StoryView = () => {
   const dispatch = useDispatch();
   const user = useSelector(state => state.session.user);
   const history = useHistory();
-  const allStories = useSelector(state => state.stories.allStories);
-  const [story, setStory] = useState(null);
-  if (allStories !== null) {
+  const story = useSelector(state => state.stories.currentStory);
 
-  }
   // console.log(allStories, "STORY VIEW")
 
   useEffect(() => {
-    if (!allStories) {
-      dispatch(getStories());
-    } else {
-      setStory(allStories.find(story => story.id === parseInt(id, 10)));
-    }
+    dispatch(readStory(id));
+
     // console.log("////////////")
-  }, [allStories]);
+  }, [id]);
 
   const handleDelete = (storyId) => {
     dispatch(deleteStory(storyId));
@@ -48,7 +42,7 @@ const StoryView = () => {
               <p>Time: {story.timeframe}</p>
             </div>
             <div className="story__box">
-              <p> Recipe: </p>
+              <p> Story: </p>
               {story.recipe}
             </div>
             <div className="story__box">

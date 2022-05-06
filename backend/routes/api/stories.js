@@ -30,14 +30,19 @@ router.get('/:id(\\d+)', asyncHandler(async (req, res) => {
     return res.json({ story });
 }));
 
-
 // GET categories
 router.get('/category/:categories', asyncHandler(async (req, res) => {
     const { categories } = req.params;
-    const categoriesList = await Category.findAll({ where: { title: categories } });
-
+    const categoriesList = await Category.findAll({
+        where: {
+            title: {
+                [Op.iLike]: `${categories}%`
+            }
+        },
+        limit: 10
+    });
+    return res.json({ categoriesList });
 }));
-
 
 
 // POST stories

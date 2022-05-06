@@ -1,15 +1,16 @@
 .main__container {
     border: 2px solid blue;
-    width: calc(100vw - 15rem);
+    /* width: calc(100vw - 15rem); */
+
     display: flex;
 }
 
 .left__container {
-    border: 2rem solid green;
-    width: 60%;
+    /* border: 2rem solid green; */
+    width: 50%;
 }
 
 .right__container {
-    border: 2rem solid orange;
-    width: 40%;
+    /* border: 2rem solid orange; */
+    width: 50%;
 }

@@ -24,7 +24,7 @@ const StoryList = () => {
   return (
     <>
       <div className="story__container">
-        <h4>TACO 'bout it</h4>
+        <h4>RECIPE BOX</h4>
         {allStories &&
           allStories.map((story) => {
             return (
@@ -33,13 +33,14 @@ const StoryList = () => {
                   {story.title}
                 </div>
                 <div className="story__box">
-                  {story.Category.title}
+                  <p>Category: {story.Category.title}</p>
+
                 </div>
                 <div className="story__box">
                   {story.timeframe}
                 </div>
                 <div className="story__box">
-                  <p> Recipe: </p>
+                  <p> Story: </p>
                   {story.recipe}
                 </div>
                 <div className="story__box">
@@ -66,3 +67,8 @@ const StoryList = () => {
 };
 
 export default StoryList;
+
+{/* <div className="recipebox__right__container">
+  <h4>TACO'bout it</h4>
+
+</div> */}

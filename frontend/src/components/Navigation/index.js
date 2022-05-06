@@ -47,6 +47,11 @@ function Navigation({ isLoaded }) {
         </div>
         <div className="navbar__btn__loggedIn">
           <img src="https://user-images.githubusercontent.com/92604480/165881385-7923e4ee-80a4-4f08-9cce-1a300ec4957a.svg" alt="log out" />
+        </div>
+        <div>
+          <NavLink exact to="/"></NavLink>
+          {isLoaded && sessionLinks}
+          {/* <a href="/"> */}
           <p>log out</p>
           <img src="https://user-images.githubusercontent.com/92604480/165883308-5bae2d62-4598-453d-8bef-9693b98fcea3.jpg" alt="user image" />
         </div>

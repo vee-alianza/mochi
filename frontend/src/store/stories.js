@@ -1,11 +1,12 @@
 import { csrfFetch } from './csrf';
 
 const CREATE_STORY = "story/create";
-const VIEW_STORY = "story/view"
-const UPDATE_STORY = "story/edit"
-const REMOVE_STORY = "stories/remove"
+const VIEW_STORY = "story/view";
+const UPDATE_STORY = "story/edit";
+const REMOVE_STORY = "stories/remove";
 const SET_STORIES = "stories/set";
-const GET_CATEGORIES = "categories/get"
+const GET_CATEGORIES = "categories/get";
+const CLEAR_CATEGORY = "category/clear";
 
 
 // Actions
@@ -48,6 +49,12 @@ const allCategories = (categories) => {
   };
 };
 
+export const clearCategory = () => {
+  return {
+    type: CLEAR_CATEGORY,
+  }
+}
+
 // Thunks (Async Actions)
 // Thunk middleware = dispatch
 export const getStories = () => async dispatch => {
@@ -63,9 +70,9 @@ export const getStories = () => async dispatch => {
 export const readStory = (id) => async dispatch => {
   const response = await csrfFetch(`/api/stories/${id}`);
   if (response.ok) {
-    const stories = await response.json();
-    // console.log(stories);
-    dispatch(viewStory(stories));
+    const data = await response.json();
+    // console.log(data);
+    dispatch(viewStory(data.story));
   }
 }
 
@@ -104,7 +111,8 @@ export const deleteStory = (storyId) => async dispatch => {
 export const getCategories = (categories) => async dispatch => {
   const response = await csrfFetch(`/api/stories/category/${categories}`);
   if (response.ok) {
-    dispatch(allCategories(categories));
+    const data = await response.json();
+    dispatch(allCategories(data.categoriesList));
   }
   return (response);
 };
@@ -115,6 +123,7 @@ export const getCategories = (categories) => async dispatch => {
 const initialState = {
   allStories: null,
   categories: null,
+  currentStory: null,
 };
 
 const storyReducer = (state = initialState, action) => {
@@ -126,8 +135,8 @@ const storyReducer = (state = initialState, action) => {
       newState.allStories = action.payload;
       return newState;
     case VIEW_STORY:
-      newState = {};
-      newState[action.story.id] = action.story;
+      newState = Object.assign({}, state);
+      newState.currentStory = action.payload;
       return newState;
     case UPDATE_STORY:
       newState = Object.assign({}, state);
@@ -146,8 +155,12 @@ const storyReducer = (state = initialState, action) => {
       });
       return newState;
     case GET_CATEGORIES:
-      newState = structuredClone(state);
+      newState = Object.assign({}, state);
       newState.categories = action.payload;
+      return newState;
+    case CLEAR_CATEGORY:
+      newState = Object.assign({}, state);
+      newState.categories = null;
       return newState;
 
     default:

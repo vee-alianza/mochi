@@ -1,7 +1,13 @@
 .story__subcontainer {
     border: 2px solid red;
+    overflow: hidden;
+    width: 100vw;
 }
 
 .story__box {
     border: 3px solid pink;
+    overflow: hidden;
+    width: 100vw;
 }
+
+.recipebox__right__container {}
