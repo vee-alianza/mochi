@@ -43,7 +43,7 @@ const StoryList = () => {
                   {story.recipe}
                 </div>
                 <div className="story__box">
-                  {story.image}
+                  <img src={story.image} alt="" />
                 </div>
                 {story.userId === user.id &&
                   <>

@@ -51,7 +51,7 @@ const StoryView = () => {
             </div>
             <div className="story__box">
               <p>Image</p>
-              {story.image}
+              <img src={story.image} alt="" />
             </div>
             {story.userId === user.id &&
               <>

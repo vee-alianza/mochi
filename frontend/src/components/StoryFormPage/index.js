@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
-import { getStories, newStory, editStory, getCategories, clearCategory } from "../../store/stories";
+import { newStory, editStory, getCategories, clearCategory, readStory } from "../../store/stories";
 import "./StoryForm.css"
 
 const StoryForm = ({ props }) => {
@@ -16,30 +16,28 @@ const StoryForm = ({ props }) => {
   const [image, setImage] = useState("");
   const [errors, setErrors] = useState([]);
   const history = useHistory();
-  const allStories = useSelector(state => state.stories.allStories);
-  const storyRecipe = allStories?.find(story => story.id === storyId);
+  const currentStory = useSelector(state => state.stories.currentStory);
   const categories = useSelector(state => state.stories.categories);
 
   console.log(props, "PROPS")
 
   const setData = () => {
-    setTitle(storyRecipe.title);
-    setCategory(storyRecipe.category);
-    setTimeframe(storyRecipe.timeframe);
-    setStory(storyRecipe.recipe);
-    setIngredients(storyRecipe.ingredients);
-    setInstructions(storyRecipe.instructions);
-    setImage(storyRecipe.image);
+    setTitle(currentStory.title);
+    setCategory(currentStory.Category.title);
+    setTimeframe(currentStory.timeframe);
+    setStory(currentStory.recipe);
+    setIngredients(currentStory.ingredients);
+    setInstructions(currentStory.instructions);
+    setImage(currentStory.image);
   }
 
   useEffect(() => {
-    if (!allStories) {
-      dispatch(getStories());
-    }
-    if (edit) {
+    if (!currentStory) {
+      dispatch(readStory(storyId));
+    } else {
       setData();
     }
-  }, [allStories]);
+  }, [storyId, currentStory]);
 
   useEffect(() => {
     const errors = [];

@@ -109,12 +109,14 @@ export const deleteStory = (storyId) => async dispatch => {
 };
 
 export const getCategories = (categories) => async dispatch => {
-  const response = await csrfFetch(`/api/stories/category/${categories}`);
-  if (response.ok) {
-    const data = await response.json();
-    dispatch(allCategories(data.categoriesList));
+  if (categories) {
+    const response = await csrfFetch(`/api/stories/category/${categories}`);
+    if (response.ok) {
+      const data = await response.json();
+      dispatch(allCategories(data.categoriesList));
+    }
+    return (response);
   }
-  return (response);
 };
 
 
@@ -140,13 +142,21 @@ const storyReducer = (state = initialState, action) => {
       return newState;
     case UPDATE_STORY:
       newState = Object.assign({}, state);
-      newState.allStories = state.allStories.map((story) => {
-        if (story.id === action.payload.id) {
-          return action.payload;
-        } else {
-          return story;
-        }
-      });
+
+      if (state.allStories) {
+        newState.allStories = state.allStories.map((story) => {
+          if (story.id === action.payload.id) {
+            return action.payload;
+          } else {
+            return story;
+          }
+        });
+      }
+
+      if (state.currentStory) {
+        newState.currentStory = action.payload;
+      }
+
       return newState;
     case REMOVE_STORY:
       newState = Object.assign({}, state);

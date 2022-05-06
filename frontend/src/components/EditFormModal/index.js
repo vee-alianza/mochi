@@ -8,6 +8,7 @@ import StoryForm from '../StoryFormPage';
 
 function EditFormModal({ storyId }) {
     const [showModal, setShowModal] = useState(false);
+
     return (
         <>
             <button onClick={() => setShowModal(true)}>Edit</button>
