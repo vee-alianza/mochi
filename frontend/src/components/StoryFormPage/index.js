@@ -148,6 +148,7 @@ const StoryForm = ({ props }) => {
                 id="recipe__title"
                 onChange={(e) => setTitle(e.target.value)}
                 value={title}
+                required
               />
               <div className="display__categories">
                 <label
@@ -160,6 +161,7 @@ const StoryForm = ({ props }) => {
                   id="recipe__category"
                   onChange={findCategory}
                   value={category}
+                  required
                 />
                 {categories &&
                   categories.map(category => {
@@ -178,6 +180,7 @@ const StoryForm = ({ props }) => {
                 id="recipe__image"
                 onChange={(e) => setImage(e.target.value)}
                 value={image}
+                required
               />
             </form>
           </div>
@@ -193,6 +196,7 @@ const StoryForm = ({ props }) => {
                 id="recipe__timeframe"
                 onChange={(e) => setTimeframe(e.target.value)}
                 value={timeframe}
+                required
               />
               <label
                 for="story"
@@ -204,6 +208,7 @@ const StoryForm = ({ props }) => {
                 id="recipe__box"
                 onChange={(e) => setStory(e.target.value)}
                 value={story}
+                required
               >
               </textarea>
               <label
@@ -216,6 +221,7 @@ const StoryForm = ({ props }) => {
                 id="recipe__box"
                 onChange={(e) => setIngredients(e.target.value)}
                 value={ingredients}
+                required
               >
               </textarea>
               <label
@@ -228,26 +234,28 @@ const StoryForm = ({ props }) => {
                 id="recipe__box"
                 onChange={(e) => setInstructions(e.target.value)}
                 value={instructions}
+                required
               >
               </textarea>
             </form>
           </div>
+          <button
+            type="button"
+            className="btn__cancel"
+            id="btn"
+            onClick={handleCancel}
+          >
+            Cancel
+          </button>
+          <button
+            type="submit"
+            className="btn__publish"
+            id="btn"
+            onClick={handleSubmit}
+          >
+            Publish
+          </button>
         </div>
-        <button
-          type="button"
-          className="btn__cancel"
-          id="btn"
-          onClick={handleCancel}
-        >
-          Cancel
-        </button>
-        <button
-          type="submit"
-          className="btn__publish"
-          id="btn"
-        >
-          Publish
-        </button>
       </div >
     </>
   );

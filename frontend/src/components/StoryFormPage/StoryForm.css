@@ -1,7 +1,7 @@
 h3 {
     justify-content: left;
     align-items: center;
-    margin-left: 9rem;
+    margin-left: 20rem;
     margin-top: 1.5rem;
 }
 
@@ -24,7 +24,8 @@ h3 {
 
 .storyform__left_container {
     border: 2px rgb(0, 255, 8);
-    width: 50%;
+    width: 30%;
+    margin-left: 10rem;
 }
 
 .storyform__right_container {
@@ -34,10 +35,9 @@ h3 {
 
 
 #btn {
-    justify-content: left;
+    justify-content: space-evenly;
     align-items: center;
-    margin-left: 10rem;
-    margin-bottom: 5rem;
+    /* margin-right: 10rem; */
 }
 
 .btn__cancel {

@@ -8,9 +8,8 @@ import Navigation from "./components/Navigation";
 import SplashPage from "./components/SplashPage";
 import Homepage from "./components/Homepage";
 import StoryFormPage from "./components/StoryFormPage"
-// import StoryList from "./components/StoryList";
-// import CommentForm from "./components/CommentForm";
 import StoryView from "./components/StoryView";
+import Footer from "./components/Footer";
 import './App.css';
 
 function App() {
@@ -46,6 +45,7 @@ function App() {
           </Route>
         </Switch>
       )}
+      < Footer />
     </div>
   );
 }

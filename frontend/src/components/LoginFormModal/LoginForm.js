@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import * as sessionActions from "../../store/session";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect } from "react-router-dom";
+import "./LoginForm.css";
+
 
 function LoginForm() {
   const dispatch = useDispatch();
@@ -33,57 +35,65 @@ function LoginForm() {
 
   return (
     <>
+      <div id="modal__login">
+        <div id="modal__login__background" />
+        <div id="modal__login__content">
 
-      <form className="login__modal__container "
 
-        onSubmit={handleSubmit}>
-        <ul>
-          {errors.map((error, idx) => (
-            <li key={idx}>{error}</li>
-          ))}
-        </ul>
-        <div class="login__form">
-          <label
-            for="login__username__email"
-            class="login__box"
-          >
-            Username or Email
-          </label>
-          <input
-            type="text"
-            value={credential}
-            onChange={(e) => setCredential(e.target.value)}
-            required
-          />
+
+          <form className="login__modal__container "
+            onSubmit={handleSubmit}>
+            <ul>
+              {errors.map((error, idx) => (
+                <li key={idx}>{error}</li>
+              ))}
+            </ul>
+            <div class="login__form">
+              <label
+                for="login__username__email"
+                class="login__box"
+              >
+                Username or Email
+              </label>
+              <input
+                type="text"
+                value={credential}
+                onChange={(e) => setCredential(e.target.value)}
+                required
+              />
+            </div>
+            <div class="login__form">
+              <label
+                for="login__password"
+                class="login__box"
+              >
+                Password
+              </label>
+              <input
+                type="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                required
+              />
+            </div>
+            <div className="login__btn__container">
+              <button
+                type="submit"
+                class="login__btn"
+              >
+                Log In
+              </button>
+              <button
+                type="submit"
+                class="demo__btn"
+                onClick={demoUser} className="demo__btn"
+              >
+                DEMO
+              </button>
+            </div>
+          </form>
         </div>
-        <div class="login__form">
-          <label
-            for="login__password"
-            class="login__box"
-          >
-            Password
-          </label>
-          <input
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-          />
-        </div>
-        <button
-          type="submit"
-          class="login__btn"
-        >
-          Log In
-        </button>
-        <button
-          type="submit"
-          class="demo__btn"
-          onClick={demoUser} className="demo__btn"
-        >
-          DEMO
-        </button>
-      </form>
+      </div>
     </>
 
   );

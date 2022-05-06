@@ -19,9 +19,10 @@
 }
 
 #modal-content {
+    /* background-image: url("https://user-images.githubusercontent.com/92604480/165845450-6833a472-12ee-4b32-ba4e-0b2db843e9ea.jpg"); */
 
     position: absolute;
-    background-color: white;
+    /* background-color: white; */
     height: 51.2%;
     width: 32%;
     margin-right: 40rem;
@@ -29,8 +30,5 @@
     border-bottom-left-radius: 25px;
     border-top-right-radius: 25px;
     border-bottom-right-radius: 25px;
-    box-shadow: 10px 7px 5px gray;
+    /* box-shadow: 10px 7px 5px gray; */
 }
-
-
-/*macarroons background-image: url("https://user-images.githubusercontent.com/92604480/165845450-6833a472-12ee-4b32-ba4e-0b2db843e9ea.jpg"); */

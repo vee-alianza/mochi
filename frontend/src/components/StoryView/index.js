@@ -14,12 +14,8 @@ const StoryView = () => {
   const history = useHistory();
   const story = useSelector(state => state.stories.currentStory);
 
-  // console.log(allStories, "STORY VIEW")
-
   useEffect(() => {
     dispatch(readStory(id));
-
-    // console.log("////////////")
   }, [id]);
 
   const handleDelete = (storyId) => {

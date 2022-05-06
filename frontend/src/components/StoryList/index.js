@@ -30,14 +30,13 @@ const StoryList = () => {
             return (
               <div className="story__subcontainer">
                 <div className="story__box">
-                  {story.title}
+                  <p>Title: {story.title}</p>
                 </div>
                 <div className="story__box">
                   <p>Category: {story.Category.title}</p>
-
                 </div>
                 <div className="story__box">
-                  {story.timeframe}
+                  <p>Time: {story.timeframe}</p>
                 </div>
                 <div className="story__box">
                   <p> Story: </p>
@@ -67,8 +66,3 @@ const StoryList = () => {
 };
 
 export default StoryList;
-
-{/* <div className="recipebox__right__container">
-  <h4>TACO'bout it</h4>
-
-</div> */}

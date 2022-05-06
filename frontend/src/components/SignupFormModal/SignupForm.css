@@ -5,29 +5,32 @@
 
 .signup__container {
     box-shadow: 10px 5px 5px gray;
-    height: 30rem;
-    width: 20rem;
+    height: 33rem;
+    width: 25rem;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
     border-top-right-radius: 25px;
     border-bottom-right-radius: 25px;
+    border-top-left-radius: 25px;
+    border-bottom-left-radius: 25px;
     /* border: 2px solid black; */
-    margin-left: 30rem;
+    margin-left: 25rem;
+    margin-bottom: 100rem;
     background-color: white;
 
 }
 
 img {
-    border-top-left-radius: 25px;
-    border-bottom-left-radius: 25px
+    border-top-right-radius: 25px;
+    border-bottom-right-radius: 25px
 }
 
 h3 {
     font-weight: 100;
     font-size: 2.5rem;
-    margin-right: 10rem;
+    margin-right: 33rem;
 }
 
 label {

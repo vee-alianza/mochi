@@ -1,58 +1,82 @@
-// import React, { useState } from 'react';
-// import { NavLink } from 'react-router-dom';
+import React, { useState } from 'react';
+import { NavLink } from 'react-router-dom';
 // import { useSelector } from 'react-redux';
 // import ProfileButton from '../Navigation/ProfileButton';
 // import LoginFormModal from '../LoginFormModal';
-// // import { useEffect, useState } from 'react';
-// // import './SplashPage.css'
+// import SignupFormModal from '../SignupFormModal';
+
+// import { useEffect, useState } from 'react';
+// import './SplashPage.css'
 
 // import { Modal } from '../../context/Modal';
 // import LoginForm from '../LoginFormModal/LoginForm';
-// // import './LoginForm.css';
+import './SplashPage.css';
+
+
+const SplashPage = (isLoaded) => {
+    return (
+        <>
+            <h1>Thyme is money!</h1>
+            <div className="navbar__splash">
+                {/* <div className='login__container'>
+                    <LoginFormModal />
+                    <SignupFormModal />
+                </div> */}
+                {/* <div className='signup__container'>
+
+                </div> */}
+                <div></div>
+
+            </div>
+        </>
+    )
+}
+
+export default SplashPage;
+
 
 // const SplashPage = (isLoaded) => {
-//   const [showModal, setShowModal] = useState(false);
-//   const sessionUser = useSelector(state => state.session.user);
-//   let sessionLinks;
-//   if (sessionUser) {
-//     sessionLinks = (
-//       <ProfileButton user={sessionUser} />
-//     );
-//   } else {
-//     sessionLinks = (
-//       <>
-//         <LoginFormModal />
-//         <NavLink to="/signup">Sign Up</NavLink>
-//       </>
-//     );
-//   }
+//     const [showModal, setShowModal] = useState(false);
+//     const sessionUser = useSelector(state => state.session.user);
+//     let sessionLinks;
+//     if (sessionUser) {
+//         sessionLinks = (
+//             <ProfileButton user={sessionUser} />
+//         );
+//     } else {
+//         sessionLinks = (
+//             <>
+//                 <LoginFormModal />
+//                 <NavLink to="/signup">Sign Up</NavLink>
+//             </>
+//         );
+//     }
 
-//   return (
-//     <>
-//       <div className="splash__page">
-//         <div className="splash__navbar">
-//           <button onClick={() => setShowModal(true)}>Log In</button>
-//           {showModal && (
-//             <Modal onClose={() => setShowModal(false)}>
-//               <LoginForm />
-//             </Modal>
-//           )}
-//           <div className="splash__left__box">
-//             <h3>Curiouser and Curiouser</h3>
-//             <p>laflsdjfj</p>
-//           </div>
-//           <div className="splash__right__box">
-//             <svg viewBox="0 0 585 462" xmlns="http://www.w3.org/2000/svg" width="585" height="462">
-//               <g>
-//                 <g fill="rgb(0,0,0)" aria-label="🍕🍔🍟🌭🍿🥓🍳🧇🥞🍞🥐🥨🥯🧀🥗🥙🥪🌮🌯🍖🍗🥟🍘🍚🍙🍛🍜🍤🍥🥮🧆🥘🍲🍝🥣🥧🍨🍩🍪🍰🧁🍮🍻🥢🍕🍔🍟🌭🍿🥓🍳🧇🥞🍞🥐🥨🥯🧀🥗🥙🥪🌮🌯🍖🍗🥟🍘🍚🍙🍛🍜🍤🍥🥮🧆🥘🍲🍝🥣🥧🍨🍩🍪🍰🧁🍮🍻🥢" transform="matrix(1,0,0,1,291,232)" opacity="1" style="display:block">
-//                 </g>
-//               </g>
-//             </svg>
-//           </div>
-//         </div>
-//       </div >
-//     </>
-//   )
+//     return (
+//         <>
+//             <div className="splash__page">
+//                 <div className="splash__navbar">
+//                     <button onClick={() => setShowModal(true)}>Log In</button>
+//                     {showModal && (
+//                         <Modal onClose={() => setShowModal(false)}>
+//                             <LoginForm />
+//                         </Modal>
+//                     )}
+//                     <div className="splash__left__box">
+//                         <h3>Curiouser and Curiouser</h3>
+//                         <p>laflsdjfj</p>
+//                     </div>
+//                     <div className="splash__right__box">
+//                         <svg viewBox="0 0 585 462" xmlns="http://www.w3.org/2000/svg" width="585" height="462">
+//                             <g>
+//                                 <g fill="rgb(0,0,0)" aria-label="🍕🍔🍟🌭🍿🥓🍳🧇🥞🍞🥐🥨🥯🧀🥗🥙🥪🌮🌯🍖🍗🥟🍘🍚🍙🍛🍜🍤🍥🥮🧆🥘🍲🍝🥣🥧🍨🍩🍪🍰🧁🍮🍻🥢🍕🍔🍟🌭🍿🥓🍳🧇🥞🍞🥐🥨🥯🧀🥗🥙🥪🌮🌯🍖🍗🥟🍘🍚🍙🍛🍜🍤🍥🥮🧆🥘🍲🍝🥣🥧🍨🍩🍪🍰🧁🍮🍻🥢" transform="matrix(1,0,0,1,291,232)" opacity="1" style="display:block">
+//                                 </g>
+//                             </g>
+//                         </svg>
+//                     </div>
+//                 </div>
+//             </div >
+//         </>
+//     )
 // }
-
 // export default SplashPage;

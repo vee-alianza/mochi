@@ -1,0 +1,36 @@
+#modal__login__background {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+
+#modal__login__content {
+    /* background-image: url("https://user-images.githubusercontent.com/92604480/166585003-658704f7-e7e1-4dbc-b57e-c1eee2a0d09a.jpg"); */
+    position: relative;
+    height: 80vh;
+    width: 60vw;
+    /* margin-right: 40rem; */
+    border-top-left-radius: 25px;
+    border-bottom-left-radius: 25px;
+    border-top-right-radius: 25px;
+    border-bottom-right-radius: 25px;
+}
+
+
+.login__form {
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    height: 10vh;
+    width: 20vw;
+}
+
+.login__btn__container {
+    /* display: flex;
+    justify-content: space-evenly; */
+
+}

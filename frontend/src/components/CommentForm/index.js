@@ -14,9 +14,9 @@ const CommentForm = ({ story }) => {
   const history = useHistory();
   // console.log(comments, "-----CommentForm component-----")
 
-  if (!sessionUser) {
-    history.push("/home")
-  }
+  // if (!sessionUser) {
+  //   history.push("/home")
+  // }
 
   useEffect(() => {
     dispatch(createComment());
