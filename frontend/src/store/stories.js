@@ -5,6 +5,7 @@ const VIEW_STORY = "story/view"
 const UPDATE_STORY = "story/edit"
 const REMOVE_STORY = "stories/remove"
 const SET_STORIES = "stories/set";
+const GET_CATEGORIES = "categories/get"
 
 
 // Actions
@@ -40,6 +41,12 @@ const setStory = (stories) => {
   };
 };
 
+const allCategories = (categories) => {
+  return {
+    type: GET_CATEGORIES,
+    payload: categories
+  };
+};
 
 // Thunks (Async Actions)
 // Thunk middleware = dispatch
@@ -94,14 +101,23 @@ export const deleteStory = (storyId) => async dispatch => {
   return (response);
 };
 
+export const getCategories = (categories) => async dispatch => {
+  const response = await csrfFetch(`/api/stories/category/${categories}`);
+  if (response.ok) {
+    dispatch(allCategories(categories));
+  }
+  return (response);
+};
+
+
 // Reducer
 // normalizing state happens in Reducer
 const initialState = {
-  allStories: null
+  allStories: null,
+  categories: null,
 };
 
 const storyReducer = (state = initialState, action) => {
-  //newStories = newState
   let newState;
   switch (action.type) {
     case SET_STORIES:
@@ -112,7 +128,7 @@ const storyReducer = (state = initialState, action) => {
     case VIEW_STORY:
       newState = {};
       newState[action.story.id] = action.story;
-      return newState
+      return newState;
     case UPDATE_STORY:
       newState = Object.assign({}, state);
       newState.allStories = state.allStories.map((story) => {
@@ -122,13 +138,18 @@ const storyReducer = (state = initialState, action) => {
           return story;
         }
       });
-      return newState
+      return newState;
     case REMOVE_STORY:
       newState = Object.assign({}, state);
       newState.allStories = state.allStories.filter(story => {
         return story.id !== action.payload;
       });
       return newState;
+    case GET_CATEGORIES:
+      newState = structuredClone(state);
+      newState.categories = action.payload;
+      return newState;
+
     default:
       return state;
   }

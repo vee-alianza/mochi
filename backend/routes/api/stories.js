@@ -4,6 +4,7 @@ const { check } = require('express-validator');
 const { handleValidationErrors } = require('../../utils/validation');
 const { setTokenCookie, requireAuth } = require('../../utils/auth');
 const { User, Story, Comment, storyLike, commentLike, Category } = require('../../db/models');
+const { Op } = require("sequelize");
 
 
 const router = express.Router();
@@ -28,6 +29,16 @@ router.get('/:id(\\d+)', asyncHandler(async (req, res) => {
     });
     return res.json({ story });
 }));
+
+
+// GET categories
+router.get('/category/:categories', asyncHandler(async (req, res) => {
+    const { categories } = req.params;
+    const categoriesList = await Category.findAll({ where: { title: categories } });
+
+}));
+
+
 
 // POST stories
 router.post('/new', requireAuth, asyncHandler(async (req, res) => {

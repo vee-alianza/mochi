@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
-import { getStories, newStory, editStory } from "../../store/stories";
+import { getStories, newStory, editStory, getCategories } from "../../store/stories";
 import "./StoryForm.css"
 
 const StoryForm = ({ props }) => {
@@ -108,6 +108,11 @@ const StoryForm = ({ props }) => {
     }
   };
 
+  const findCategory = (e) => {
+    dispatch(getCategories(e.target.value));
+    setCategory(e.target.value);
+  };
+
   return (
     <>
       <div className="recipe__container">
@@ -131,49 +136,13 @@ const StoryForm = ({ props }) => {
               value={title}
             />
             Category:
-            <select
-              name="category"
-              id="recipe_box"
-              onChange={(e) => setCategory(e.target.value)}
+            <input
+              type="text"
+              id="recipe__category"
+              onChange={findCategory}
               value={category}
-            >
-              <option
-                value=""
-                selected="selected"
-              >
-                Select region
-              </option>
-              <option
-                value="Africa"
-              >
-                Africa
-              </option>
-              <option
-                value="Asia"
-              >
-                Asia
-              </option>
-              <option
-                value="Australia"
-              >
-                Australia
-              </option>
-              <option
-                value="Europe"
-              >
-                Europe
-              </option>
-              <option
-                value="North America"
-              >
-                North America
-              </option>
-              <option
-                value="South America"
-              >
-                South America
-              </option>
-            </select>
+            />
+
             <label
               for="timeframe"
             >
