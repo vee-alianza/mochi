@@ -3,22 +3,91 @@
 module.exports = {
   up: (queryInterface, Sequelize) => {
     const seederData = [{
-      title: "Africa"
+      title: "African Cuisine"
     },
     {
-      title: "Asia"
+      title: "Central African Cuisine"
     },
     {
-      title: "Australia/Oceania"
+      title: "East African Cuisine"
     },
     {
-      title: "Europe"
+      title: "North African Cuisinee"
     },
     {
-      title: "North America"
+      title: "Southern African Cuisine"
     },
     {
-      title: "South America"
+      title: "West African Cuisine"
+    },
+    {
+      title: "Cuisine of Americas"
+    },
+    {
+      title: "North American Cuisine"
+    },
+    {
+      title: "American Cuisine"
+    },
+    {
+      title: "Central American Cuisine"
+    },
+    {
+      title: "South American Cuisine"
+    },
+    {
+      title: "Caribbean Cuisine"
+    },
+    {
+      title: "Asian Cuisine"
+    },
+    {
+      title: "Central Asian Cuisine"
+    },
+    {
+      title: "East Asian Cuisine"
+    },
+    {
+      title: "South Asian Cuisine"
+    },
+    {
+      title: "Southeast Asian Cuisine"
+    },
+    {
+      title: "West Asian Cuisine"
+    },
+    {
+      title: "European Cuisine"
+    },
+    {
+      title: "Oceanic Cuisine"
+    },
+    {
+      title: "Chinese Cuisine"
+    },
+    {
+      title: "Indian Cuisine"
+    },
+    {
+      title: "Bulgarian Cuisine"
+    },
+    {
+      title: "German Cuisine"
+    },
+    {
+      title: "Eastern European Cuisine"
+    },
+    {
+      title: "French Cuisine"
+    },
+    {
+      title: "Italian Cuisine"
+    },
+    {
+      title: "Thai Cuisine"
+    },
+    {
+      title: "Vietnamese Cuisine"
     },
     ];
 

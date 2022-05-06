@@ -1,6 +1,6 @@
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect } from "react";
-import { useHistory } from "react-router-dom";
+import { NavLink, useHistory } from "react-router-dom";
 import { getStories, deleteStory } from "../../store/stories";
 import EditFormModal from "../EditFormModal";
 import "./StoryList.css"
@@ -28,7 +28,12 @@ const StoryList = () => {
         {allStories &&
           allStories.map((story) => {
             return (
-              <div key={story.id} className="story__subcontainer">
+              <div
+                key={story.id}
+                className="story__subcontainer"
+                onClick={() => history.push(`/stories/${story.id}`)}
+              >
+
                 <div className="story__box">
                   <p>Title: {story.title}</p>
                 </div>
@@ -56,6 +61,7 @@ const StoryList = () => {
                     <EditFormModal storyId={story.id} />
                   </>
                 }
+
               </div>
             )
           })

@@ -18,6 +18,7 @@ function App() {
   const dispatch = useDispatch();
   const sessionUser = useSelector(state => state.session.user);
   const [isLoaded, setIsLoaded] = useState(false);
+
   useEffect(() => {
     dispatch(sessionActions.restoreUser()).then(() => setIsLoaded(true));
   }, [dispatch]);
@@ -30,13 +31,13 @@ function App() {
           <SignupFormModal />
         </>
       }
-      {isLoaded && sessionUser && (
-        <>
-          <Navigation isLoaded={isLoaded} />
-          <Switch>
-            <Route exact path="/">
-              <SplashPage />
-            </Route>
+      <Switch>
+        <Route exact path="/">
+          <SplashPage />
+        </Route>
+        {isLoaded && sessionUser && (
+          <>
+            <Navigation isLoaded={isLoaded} />
             <Route path="/home">
               <Homepage />
             </Route>
@@ -52,9 +53,9 @@ function App() {
             <Route path="/stories/:id">
               <StoryView />
             </Route>
-          </Switch>
-        </>
-      )}
+          </>
+        )}
+      </Switch>
       < Footer />
     </div>
   );

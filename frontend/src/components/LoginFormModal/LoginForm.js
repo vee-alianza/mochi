@@ -52,61 +52,58 @@ function LoginForm({ setShowModal }) {
   return (
     <>
       <div id="modal__login">
-        <div id="modal__login__background" />
-        <div id="modal__login__content">
 
-          <form className="login__modal__container "
-            onSubmit={handleSubmit}>
-            <ul>
-              {errors.map((error, idx) => (
-                <li key={idx}>{error}</li>
-              ))}
-            </ul>
-            <div className="login__form">
-              <label
-                htmlFor="login__username__email"
-                className="login__box"
-              >
-                Username or Email
-              </label>
-              <input
-                type="text"
-                value={credential}
-                onChange={(e) => setCredential(e.target.value)}
-                required
-              />
-            </div>
-            <div className="login__form">
-              <label
-                htmlFor="login__password"
-                className="login__box"
-              >
-                Password
-              </label>
-              <input
-                type="password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                required
-              />
-            </div>
-            <div className="login__btn__container">
-              <button
-                type="submit"
-                className="login__btn"
-              >
-                Log In
-              </button>
-              <button
-                type="submit"
-                className="demo__btn"
-                onClick={demoUser}
-              >
-                DEMO
-              </button>
-            </div>
-          </form>
-        </div>
+        <form className="login__modal__container "
+          onSubmit={handleSubmit}>
+          <ul>
+            {errors.map((error, idx) => (
+              <li key={idx}>{error}</li>
+            ))}
+          </ul>
+          <div className="login__form">
+            <label
+              htmlFor="login__username__email"
+              className="login__box"
+            >
+              Username or Email
+            </label>
+            <input
+              type="text"
+              value={credential}
+              onChange={(e) => setCredential(e.target.value)}
+              required
+            />
+          </div>
+          <div className="login__form">
+            <label
+              htmlFor="login__password"
+              className="login__box"
+            >
+              Password
+            </label>
+            <input
+              type="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+            />
+          </div>
+          <div className="login__btn__container">
+            <button
+              type="submit"
+              className="login__btn"
+            >
+              Log In
+            </button>
+            <button
+              type="submit"
+              className="demo__btn"
+              onClick={demoUser}
+            >
+              DEMO
+            </button>
+          </div>
+        </form>
       </div >
     </>
 
