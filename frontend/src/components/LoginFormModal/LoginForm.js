@@ -14,18 +14,19 @@ function LoginForm({ setShowModal }) {
   const [errors, setErrors] = useState([]);
 
   if (sessionUser) return (
-    <Redirect to="/" />
+    <Redirect to="/home" />
   );
 
   const handleSubmit = (e) => {
     e.preventDefault();
     setErrors([]);
-    return dispatch(sessionActions.login({ credential, password })).catch(
+    dispatch(sessionActions.login({ credential, password })).catch(
       async (res) => {
         const data = await res.json();
         if (data && data.errors) setErrors(data.errors);
       }
     );
+    history.push('/home');
   };
 
   const demoUser = (e) => {
@@ -96,6 +97,7 @@ function LoginForm({ setShowModal }) {
                   type="submit"
                   className="login__btn"
                   id="login__btn"
+
                 >
                   Log In
                 </button>

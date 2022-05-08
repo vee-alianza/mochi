@@ -47,6 +47,7 @@ li {
     align-items: center;
     height: 10vh;
     width: 20vw;
+
 }
 
 .signup__left__container {
@@ -61,13 +62,12 @@ label {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-
 }
 
-/* input {
-    margin: 0.5rem;
-    border-radius: 4px;
-
+/* input[type=text],
+input[type=password] {
+    border: none;
+    border-bottom: 0.1rem solid black;
 } */
 
 .signup__btn {

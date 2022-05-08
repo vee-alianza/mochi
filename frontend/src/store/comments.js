@@ -1,4 +1,5 @@
 import { csrfFetch } from './csrf';
+import { addUserCommentLike, removeUserCommentLike } from './session';
 
 const GET_COMMENT = "comment/create";
 const ADD_COMMENT = "comment/add";
@@ -56,8 +57,8 @@ export const postComment = (comment) => async dispatch => {
 
 export const deleteComment = (commentId) => async dispatch => {
     const response = await csrfFetch(`/api/comments/${commentId}`, {
-        method: 'DELETE',
-    })
+        method: 'DELETE'
+    });
     // console.log(response, "------deleteComment thunk------");
     if (response.ok) {
         // const remove = await response.json();
@@ -65,6 +66,24 @@ export const deleteComment = (commentId) => async dispatch => {
         dispatch(removeComment(commentId));
     }
     return (response);
+};
+
+export const likeComment = (commentId) => async dispatch => {
+    const response = await csrfFetch(`/api/comments/${commentId}/like`, {
+        method: 'POST'
+    });
+    if (response.ok) {
+        dispatch(addUserCommentLike(commentId));
+    }
+};
+
+export const unlikeComment = (commentId) => async dispatch => {
+    const response = await csrfFetch(`/api/comments/${commentId}/like`, {
+        method: 'DELETE'
+    });
+    if (response.ok) {
+        dispatch(removeUserCommentLike(commentId));
+    }
 };
 
 const initialState = {};

@@ -1,0 +1,18 @@
+.commentbox__align__right {
+    display: flex;
+    flex-direction: column;
+}
+
+.new__comment {
+    width: 10rem;
+    height: 2.5rem;
+    border: none;
+    border-radius: 0.8rem;
+    background-color: #FA4C6F;
+    color: white;
+    font-family: "Sansita";
+    font-size: 1.3rem;
+    font-weight: bold;
+    flex-direction: row;
+    margin: 1rem;
+}

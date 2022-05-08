@@ -107,10 +107,10 @@ const CommentForm = ({ story }) => {
                     <div>
                       <img src={comment.User.profileImage} alt="" />
                     </div>
-                    <div>
+                    <div className="commentbox__align__right">
                       {comment.User.username}
                     </div>
-                    <div>
+                    <div className="commentbox__align__right">
                       {new Date(comment.createdAt).toDateString()}
                     </div>
                   </div>
@@ -139,7 +139,7 @@ const CommentForm = ({ story }) => {
           <label>
             <input
               type="text"
-              placeholder='Leave a comment...'
+              placeholder='Penne for your thoughts'
               onChange={(e) => setContent(e.target.value)}
               value={content}
               className="comment__input__box"

@@ -2,8 +2,10 @@ import { csrfFetch } from './csrf';
 
 const SET_USER = 'session/setUser';
 const REMOVE_USER = 'session/removeUser';
-const GET_USER_RATING = 'session/getUserRating';
+const GET_CURRENT_STORY_DATA = 'session/getCurrentStoryData';
 const UPDATE_USER_RATING = 'session/updateUserRating';
+const ADD_USER_COMMENT_LIKE = 'session/addUserCommentLike';
+const REMOVE_USER_COMMENT_LIKE = 'session/removeUserCommentLike';
 
 const setUser = (user) => {
   return {
@@ -18,10 +20,10 @@ const removeUser = () => {
   };
 };
 
-const getUserRating = (rating) => {
+const getCurrentStoryData = (data) => {
   return {
-    type: GET_USER_RATING,
-    payload: rating
+    type: GET_CURRENT_STORY_DATA,
+    payload: data
   };
 };
 
@@ -29,6 +31,20 @@ export const updateUserRating = (rating) => {
   return {
     type: UPDATE_USER_RATING,
     payload: rating
+  };
+};
+
+export const addUserCommentLike = (commentId) => {
+  return {
+    type: ADD_USER_COMMENT_LIKE,
+    payload: commentId
+  };
+};
+
+export const removeUserCommentLike = (commentId) => {
+  return {
+    type: REMOVE_USER_COMMENT_LIKE,
+    payload: commentId
   };
 };
 
@@ -76,14 +92,14 @@ export const logout = () => async (dispatch) => {
   return response;
 };
 
-export const fetchUserRating = (storyId) => async (dispatch) => {
+export const fetchCurrentStoryData = (storyId) => async (dispatch) => {
   const response = await csrfFetch(`/api/session/story/${storyId}/rating`);
   const data = await response.json();
-  dispatch(getUserRating(data.rating));
+  dispatch(getCurrentStoryData(data));
   return response;
 };
 
-const initialState = { user: null, currentStoryRating: null };
+const initialState = { user: null, currentStoryRating: null, currentStoryCommentLikes: null };
 
 const sessionReducer = (state = initialState, action) => {
   let newState;
@@ -96,15 +112,22 @@ const sessionReducer = (state = initialState, action) => {
       newState = Object.assign({}, state);
       newState.user = null;
       return newState;
-    case GET_USER_RATING:
+    case GET_CURRENT_STORY_DATA:
       newState = Object.assign({}, state);
-      newState.currentStoryRating = action.payload;
-
+      newState.currentStoryRating = action.payload.rating;
+      newState.currentStoryCommentLikes = action.payload.userCommentLikes.map((obj) => obj.commentId);
       return newState;
     case UPDATE_USER_RATING:
       newState = Object.assign({}, state);
       newState.currentStoryRating = action.payload;
-
+      return newState;
+    case ADD_USER_COMMENT_LIKE:
+      newState = Object.assign({}, state);
+      newState.currentStoryCommentLikes = [...state.currentStoryCommentLikes, action.payload];
+      return newState;
+    case REMOVE_USER_COMMENT_LIKE:
+      newState = Object.assign({}, state);
+      newState.currentStoryCommentLikes = state.currentStoryCommentLikes.filter((commentId) => commentId !== action.payload);
       return newState;
     default:
       return state;
