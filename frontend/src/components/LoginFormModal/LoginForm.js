@@ -66,7 +66,7 @@ function LoginForm({ setShowModal }) {
               </ul>
               <div className="login__form">
                 <label
-                  for="login__username__email"
+                  htmlFor="login__username__email"
                   className="login__box"
                 >
                   Username or Email
@@ -80,7 +80,7 @@ function LoginForm({ setShowModal }) {
               </div>
               <div className="login__form">
                 <label
-                  for="login__password"
+                  htmlFor="login__password"
                   className="login__box"
                 >
                   Password
@@ -104,8 +104,8 @@ function LoginForm({ setShowModal }) {
                 <button
                   type="submit"
                   onClick={demoUser}
-                  className="demo__btn"
-                  id="login__btn"
+                  className="login__btn"
+                  id="demo__btn"
                 >
                   DEMO
                 </button>

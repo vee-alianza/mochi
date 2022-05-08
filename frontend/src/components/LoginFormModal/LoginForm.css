@@ -52,7 +52,8 @@ h3 {
     border-bottom-left-radius: 25px;
 }
 
-#login__btn {
+#login__btn,
+#demo__btn {
     width: 10rem;
     height: 2.5rem;
     border: none;
