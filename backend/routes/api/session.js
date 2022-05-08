@@ -3,7 +3,7 @@ const asyncHandler = require('express-async-handler');
 const { check } = require('express-validator');
 const { handleValidationErrors } = require('../../utils/validation');
 const { setTokenCookie, restoreUser, requireAuth } = require('../../utils/auth');
-const { User, storyLike } = require('../../db/models');
+const { User, storyLike, commentLike, Comment, Story } = require('../../db/models');
 
 const router = express.Router();
 
@@ -78,9 +78,24 @@ router.get(
                 userId
             }
         });
+        const commentLikes = await commentLike.findAll({
+            include: [{
+                model: Comment,
+                attributes: [],
+                include: [{
+                    model: Story,
+                    attributes: [],
+                    where: { id: storyId }
+                }]
+            }],
+            where: {
+                userId
+            }
+        });
+
         if (ratingObj) {
-            return res.json({ rating: ratingObj.rating });
-        } else return res.json({ rating: "0" });
+            return res.json({ rating: ratingObj.rating, userCommentLikes: commentLikes });
+        } else return res.json({ rating: "0", userCommentLikes: commentLikes });
     })
 );
 

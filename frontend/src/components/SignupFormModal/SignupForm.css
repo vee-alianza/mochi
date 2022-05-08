@@ -1,86 +1,76 @@
 .main-content {
     margin-top: 80px;
-
 }
 
 .signup__container {
-
     box-shadow: 10px 5px 5px gray;
     height: 33rem;
-    width: 80rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
+    width: 60rem;
     border-top-right-radius: 25px;
     border-bottom-right-radius: 25px;
     border-top-left-radius: 25px;
     border-bottom-left-radius: 25px;
-    /* border: 2px solid black; */
-    margin-left: 25rem;
-    margin-bottom: 100rem;
     background-color: white;
-
 }
 
 .signup__right__container {
-
     height: 33rem;
     width: 25rem;
-}
-
-.signup__left__container {
-    background-image: url(https://user-images.githubusercontent.com/92604480/165845450-6833a472-12ee-4b32-ba4e-0b2db843e9ea.jpg);
-    /* height: 33rem;
-    width: 25rem; */
-}
-
-img {
-    /* border-top-right-radius: 25px;
-    border-bottom-right-radius: 25px */
-    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    margin-left: 33rem;
 }
 
 h3 {
     font-weight: 100;
     font-size: 2.5rem;
-    margin-right: 33rem;
+}
+
+/* img {
+    display: flex;
+    flex-direction: row-reverse;
+} */
+
+li {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: red;
+}
+
+.signup__form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 10vh;
+    width: 20vw;
+}
+
+.signup__left__container {
+    background-image: url("https://user-images.githubusercontent.com/92604480/165845450-6833a472-12ee-4b32-ba4e-0b2db843e9ea.jpg");
+    height: 33rem;
+    width: 33rem;
+    border-top-left-radius: 25px;
+    border-bottom-left-radius: 25px;
 }
 
 label {
     display: flex;
     flex-direction: column;
-    margin-right: 7rem;
-    padding: .5rem;
+    justify-content: space-around;
+
 }
 
-/* ul {
-    height: 5rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    text-align: center;
-    z-index: 5;
-} */
-
-/* li {
-    height: 7rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-} */
-
 /* input {
-    width: 5rem;
-    height: 5rem;
-    margin-bottom: 1.5rem;
-    border: none;
-    border-radius: 0.8rem;
-    padding-left: 1rem;
+    margin: 0.5rem;
+    border-radius: 4px;
+
 } */
 
-button.signup__btn {
+.signup__btn {
     width: 10rem;
     height: 2.5rem;
     border: none;

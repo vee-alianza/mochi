@@ -52,7 +52,57 @@ router.post('/new', requireAuth, asyncHandler(async (req, res) => {
   return res.json(newComment);
 }));
 
-//PATCH comment
+// POST comment
+router.post('/:id(\\d+)/like', requireAuth, asyncHandler(async (req, res) => {
+  const userId = req.user.id;
+  const { id } = req.params;
+
+  try {
+    const userCommentLike = await commentLike.findOne({
+      where: {
+        commentId: id,
+        userId
+      }
+    });
+    if (!userCommentLike) {
+      await commentLike.create({
+        commentId: id,
+        userId
+      });
+
+      return res.send('success');
+    } else {
+      throw new Error('User has already liked comment');
+    }
+  } catch (error) {
+    res.status(500);
+    res.send(`${error}`);
+  }
+}));
+
+// DELETE comments
+router.delete('/:id(\\d+)/like', requireAuth, asyncHandler(async (req, res) => {
+  const userId = req.user.id;
+  const { id } = req.params;
+
+  try {
+    const userCommentLike = await commentLike.findOne({
+      where: {
+        commentId: id,
+        userId
+      }
+    });
+    if (userCommentLike) {
+      await userCommentLike.destroy();
+      return res.send('success');
+    } else {
+      throw new Error('User has already unliked comment');
+    }
+  } catch (error) {
+    res.status(500);
+    res.send(`${error}`);
+  }
+}));
 
 // DELETE comments
 router.delete('/:id(\\d+)', requireAuth, asyncHandler(async (req, res) => {

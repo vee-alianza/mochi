@@ -7,10 +7,22 @@ module.exports = {
     const seederData = [];
     const totalUser = await User.count();
     const totalCategory = await Category.count();
-    for (let i = 0; i < 15; i++) {
+    for (let i = 0; i < 10; i++) {
+      const timeSeconds = faker.datatype.number({ min: 1, max: 7200 });
+      const formattedTime = new Date(timeSeconds * 1000).toISOString().substring(11, 19);
+      const [timeHrStr, timeMinStr, timeSecStr] = formattedTime.split(':');
+      const timeHr = Number(timeHrStr);
+      const timeMin = Number(timeMinStr);
+      const timeSec = Number(timeSecStr);
+      const timeframeSeed = [];
+
+      if (timeHr) timeframeSeed.push(`${timeHr} hr.`);
+      if (timeMin) timeframeSeed.push(`${timeMin} min.`);
+      if (timeSec) timeframeSeed.push(`${timeSec} sec.`);
+
       seederData.push({
         title: faker.lorem.words(5),
-        timeframe: faker.lorem.word(3),
+        timeframe: timeframeSeed.join(' '),
         recipe: faker.lorem.paragraphs(1, '<br/>\n'),
         ingredients: faker.lorem.paragraphs(2, '<br/>\n'),
         instructions: faker.lorem.paragraphs(2, '<br/>\n'),

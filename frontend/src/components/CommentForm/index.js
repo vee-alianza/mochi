@@ -1,18 +1,19 @@
 import { useSelector, useDispatch } from "react-redux";
 import { useState, useEffect } from "react";
-import { useHistory, useParams } from "react-router-dom";
-import { createComment, postComment, deleteComment } from "../../store/comments";
+import { useHistory } from "react-router-dom";
+import { postComment, deleteComment, likeComment, unlikeComment } from "../../store/comments";
 import "./comments.css"
 import ReactStars from "react-stars";
-import { fetchUserRating } from "../../store/session";
+import { fetchCurrentStoryData } from "../../store/session";
 import { rateStory } from "../../store/stories";
 
 const CommentForm = ({ story }) => {
   const dispatch = useDispatch();
   const history = useHistory();
-  const comments = useSelector(state => Object.values(state.comments));
   const sessionUser = useSelector(state => state.session.user);
+  const comments = useSelector(state => state.stories.currentStory?.Comments);
   const currentUserRating = useSelector(state => state.session.currentStoryRating);
+  const currentUserCommentLikes = useSelector(state => state.session.currentStoryCommentLikes);
   const [content, setContent] = useState("");
   const [errors, setErrors] = useState([]);
   const [userRating, setUserRating] = useState(0);
@@ -22,13 +23,13 @@ const CommentForm = ({ story }) => {
   //   history.push("/home")
   // }
 
-  useEffect(() => {
-    dispatch(createComment());
-  }, [dispatch]);
+  // useEffect(() => {
+  //   dispatch(createComment());
+  // }, [dispatch]);
 
   useEffect(() => {
     if (!currentUserRating) {
-      dispatch(fetchUserRating(story.id));
+      dispatch(fetchCurrentStoryData(story.id));
     } else {
       setUserRating(Number(currentUserRating));
     }
@@ -65,6 +66,27 @@ const CommentForm = ({ story }) => {
     dispatch(rateStory(story.id, userRating));
   };
 
+  const handleLike = (commentId) => {
+    if (currentUserCommentLikes && currentUserCommentLikes.includes(commentId)) {
+
+      return (
+        <button
+          onClick={() => dispatch(unlikeComment(commentId))}
+        >
+          Unlike
+        </button>
+      )
+    }
+
+    return (
+      <button
+        onClick={() => dispatch(likeComment(commentId))}
+      >
+        Like
+      </button>
+    )
+  };
+
   return (
     <>
       <div className="comment__container">
@@ -79,18 +101,30 @@ const CommentForm = ({ story }) => {
         <div className="comment__box">
           <div className="comments__list">
             {comments?.map((comment) => {
-              if (story.id === comment.storyId) {
-                return (
-                  <div key={comment.id}>
-                    <li className="comment__post">
-                      {comment.content}
-                    </li>
-                    {sessionUser.id === comment.userId && (
-                      <button className="btn__delete" onClick={(e) => handleDelete(e, comment.id)}>Delete</button>
-                    )}
+              return (
+                <div key={comment.id}>
+                  <div className="comment__header">
+                    <div>
+                      <img src={comment.User.profileImage} alt="" />
+                    </div>
+                    <div>
+                      {comment.User.username}
+                    </div>
+                    <div>
+                      {new Date(comment.createdAt).toDateString()}
+                    </div>
                   </div>
-                )
-              }
+                  <div className="comment__post">
+                    {comment.content}
+                  </div>
+                  {sessionUser.id === comment.userId && (
+                    <button className="btn__delete" onClick={(e) => handleDelete(e, comment.id)}>Delete</button>
+                  )}
+                  {sessionUser.id !== comment.userId &&
+                    handleLike(comment.id)
+                  }
+                </div>
+              )
             })}
           </div>
         </div>
