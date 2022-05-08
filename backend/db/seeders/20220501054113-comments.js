@@ -8,7 +8,7 @@ module.exports = {
     const seederData = [];
     const totalUser = await User.count();
     const totalStory = await Story.count();
-    for (let i = 0; i < 10; i++) {
+    for (let i = 0; i < 40; i++) {
       seederData.push({
         storyId: faker.datatype.number({ min: 1, max: totalStory }),
         content: faker.lorem.sentences(2, '\n'),

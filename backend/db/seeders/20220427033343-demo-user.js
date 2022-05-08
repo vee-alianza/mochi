@@ -29,7 +29,7 @@ module.exports = {
       },
 
     ];
-    for (let i = 0; i < 10; i++) {
+    for (let i = 0; i < 15; i++) {
       seederData.push({
         email: faker.internet.email(),
         username: faker.internet.userName(),

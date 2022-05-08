@@ -7,7 +7,7 @@ module.exports = {
     const seederData = [];
     const totalUser = await User.count();
     const totalCategory = await Category.count();
-    for (let i = 0; i < 10; i++) {
+    for (let i = 0; i < 15; i++) {
       seederData.push({
         title: faker.lorem.words(5),
         timeframe: faker.lorem.word(3),
