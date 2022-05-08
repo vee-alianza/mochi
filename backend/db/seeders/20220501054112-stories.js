@@ -11,9 +11,9 @@ module.exports = {
       seederData.push({
         title: faker.lorem.words(5),
         timeframe: faker.lorem.word(3),
-        recipe: faker.lorem.paragraphs(5, '<br/>\n'),
-        ingredients: faker.lorem.paragraphs(5, '<br/>\n'),
-        instructions: faker.lorem.paragraphs(5, '<br/>\n'),
+        recipe: faker.lorem.paragraphs(1, '<br/>\n'),
+        ingredients: faker.lorem.paragraphs(2, '<br/>\n'),
+        instructions: faker.lorem.paragraphs(2, '<br/>\n'),
         image: faker.image.food(150, 150, true),
         userId: faker.datatype.number({ min: 1, max: totalUser }),
         categoryId: faker.datatype.number({ min: 1, max: totalCategory })

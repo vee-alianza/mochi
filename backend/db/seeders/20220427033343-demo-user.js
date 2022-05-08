@@ -11,21 +11,21 @@ module.exports = {
         username: 'Demo-lition',
         hashedPassword: bcrypt.hashSync('password'),
         about: faker.lorem.sentences(2, '\n'),
-        profileImage: faker.image.people(1234, 2345, true)
+        profileImage: faker.image.people(200, 200, true)
       },
       {
         email: 'user1@user.io',
         username: 'FakeUser1',
         hashedPassword: bcrypt.hashSync('password2'),
-        about: faker.lorem.sentences(2, '\n'),
-        profileImage: faker.image.people(1234, 2345, true)
+        about: faker.lorem.sentences(3, '\n'),
+        profileImage: faker.image.people(200, 200, true)
       },
       {
         email: 'user2@user.io',
         username: 'FakeUser2',
         hashedPassword: bcrypt.hashSync('password3'),
-        about: faker.lorem.sentences(2, '\n'),
-        profileImage: faker.image.people(1234, 2345, true)
+        about: faker.lorem.sentences(1, '\n'),
+        profileImage: faker.image.people(200, 200, true)
       },
 
     ];
@@ -34,8 +34,8 @@ module.exports = {
         email: faker.internet.email(),
         username: faker.internet.userName(),
         hashedPassword: bcrypt.hashSync('password4'),
-        about: faker.lorem.sentences(2, '\n'),
-        profileImage: faker.image.people(1234, 2345, true)
+        about: faker.lorem.sentences(3, '\n'),
+        profileImage: faker.image.people(200, 200, true)
       });
     }
     return queryInterface.bulkInsert('Users', seederData, {});
