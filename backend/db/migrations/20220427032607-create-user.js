@@ -20,15 +20,15 @@ module.exports = {
       },
       hashedPassword: {
         allowNull: false,
-        type: Sequelize.STRING.BINARY,
+        type: Sequelize.STRING.BINARY
       },
       about: {
         allowNull: false,
-        type: Sequelize.STRING.BINARY,
+        type: Sequelize.STRING
       },
       profileImage: {
         allowNull: false,
-        type: Sequelize.STRING.BINARY,
+        type: Sequelize.STRING
       },
       createdAt: {
         allowNull: false,

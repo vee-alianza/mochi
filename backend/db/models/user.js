@@ -32,11 +32,11 @@ module.exports = (sequelize, DataTypes) => {
     },
     about: {
       allowNull: false,
-      type: DataTypes.STRING.BINARY,
+      type: DataTypes.STRING
     },
     profileImage: {
       allowNull: false,
-      type: DataTypes.STRING.BINARY,
+      type: DataTypes.STRING
     },
   },
     {

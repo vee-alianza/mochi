@@ -11,7 +11,7 @@ module.exports = {
     for (let i = 0; i < 10; i++) {
       seederData.push({
         storyId: faker.datatype.number({ min: 1, max: totalStory }),
-        content: faker.lorem.paragraphs(2, '<br/>\n'),
+        content: faker.lorem.sentences(2, '\n'),
         userId: faker.datatype.number({ min: 1, max: totalUser })
       });
     }

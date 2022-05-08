@@ -1,7 +1,6 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
   const Follow = sequelize.define('Follow', {
-    allowNull: false,
     userId: {
       allowNull: false,
       type: DataTypes.INTEGER,
@@ -10,8 +9,7 @@ module.exports = (sequelize, DataTypes) => {
     followerId: {
       allowNull: false,
       type: DataTypes.INTEGER,
-      references: { model: "Follows" }
-
+      references: { model: "Users" }
     }
   }, {});
   Follow.associate = function (models) {
