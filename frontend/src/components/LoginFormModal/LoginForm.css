@@ -45,7 +45,11 @@ h3 {
 }
 
 .login__left__container {
-    background-image: url("https://user-images.githubusercontent.com/92604480/167290035-dc18bdb6-31b4-4185-be36-3e753f74d911.jpg");
+    background-image: url("https://user-images.githubusercontent.com/92604480/167319400-c8065c91-be35-40b0-b7ed-245c328259ca.jpg");
+    /* background-size: 40%; */
+    background-size: contain;
+    background-repeat: no-repeat;
+    /* background-position: right; */
     border-top-right-radius: 25px;
     border-bottom-right-radius: 25px;
     border-top-left-radius: 25px;

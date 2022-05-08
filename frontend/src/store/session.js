@@ -6,6 +6,7 @@ const GET_CURRENT_STORY_DATA = 'session/getCurrentStoryData';
 const UPDATE_USER_RATING = 'session/updateUserRating';
 const ADD_USER_COMMENT_LIKE = 'session/addUserCommentLike';
 const REMOVE_USER_COMMENT_LIKE = 'session/removeUserCommentLike';
+const UPDATE_USER_BOOKMARK = 'session/updateUserBookmark';
 
 const setUser = (user) => {
   return {
@@ -45,6 +46,13 @@ export const removeUserCommentLike = (commentId) => {
   return {
     type: REMOVE_USER_COMMENT_LIKE,
     payload: commentId
+  };
+};
+
+export const updateUserBookmark = (isBookmarked) => {
+  return {
+    type: UPDATE_USER_BOOKMARK,
+    payload: isBookmarked
   };
 };
 
@@ -93,13 +101,18 @@ export const logout = () => async (dispatch) => {
 };
 
 export const fetchCurrentStoryData = (storyId) => async (dispatch) => {
-  const response = await csrfFetch(`/api/session/story/${storyId}/rating`);
+  const response = await csrfFetch(`/api/session/story/${storyId}`);
   const data = await response.json();
   dispatch(getCurrentStoryData(data));
   return response;
 };
 
-const initialState = { user: null, currentStoryRating: null, currentStoryCommentLikes: null };
+const initialState = {
+  user: null,
+  currentStoryRating: null,
+  currentStoryCommentLikes: null,
+  currentStoryBookmarked: false
+};
 
 const sessionReducer = (state = initialState, action) => {
   let newState;
@@ -116,6 +129,7 @@ const sessionReducer = (state = initialState, action) => {
       newState = Object.assign({}, state);
       newState.currentStoryRating = action.payload.rating;
       newState.currentStoryCommentLikes = action.payload.userCommentLikes.map((obj) => obj.commentId);
+      newState.currentStoryBookmarked = action.payload.isBookmarked;
       return newState;
     case UPDATE_USER_RATING:
       newState = Object.assign({}, state);
@@ -128,6 +142,10 @@ const sessionReducer = (state = initialState, action) => {
     case REMOVE_USER_COMMENT_LIKE:
       newState = Object.assign({}, state);
       newState.currentStoryCommentLikes = state.currentStoryCommentLikes.filter((commentId) => commentId !== action.payload);
+      return newState;
+    case UPDATE_USER_BOOKMARK:
+      newState = Object.assign({}, state);
+      newState.currentStoryBookmarked = action.payload;
       return newState;
     default:
       return state;

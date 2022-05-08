@@ -1,5 +1,5 @@
 import { csrfFetch } from './csrf';
-import { updateUserRating } from './session';
+import { updateUserRating, updateUserBookmark } from './session';
 
 const CREATE_STORY = "story/create";
 const VIEW_STORY = "story/view";
@@ -148,6 +148,17 @@ export const getCategories = (categories) => async dispatch => {
       dispatch(allCategories(data.categoriesList));
     }
     return (response);
+  }
+};
+
+export const bookmarkStory = (storyId) => async dispatch => {
+  const response = await csrfFetch(`/api/stories/${storyId}/bookmark`, {
+    method: 'PUT'
+  });
+
+  if (response.ok) {
+    const { userBookmarked } = await response.json();
+    dispatch(updateUserBookmark(userBookmarked));
   }
 };
 

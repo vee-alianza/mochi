@@ -36,7 +36,7 @@ function Navigation({ isLoaded }) {
 
   return (
     <>
-      <div className="navbar__loggedId">
+      <div className="navbar__loggedIn">
         <div className="navbar__btn__loggedIn">
           <NavLink exact to="/home">Home</NavLink>
           {isLoaded && sessionLinks}
@@ -45,13 +45,21 @@ function Navigation({ isLoaded }) {
           </a>
         </div>
         <div className="navbar__btn__loggedIn">
-          <img src="https://user-images.githubusercontent.com/92604480/165881172-2fecedae-a5c5-4f5c-8084-84afd1d01e9c.svg" alt="noms" />
-          <p>noms</p>
-
-          <img src="https://user-images.githubusercontent.com/92604480/165879974-08803a96-c31c-4e2e-9fa5-268a65f62375.svg" alt="all recipes" />
-          <p>all recipes</p>
+          <div
+            className="navbar__btns"
+          >
+            <img src="https://user-images.githubusercontent.com/92604480/165881172-2fecedae-a5c5-4f5c-8084-84afd1d01e9c.svg" alt="noms" />
+            <p>noms</p>
+          </div>
+          <div
+            className="navbar__btns"
+          >
+            <img src="https://user-images.githubusercontent.com/92604480/165879974-08803a96-c31c-4e2e-9fa5-268a65f62375.svg" alt="all recipes" />
+            <p>all recipes</p>
+          </div>
 
           <div
+            className="navbar__btns"
             onClick={() => history.push("/stories/new")}
           >
             <img src="https://user-images.githubusercontent.com/92604480/165881766-efe5572f-17e9-4ef8-983e-5298f11c5f53.svg" alt="add stories" />
@@ -62,11 +70,15 @@ function Navigation({ isLoaded }) {
           className="navbar__btn__loggedIn"
           onClick={logout}
         >
-          <img src="https://user-images.githubusercontent.com/92604480/165881385-7923e4ee-80a4-4f08-9cce-1a300ec4957a.svg" alt="log out" />
-          <p>log out</p>
+          <div
+            className="navbar__btns"
+          >
+            <img src="https://user-images.githubusercontent.com/92604480/165881385-7923e4ee-80a4-4f08-9cce-1a300ec4957a.svg" alt="log out" />
+            <p>log out</p>
+          </div>
         </div>
         <div>
-          <img src="https://user-images.githubusercontent.com/92604480/165883308-5bae2d62-4598-453d-8bef-9693b98fcea3.jpg" alt="user image" />
+          <img src={sessionUser.profileImage} alt="" />
         </div>
       </div>
     </>

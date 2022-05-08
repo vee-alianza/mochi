@@ -2,3 +2,87 @@
     height: 5rem;
     width: 5rem;
 }
+
+.story__container {
+    display: flex;
+    align-items: center;
+}
+
+.story__details {
+    width: 58.8rem;
+    height: 31.2rem;
+}
+
+.story__card__container {
+    display: flex;
+    width: 100%;
+    height: 100%;
+}
+
+.tab__container {
+    display: flex;
+}
+
+.tab__container>div {
+    padding: 0 2rem;
+}
+
+.ingredients__tab {
+    margin: 0 1rem;
+}
+
+:is(.munchies__subcontainer, .ingredients__subcontainer, .instructions__subcontainer).hide {
+    display: none;
+}
+
+.munchies__tab,
+.ingredients__tab,
+.instructions__tab {
+    background-color: #48cfae;
+    color: white;
+}
+
+:is(.munchies__tab, .ingredients__tab, .instructions__tab):hover {
+    cursor: pointer;
+    background-color: #38a187;
+}
+
+:is(.munchies__tab, .ingredients__tab, .instructions__tab).selected {
+    background-color: #f3939e;
+}
+
+:is(.munchies__tab, .ingredients__tab, .instructions__tab).selected:hover {
+    background-color: #ac6b72;
+}
+
+.content__subcontainer {
+    background-color: #f3939e;
+    height: 100%;
+    color: white;
+    padding: 2rem;
+}
+
+.munchies__title {
+    display: flex;
+    justify-content: space-between;
+}
+
+.munchies__category {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    border-radius: 1rem;
+    background-color: #ed5466;
+    width: 180px;
+    height: 40px;
+}
+
+.munchies__author__details {
+    display: flex;
+    color: black;
+}
+
+.munchies__date {
+    margin: 0 3rem;
+}

@@ -30,7 +30,7 @@ function LoginForm({ setShowModal }) {
   };
 
   const demoUser = (e) => {
-    console.log('----------')
+    // console.log('----------')
     setErrors([]);
     dispatch(sessionActions.login({ credential: 'Demo-lition', password: 'password' })).catch(
       async (res) => {

@@ -1,13 +1,13 @@
 .navbar__loggedIn {
-
     border: 2px solid red;
-    width: 100vw;
+    width: 160px;
     height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
     position: sticky;
     top: 0;
+    overflow: hidden;
 }
 
 .navbar__btn__loggedIn {
@@ -16,23 +16,32 @@
     align-items: center;
 }
 
-#btn__logout {
-    border-radius: 50%;
+.navbar__btns {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-img {
-    width: 100px;
-    height: 100px;
+.navbar__btn__loggedIn>.navbar__btns {
+    height: 150px;
+}
+
+.navbar__btns>img {
+    width: 8rem;
+    height: 8rem;
+}
+
+#btn__logout {
     border-radius: 50%;
 }
 
 a {
     text-decoration: none;
-    color: black
+    color: black;
 }
 
 p {
-    font-family: 'Sansita', sans-serif;
+    font-family: "Sansita", sans-serif;
     font-weight: "bold";
     font-size: 1rem;
 }
