@@ -3,6 +3,19 @@
     flex-direction: column;
 }
 
+#comment__user__profile {
+    height: 5rem;
+    width: 5rem;
+}
+
+.comment__header {
+    padding: 2rem
+}
+
+/* .comment__post{
+
+} */
+
 .new__comment {
     width: 10rem;
     height: 2.5rem;

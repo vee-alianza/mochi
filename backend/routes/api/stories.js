@@ -3,7 +3,7 @@ const asyncHandler = require('express-async-handler');
 const { check } = require('express-validator');
 const { handleValidationErrors } = require('../../utils/validation');
 const { setTokenCookie, requireAuth } = require('../../utils/auth');
-const { User, Story, Comment, storyLike, commentLike, Category } = require('../../db/models');
+const { User, Story, Comment, storyLike, commentLike, Category, Sequelize } = require('../../db/models');
 const { Op } = require("sequelize");
 
 
@@ -24,9 +24,28 @@ router.get('/', asyncHandler(async (req, res) => {
 // GET stories by id
 router.get('/:id(\\d+)', asyncHandler(async (req, res) => {
     const { id } = req.params;
-    const story = await Story.findByPk(id, {
-        include: [User, Category, { model: Comment, include: [commentLike, User] }]
+    const storyQuery = await Story.findByPk(id, {
+        include: [
+            {
+                model: Comment,
+                include: [
+                    User
+                ]
+            },
+            User,
+            Category,
+        ]
     });
+    const story = JSON.parse(JSON.stringify(storyQuery));
+
+    for (let i = 0; i < story.Comments.length; i++) {
+        story.Comments[i].likes = await commentLike.count({
+            where: {
+                commentId: story.Comments[i].id
+            }
+        });
+    }
+
     return res.json({ story });
 }));
 

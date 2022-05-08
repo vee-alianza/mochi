@@ -123,6 +123,9 @@ const CommentForm = ({ story }) => {
                   {sessionUser.id !== comment.userId &&
                     handleLike(comment.id)
                   }
+                  <div>
+                    {`Likes: ${comment.likes}`}
+                  </div>
                 </div>
               )
             })}

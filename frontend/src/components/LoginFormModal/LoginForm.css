@@ -11,16 +11,22 @@
     border-top-left-radius: 25px;
     border-bottom-left-radius: 25px;
     background-color: white;
+    border: 2px solid red;
 }
 
-.login__right__container {
+.login__left__container {
+    background-image: url("https://user-images.githubusercontent.com/92604480/167289166-873bcb16-0f79-4fd1-ac52-0e00a2e7891b.jpg");
+    background-repeat: no-repeat;
+    background-size: 500px 500px;
     height: 33rem;
-    width: 25rem;
+    width: 30rem;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
     margin-left: 33rem;
+    border-top-right-radius: 25px;
+    border-bottom-right-radius: 25px;
 }
 
 h3 {

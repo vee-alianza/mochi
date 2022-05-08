@@ -1,5 +1,6 @@
 import { csrfFetch } from './csrf';
 import { addUserCommentLike, removeUserCommentLike } from './session';
+import { likeStoryComment, unlikeStoryComment } from './stories';
 
 const GET_COMMENT = "comment/create";
 const ADD_COMMENT = "comment/add";
@@ -74,6 +75,7 @@ export const likeComment = (commentId) => async dispatch => {
     });
     if (response.ok) {
         dispatch(addUserCommentLike(commentId));
+        dispatch(likeStoryComment(commentId));
     }
 };
 
@@ -83,6 +85,7 @@ export const unlikeComment = (commentId) => async dispatch => {
     });
     if (response.ok) {
         dispatch(removeUserCommentLike(commentId));
+        dispatch(unlikeStoryComment(commentId));
     }
 };
 

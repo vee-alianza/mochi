@@ -22,5 +22,8 @@
   "bugs": {
     "url": "https://github.com/vee-alianza/mochi/issues"
   },
-  "homepage": "https://github.com/vee-alianza/mochi#readme"
+  "homepage": "https://github.com/vee-alianza/mochi#readme",
+  "dependencies": {
+    "react-tabs": "^5.1.0"
+  }
 }

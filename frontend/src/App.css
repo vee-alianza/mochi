@@ -12,7 +12,7 @@ body {
 }
 
 .main__page {
-    border: 5px solid purple;
+    /* border: 5px solid purple; */
     display: flex;
     width: 100vw;
     height: 100vh;

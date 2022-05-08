@@ -7,6 +7,8 @@ const UPDATE_STORY = "story/edit";
 const REMOVE_STORY = "stories/remove";
 const SET_STORIES = "stories/set";
 const ADD_STORY_RATING = "stories/addRating"
+const LIKE_STORY_COMMENT = "stories/likeStoryComment";
+const UNLIKE_STORY_COMMENT = "stories/unlikeStoryComment";
 const GET_CATEGORIES = "categories/get";
 const CLEAR_CATEGORY = "category/clear";
 
@@ -47,6 +49,18 @@ const addStoryRating = (rating) => {
   return {
     type: ADD_STORY_RATING,
     payload: rating
+  };
+};
+export const likeStoryComment = (commentId) => {
+  return {
+    type: LIKE_STORY_COMMENT,
+    payload: commentId
+  };
+};
+export const unlikeStoryComment = (commentId) => {
+  return {
+    type: UNLIKE_STORY_COMMENT,
+    payload: commentId
   };
 };
 const allCategories = (categories) => {
@@ -170,11 +184,9 @@ const storyReducer = (state = initialState, action) => {
           }
         });
       }
-
       if (state.currentStory) {
         newState.currentStory = action.payload;
       }
-
       return newState;
     case REMOVE_STORY:
       newState = Object.assign({}, state);
@@ -185,7 +197,24 @@ const storyReducer = (state = initialState, action) => {
     case ADD_STORY_RATING:
       newState = Object.assign({}, state);
       newState.currentStory.rating = action.payload;
-
+      return newState;
+    case LIKE_STORY_COMMENT:
+      newState = Object.assign({}, state);
+      newState.currentStory.Comments = state.currentStory.Comments.map((comment) => {
+        if (comment.id === action.payload) {
+          comment.likes++;
+        }
+        return comment;
+      });
+      return newState;
+    case UNLIKE_STORY_COMMENT:
+      newState = Object.assign({}, state);
+      newState.currentStory.Comments = state.currentStory.Comments.map((comment) => {
+        if (comment.id === action.payload) {
+          comment.likes--;
+        }
+        return comment;
+      });
       return newState;
     case GET_CATEGORIES:
       newState = Object.assign({}, state);
