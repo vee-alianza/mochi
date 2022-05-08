@@ -1,6 +1,17 @@
-h1 {
+.splash__logo__letters {
+    display: flex;
+    /* flex-direction: row; */
+    /* justify-content: space-evenly; */
     font-family: "Montserrat";
+    font-weight: 900;
+    font-size: 6rem;
+    margin-top: 1rem;
+}
 
+img {
+    width: 10rem;
+    height: 10rem;
+    position: relative;
 }
 
 p {

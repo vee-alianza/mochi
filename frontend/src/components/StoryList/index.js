@@ -1,5 +1,6 @@
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect } from "react";
+import ReactStars from 'react-stars';
 import { NavLink, useHistory } from "react-router-dom";
 import { getStories, deleteStory } from "../../store/stories";
 import EditFormModal from "../EditFormModal";
@@ -36,6 +37,13 @@ const StoryList = () => {
 
                 <div className="story__box">
                   <p>Title: {story.title}</p>
+                </div>
+                <div>
+                  <p>Rating: {story.rating}</p>
+                  <ReactStars
+                    edit={false}
+                    value={Number(story.rating)}
+                  />
                 </div>
                 <div className="story__box">
                   <p>Category: {story.Category.title}</p>

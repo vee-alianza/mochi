@@ -1,22 +1,22 @@
 import { useSelector, useDispatch } from "react-redux";
-import { useState, useEffect } from "react";
-import { useHistory, useParams } from "react-router-dom";
-import { getStories, readStory, deleteStory } from "../../store/stories";
+import { useEffect } from "react";
+import ReactStars from "react-stars";
+import { useParams } from "react-router-dom";
+import { readStory, deleteStory } from "../../store/stories";
 import EditFormModal from "../EditFormModal";
 import CommentForm from "../CommentForm";
 import "./StoryView.css"
 
 const StoryView = () => {
   const { id } = useParams();
-  console.log(useParams());
   const dispatch = useDispatch();
   const user = useSelector(state => state.session.user);
-  const history = useHistory();
   const story = useSelector(state => state.stories.currentStory);
+  const storyRating = useSelector(state => state.stories.currentStory?.rating);
 
   useEffect(() => {
     dispatch(readStory(id));
-  }, [id]);
+  }, [id, dispatch]);
 
   const handleDelete = (storyId) => {
     dispatch(deleteStory(storyId));
@@ -30,6 +30,14 @@ const StoryView = () => {
           <div className="story__subcontainer">
             <div className="story__box">
               <p>Title: {story.title}</p>
+            </div>
+            <div>
+              <p>Rating: {story.rating}</p>
+              <ReactStars
+                value={Number(storyRating)}
+                size={24}
+                edit={false}
+              />
             </div>
             <div className="story__box">
               <p>Category: {story.Category.title} </p>
@@ -53,7 +61,7 @@ const StoryView = () => {
               <p>Image</p>
               <img src={story.image} alt="" />
             </div>
-            {story.userId === user.id &&
+            {user && story.userId === user.id &&
               <>
                 <button
                   type="button"
@@ -65,7 +73,9 @@ const StoryView = () => {
               </>
             }
           </div>
-          <CommentForm story={story} />
+          {user &&
+            <CommentForm story={story} />
+          }
         </div>}
     </>
   );

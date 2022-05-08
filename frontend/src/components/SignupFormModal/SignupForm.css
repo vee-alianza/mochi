@@ -4,9 +4,10 @@
 }
 
 .signup__container {
+
     box-shadow: 10px 5px 5px gray;
     height: 33rem;
-    width: 25rem;
+    width: 80rem;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -22,9 +23,22 @@
 
 }
 
+.signup__right__container {
+
+    height: 33rem;
+    width: 25rem;
+}
+
+.signup__left__container {
+    background-image: url(https://user-images.githubusercontent.com/92604480/165845450-6833a472-12ee-4b32-ba4e-0b2db843e9ea.jpg);
+    /* height: 33rem;
+    width: 25rem; */
+}
+
 img {
-    border-top-right-radius: 25px;
-    border-bottom-right-radius: 25px
+    /* border-top-right-radius: 25px;
+    border-bottom-right-radius: 25px */
+    position: absolute;
 }
 
 h3 {

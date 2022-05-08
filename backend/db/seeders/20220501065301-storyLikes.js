@@ -5,6 +5,7 @@ const { User, Story } = require("../models");
 module.exports = {
   up: async (queryInterface, Sequelize) => {
     const seederData = [];
+    const rating = [0.5, 1, 1.5, 2, 2.5, 3, 3.5, 4, 4.5, 5];
     const totalStory = await Story.count();
     const totalUser = await User.count();
     const totalLikes = faker.datatype.number({ min: 1, max: totalStory * totalUser });
@@ -21,7 +22,8 @@ module.exports = {
       uniqueKeys.add(key);
       seederData.push({
         storyId: tempStoryId,
-        userId: tempUserId
+        userId: tempUserId,
+        rating: faker.helpers.uniqueArray(rating, 1)[0]
       });
     }
     return queryInterface.bulkInsert('storyLikes', seederData, {});

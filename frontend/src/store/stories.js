@@ -1,10 +1,12 @@
 import { csrfFetch } from './csrf';
+import { updateUserRating } from './session';
 
 const CREATE_STORY = "story/create";
 const VIEW_STORY = "story/view";
 const UPDATE_STORY = "story/edit";
 const REMOVE_STORY = "stories/remove";
 const SET_STORIES = "stories/set";
+const ADD_STORY_RATING = "stories/addRating"
 const GET_CATEGORIES = "categories/get";
 const CLEAR_CATEGORY = "category/clear";
 
@@ -41,14 +43,18 @@ const setStory = (stories) => {
     payload: stories
   };
 };
-
+const addStoryRating = (rating) => {
+  return {
+    type: ADD_STORY_RATING,
+    payload: rating
+  };
+};
 const allCategories = (categories) => {
   return {
     type: GET_CATEGORIES,
     payload: categories
   };
 };
-
 export const clearCategory = () => {
   return {
     type: CLEAR_CATEGORY,
@@ -74,7 +80,7 @@ export const readStory = (id) => async dispatch => {
     // console.log(data);
     dispatch(viewStory(data.story));
   }
-}
+};
 
 export const newStory = (story) => async dispatch => {
   const response = await csrfFetch('/api/stories/new', {
@@ -84,7 +90,7 @@ export const newStory = (story) => async dispatch => {
   const stories = await response.json();
   dispatch(createStory(stories));
   return (stories);
-}
+};
 
 export const editStory = (story, id) => async dispatch => {
   const response = await csrfFetch(`/api/stories/edit/${id}`, {
@@ -93,7 +99,19 @@ export const editStory = (story, id) => async dispatch => {
   })
   const data = await response.json();
   dispatch(updateStory(data.result));
-}
+};
+
+export const rateStory = (storyId, rating) => async dispatch => {
+  const response = await csrfFetch(`/api/stories/${storyId}/rate`, {
+    method: 'PUT',
+    body: JSON.stringify({ rating })
+  });
+  if (response.ok) {
+    const data = await response.json();
+    dispatch(addStoryRating(data.rating));
+    dispatch(updateUserRating(rating));
+  }
+};
 
 export const deleteStory = (storyId) => async dispatch => {
   const response = await csrfFetch(`/api/stories/${storyId}`, {
@@ -163,6 +181,11 @@ const storyReducer = (state = initialState, action) => {
       newState.allStories = state.allStories.filter(story => {
         return story.id !== action.payload;
       });
+      return newState;
+    case ADD_STORY_RATING:
+      newState = Object.assign({}, state);
+      newState.currentStory.rating = action.payload;
+
       return newState;
     case GET_CATEGORIES:
       newState = Object.assign({}, state);

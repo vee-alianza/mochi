@@ -13,7 +13,7 @@ const router = express.Router();
 // GET stories
 router.get('/', asyncHandler(async (req, res) => {
     const stories = await Story.findAll({
-        order: [["createdAt", "DESC"]],
+        order: [["id", "DESC"]],
         include: [Category]
     });
     return res.json({
@@ -25,7 +25,7 @@ router.get('/', asyncHandler(async (req, res) => {
 router.get('/:id(\\d+)', asyncHandler(async (req, res) => {
     const { id } = req.params;
     const story = await Story.findByPk(id, {
-        include: [User, Category, storyLike, { model: Comment, include: [commentLike, User] }]
+        include: [User, Category, { model: Comment, include: [commentLike, User] }]
     });
     return res.json({ story });
 }));
@@ -74,6 +74,45 @@ router.post('/new', requireAuth, asyncHandler(async (req, res) => {
 
         return res.json({ story });
 
+    } catch (error) {
+        res.status(500);
+        res.send(`${error}`);
+    }
+}));
+
+// PUT stories
+router.put('/:id(\\d+)/rate', requireAuth, asyncHandler(async (req, res) => {
+    const { id } = req.params;
+    const { rating } = req.body;
+    const userId = req.user.id;
+
+    try {
+        let storyRating = await storyLike.findOne({
+            where: {
+                storyId: id,
+                userId
+            }
+        });
+
+        if (!storyRating) {
+            storyRating = await storyLike.create({
+                userId,
+                storyId: id,
+                rating
+            });
+        } else {
+            storyRating.rating = rating;
+            await storyRating.save();
+        }
+
+        const story = await Story.findByPk(id, { include: [storyLike] });
+        const parsedRatings = story.storyLikes.map((rateObj) => Number(rateObj.rating));
+        const ratingSum = parsedRatings.reduce((prev, current) => prev + current);
+
+        story.rating = (ratingSum / parsedRatings.length).toFixed(2);
+        await story.save();
+
+        return res.json({ rating: story.rating });
     } catch (error) {
         res.status(500);
         res.send(`${error}`);

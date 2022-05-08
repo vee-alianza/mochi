@@ -5,13 +5,15 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
       type: DataTypes.INTEGER,
       references: { model: "Users" }
-
     },
     storyId: {
       allowNull: false,
       type: DataTypes.INTEGER,
       references: { model: "Stories" }
-
+    },
+    rating: {
+      allowNull: false,
+      type: DataTypes.STRING(4)
     }
   }, {});
   storyLike.associate = function (models) {

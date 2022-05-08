@@ -31,6 +31,10 @@ module.exports = {
       image: {
         type: Sequelize.STRING(255)
       },
+      rating: {
+        type: Sequelize.STRING(4),
+        defaultValue: "0"
+      },
       userId: {
         allowNull: false,
         type: Sequelize.INTEGER,

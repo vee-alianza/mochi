@@ -18,6 +18,10 @@ module.exports = {
         type: Sequelize.INTEGER,
         references: { model: "Stories" }
       },
+      rating: {
+        allowNull: false,
+        type: Sequelize.STRING(4)
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE,

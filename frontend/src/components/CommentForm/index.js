@@ -3,15 +3,19 @@ import { useState, useEffect } from "react";
 import { useHistory, useParams } from "react-router-dom";
 import { createComment, postComment, deleteComment } from "../../store/comments";
 import "./comments.css"
+import ReactStars from "react-stars";
+import { fetchUserRating } from "../../store/session";
+import { rateStory } from "../../store/stories";
 
 const CommentForm = ({ story }) => {
-  const { id } = useParams();
   const dispatch = useDispatch();
-  const [content, setContent] = useState("");
-  const [errors, setErrors] = useState([]);
+  const history = useHistory();
   const comments = useSelector(state => Object.values(state.comments));
   const sessionUser = useSelector(state => state.session.user);
-  const history = useHistory();
+  const currentUserRating = useSelector(state => state.session.currentStoryRating);
+  const [content, setContent] = useState("");
+  const [errors, setErrors] = useState([]);
+  const [userRating, setUserRating] = useState(0);
   // console.log(comments, "-----CommentForm component-----")
 
   // if (!sessionUser) {
@@ -22,6 +26,13 @@ const CommentForm = ({ story }) => {
     dispatch(createComment());
   }, [dispatch]);
 
+  useEffect(() => {
+    if (!currentUserRating) {
+      dispatch(fetchUserRating(story.id));
+    } else {
+      setUserRating(Number(currentUserRating));
+    }
+  }, [dispatch, currentUserRating, story.id]);
 
   const handleDelete = async (e, id) => {
     e.preventDefault();
@@ -32,7 +43,7 @@ const CommentForm = ({ story }) => {
     e.preventDefault();
     const comment = {
       userId: sessionUser.id,
-      storyId: id,
+      storyId: story.id,
       content
     };
 
@@ -46,14 +57,25 @@ const CommentForm = ({ story }) => {
     // await dispatch(createComment());
 
     if (errors.length && newestComment) {
-      history.push(`/stories/${id}`)
+      history.push(`/stories/${story.id}`)
     };
+  };
+
+  const handleRating = (userRating) => {
+    dispatch(rateStory(story.id, userRating));
   };
 
   return (
     <>
       <div className="comment__container">
         <h4>COMMENT BOX</h4>
+        {story.userId !== sessionUser.id && currentUserRating &&
+          <ReactStars
+            size={36}
+            value={userRating}
+            onChange={handleRating}
+          />
+        }
         <div className="comment__box">
           <div className="comments__list">
             {comments?.map((comment) => {

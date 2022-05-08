@@ -29,7 +29,15 @@ module.exports = (sequelize, DataTypes) => {
       validate: {
         len: [60, 60]
       }
-    }
+    },
+    about: {
+      allowNull: false,
+      type: DataTypes.STRING.BINARY,
+    },
+    profileImage: {
+      allowNull: false,
+      type: DataTypes.STRING.BINARY,
+    },
   },
     {
       defaultScope: {

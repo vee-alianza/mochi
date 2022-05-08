@@ -2,8 +2,8 @@ const express = require('express');
 const asyncHandler = require('express-async-handler');
 const { check } = require('express-validator');
 const { handleValidationErrors } = require('../../utils/validation');
-const { setTokenCookie, restoreUser } = require('../../utils/auth');
-const { User } = require('../../db/models');
+const { setTokenCookie, restoreUser, requireAuth } = require('../../utils/auth');
+const { User, storyLike } = require('../../db/models');
 
 const router = express.Router();
 
@@ -64,6 +64,24 @@ router.get(
             });
         } else return res.json({});
     }
+);
+
+router.get(
+    '/story/:storyId(\\d+)/rating',
+    requireAuth,
+    asyncHandler(async (req, res) => {
+        const { storyId } = req.params;
+        const userId = req.user.id;
+        const ratingObj = await storyLike.findOne({
+            where: {
+                storyId,
+                userId
+            }
+        });
+        if (ratingObj) {
+            return res.json({ rating: ratingObj.rating });
+        } else return res.json({ rating: "0" });
+    })
 );
 
 module.exports = router;

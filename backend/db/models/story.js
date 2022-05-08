@@ -25,6 +25,9 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
       type: DataTypes.STRING(255)
     },
+    rating: {
+      type: DataTypes.STRING(4)
+    },
     userId: {
       allowNull: false,
       type: DataTypes.INTEGER,

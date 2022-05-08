@@ -22,6 +22,14 @@ module.exports = {
         allowNull: false,
         type: Sequelize.STRING.BINARY,
       },
+      about: {
+        allowNull: false,
+        type: Sequelize.STRING.BINARY,
+      },
+      profileImage: {
+        allowNull: false,
+        type: Sequelize.STRING.BINARY,
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE,

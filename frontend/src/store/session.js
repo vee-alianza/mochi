@@ -2,6 +2,8 @@ import { csrfFetch } from './csrf';
 
 const SET_USER = 'session/setUser';
 const REMOVE_USER = 'session/removeUser';
+const GET_USER_RATING = 'session/getUserRating';
+const UPDATE_USER_RATING = 'session/updateUserRating';
 
 const setUser = (user) => {
   return {
@@ -13,6 +15,20 @@ const setUser = (user) => {
 const removeUser = () => {
   return {
     type: REMOVE_USER,
+  };
+};
+
+const getUserRating = (rating) => {
+  return {
+    type: GET_USER_RATING,
+    payload: rating
+  };
+};
+
+export const updateUserRating = (rating) => {
+  return {
+    type: UPDATE_USER_RATING,
+    payload: rating
   };
 };
 
@@ -60,7 +76,14 @@ export const logout = () => async (dispatch) => {
   return response;
 };
 
-const initialState = { user: null };
+export const fetchUserRating = (storyId) => async (dispatch) => {
+  const response = await csrfFetch(`/api/session/story/${storyId}/rating`);
+  const data = await response.json();
+  dispatch(getUserRating(data.rating));
+  return response;
+};
+
+const initialState = { user: null, currentStoryRating: null };
 
 const sessionReducer = (state = initialState, action) => {
   let newState;
@@ -72,6 +95,16 @@ const sessionReducer = (state = initialState, action) => {
     case REMOVE_USER:
       newState = Object.assign({}, state);
       newState.user = null;
+      return newState;
+    case GET_USER_RATING:
+      newState = Object.assign({}, state);
+      newState.currentStoryRating = action.payload;
+
+      return newState;
+    case UPDATE_USER_RATING:
+      newState = Object.assign({}, state);
+      newState.currentStoryRating = action.payload;
+
       return newState;
     default:
       return state;

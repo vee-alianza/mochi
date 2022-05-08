@@ -16,7 +16,9 @@ import './SplashPage.css';
 const SplashPage = (isLoaded) => {
     return (
         <>
-            <h1>Thyme is money!</h1>
+            <div className="splash__logo">
+                <h1 className="splash__logo__letters">m<img src="https://user-images.githubusercontent.com/92604480/167276377-bbafa200-e4d7-497b-9796-dc87f8c7294a.png" align="left" />chi</h1>
+            </div>
             <div className="navbar__splash">
                 {/* <div className='login__container'>
                     <LoginFormModal />
