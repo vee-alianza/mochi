@@ -53,10 +53,10 @@ function LoginForm({ setShowModal }) {
   return (
     <>
       <div className="login__container">
-        <div className="login__right__container">
-          <div className="login__left__container">
-            <h3>Welcome back!</h3>
+        <div className="login__left__container">
+          <div className="login__right__container">
             <img src="https://user-images.githubusercontent.com/92604480/167227290-6b43766a-6a0b-4c62-a082-d7ea15b8fec4.png" alt="signup__right__container" width="150px" />
+            <h3>Welcome back!</h3>
             <form className="login__form"
               onSubmit={handleSubmit}>
               <ul>

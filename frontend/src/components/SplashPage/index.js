@@ -2,14 +2,13 @@ import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 // import { useSelector } from 'react-redux';
 // import ProfileButton from '../Navigation/ProfileButton';
-// import LoginFormModal from '../LoginFormModal';
-// import SignupFormModal from '../SignupFormModal';
+
 
 // import { useEffect, useState } from 'react';
 // import './SplashPage.css'
 
 // import { Modal } from '../../context/Modal';
-// import LoginForm from '../LoginFormModal/LoginForm';
+import LoginForm from '../LoginFormModal/LoginForm';
 import './SplashPage.css';
 
 
@@ -17,18 +16,25 @@ const SplashPage = (isLoaded) => {
     return (
         <>
             <div className="splash__logo">
-                <h1 className="splash__logo__letters">m<img src="https://user-images.githubusercontent.com/92604480/167276377-bbafa200-e4d7-497b-9796-dc87f8c7294a.png" align="left" />chi</h1>
-            </div>
-            <div className="navbar__splash">
-                {/* <div className='login__container'>
-                    <LoginFormModal />
-                    <SignupFormModal />
-                </div> */}
-                {/* <div className='signup__container'>
+                <div className="splash__logo__letters">m<img src="https://user-images.githubusercontent.com/92604480/167276377-bbafa200-e4d7-497b-9796-dc87f8c7294a.png" align="left" id="splash__logo" />chi</div>
+                <div className='splash__about'>
+                    <h1 className="">W</h1>
+                    <h2>here's</h2>
+                    <h1>T</h1>
+                    <h2>he</h2>
+                    <h1>F</h1>
+                    <h2>ood?</h2>
+                    <div className="splash__navbar">
 
-                </div> */}
-                <div></div>
+                        <div>
 
+                        </div>
+
+                    </div>
+                </div>
+                <p>
+                    Share and discover culinary experiences that awakens all senses with Mochi!
+                </p>
             </div>
         </>
     )

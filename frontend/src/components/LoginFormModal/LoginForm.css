@@ -11,20 +11,17 @@
     border-top-left-radius: 25px;
     border-bottom-left-radius: 25px;
     background-color: white;
-    border: 2px solid red;
 }
 
-.login__left__container {
-    background-image: url("https://user-images.githubusercontent.com/92604480/167289166-873bcb16-0f79-4fd1-ac52-0e00a2e7891b.jpg");
-    background-repeat: no-repeat;
-    background-size: 500px 500px;
+.login__right__container {
+    background-color: white;
     height: 33rem;
     width: 30rem;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
-    margin-left: 33rem;
+    margin-left: 30rem;
     border-top-right-radius: 25px;
     border-bottom-right-radius: 25px;
 }
@@ -45,6 +42,14 @@ h3 {
 .login__btn__container {
     display: flex;
     justify-content: space-evenly;
+}
+
+.login__left__container {
+    background-image: url("https://user-images.githubusercontent.com/92604480/167290035-dc18bdb6-31b4-4185-be36-3e753f74d911.jpg");
+    border-top-right-radius: 25px;
+    border-bottom-right-radius: 25px;
+    border-top-left-radius: 25px;
+    border-bottom-left-radius: 25px;
 }
 
 #login__btn {
