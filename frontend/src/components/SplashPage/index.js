@@ -26,15 +26,15 @@ const SplashPage = (isLoaded) => {
                     <h2>ood?</h2>
                     <div className="splash__navbar">
 
-                        <div>
-
-                        </div>
 
                     </div>
                 </div>
                 <p>
                     Share and discover culinary experiences that awakens all senses with Mochi!
                 </p>
+                <div className="story__images">
+
+                </div>
             </div>
         </>
     )

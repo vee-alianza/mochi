@@ -3,7 +3,7 @@ const asyncHandler = require('express-async-handler');
 const { check } = require('express-validator');
 const { handleValidationErrors } = require('../../utils/validation');
 const { setTokenCookie, requireAuth } = require('../../utils/auth');
-const { User, Story, Comment, storyLike, commentLike, Category, Sequelize } = require('../../db/models');
+const { User, Story, Comment, storyLike, commentLike, Category, Bookmark } = require('../../db/models');
 const { Op } = require("sequelize");
 
 
@@ -132,6 +132,37 @@ router.put('/:id(\\d+)/rate', requireAuth, asyncHandler(async (req, res) => {
         await story.save();
 
         return res.json({ rating: story.rating });
+    } catch (error) {
+        res.status(500);
+        res.send(`${error}`);
+    }
+}));
+
+// PUT stories
+router.put('/:id(\\d+)/bookmark', requireAuth, asyncHandler(async (req, res) => {
+    const { id } = req.params;
+    const userId = req.user.id;
+
+    try {
+        let userBookmarked = false;
+        const bookmark = await Bookmark.findOne({
+            where: {
+                userId,
+                storyId: id
+            }
+        });
+
+        if (!bookmark) {
+            await Bookmark.create({
+                userId,
+                storyId: id
+            });
+            userBookmarked = true;
+        } else {
+            await bookmark.destroy();
+        }
+
+        return res.json({ userBookmarked });
     } catch (error) {
         res.status(500);
         res.send(`${error}`);

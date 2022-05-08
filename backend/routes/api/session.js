@@ -3,7 +3,7 @@ const asyncHandler = require('express-async-handler');
 const { check } = require('express-validator');
 const { handleValidationErrors } = require('../../utils/validation');
 const { setTokenCookie, restoreUser, requireAuth } = require('../../utils/auth');
-const { User, storyLike, commentLike, Comment, Story } = require('../../db/models');
+const { User, storyLike, commentLike, Comment, Story, Bookmark } = require('../../db/models');
 
 const router = express.Router();
 
@@ -67,7 +67,7 @@ router.get(
 );
 
 router.get(
-    '/story/:storyId(\\d+)/rating',
+    '/story/:storyId(\\d+)',
     requireAuth,
     asyncHandler(async (req, res) => {
         const { storyId } = req.params;
@@ -92,10 +92,16 @@ router.get(
                 userId
             }
         });
+        const bookmarkedStory = await Bookmark.findOne({
+            where: {
+                userId,
+                storyId
+            }
+        });
 
         if (ratingObj) {
-            return res.json({ rating: ratingObj.rating, userCommentLikes: commentLikes });
-        } else return res.json({ rating: "0", userCommentLikes: commentLikes });
+            return res.json({ rating: ratingObj.rating, userCommentLikes: commentLikes, isBookmarked: !!bookmarkedStory });
+        } else return res.json({ rating: "0", userCommentLikes: commentLikes, isBookmarked: !!bookmarkedStory });
     })
 );
 

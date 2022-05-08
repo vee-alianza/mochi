@@ -1,3 +1,8 @@
+body {
+    display: flex;
+    justify-content: center;
+}
+
 #splash__logo {
     animation: bounce 0.5s;
     animation-direction: alternate;
@@ -44,4 +49,37 @@ h1 {
 
 p {
     font-family: 'Sansita', sans-serif;
+}
+
+.story__images {
+    height: 50vh;
+    width: 50vh;
+    margin: 5vh 5vw;
+    background-color: red;
+    /* background-position: center; */
+    background-size: cover;
+
+    animation: image 7s infinite alternate;
+}
+
+@keyframes image {
+    0% {
+
+        background-image: url(https://user-images.githubusercontent.com/92604480/167317571-9996e3ca-015b-4fd5-9373-8ec6c0dd70b5.jpg);
+    }
+
+    25% {
+        background-image: url(https://user-images.githubusercontent.com/92604480/167317994-60cfd43d-f703-4c6b-bbb9-c00eb216b895.jpg);
+
+    }
+
+    50% {
+
+        background-image: url(https://user-images.githubusercontent.com/92604480/167317975-7627b8bb-98b9-4580-9ecd-aa196931ff04.jpg);
+    }
+
+    100% {
+        background-image: url(https://user-images.githubusercontent.com/92604480/167318021-741ae2d4-9303-4f6b-88f4-e3fa46755a64.jpg);
+
+    }
 }

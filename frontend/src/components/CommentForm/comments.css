@@ -9,23 +9,31 @@
 }
 
 .comment__header {
-    padding: 2rem
+    padding: 2rem;
 }
 
 /* .comment__post{
 
-} */
+  } */
 
 .new__comment {
     width: 10rem;
     height: 2.5rem;
     border: none;
     border-radius: 0.8rem;
-    background-color: #FA4C6F;
+    background-color: #fa4c6f;
     color: white;
     font-family: "Sansita";
     font-size: 1.3rem;
     font-weight: bold;
     flex-direction: row;
     margin: 1rem;
+}
+
+.comment__container {
+    border: 1px solid red;
+    overflow-y: scroll;
+    width: 450px;
+    height: 880px;
+    bottom: 0;
 }
