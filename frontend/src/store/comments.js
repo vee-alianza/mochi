@@ -1,29 +1,13 @@
 import { csrfFetch } from './csrf';
 import { addUserCommentLike, removeUserCommentLike } from './session';
-import { likeStoryComment, unlikeStoryComment } from './stories';
+import { likeStoryComment, unlikeStoryComment, addStoryComment, removeStoryComment } from './stories';
 
 const GET_COMMENT = "comment/create";
-const ADD_COMMENT = "comment/add";
-const REMOVE_COMMENT = "comment/remove";
 
 const getComment = (comments) => {
     return {
         type: GET_COMMENT,
         payload: comments
-    };
-};
-
-const addComment = (comment) => {
-    return {
-        type: ADD_COMMENT,
-        payload: comment
-    };
-};
-
-const removeComment = (id) => {
-    return {
-        type: REMOVE_COMMENT,
-        payload: id
     };
 };
 
@@ -47,13 +31,14 @@ export const postComment = (comment) => async dispatch => {
         body: JSON.stringify(comment)
     });
     if (response.ok) {
-        const newComment = await response.json();
-        dispatch(addComment(newComment));
-        return (newComment);
+        const data = await response.json();
+        console.log(data);
+        dispatch(addStoryComment(data.newComment));
     } else {
         const error = await response.json();
         Promise.reject(error.errors);
     }
+    return response;
 };
 
 export const deleteComment = (commentId) => async dispatch => {
@@ -64,7 +49,7 @@ export const deleteComment = (commentId) => async dispatch => {
     if (response.ok) {
         // const remove = await response.json();
         // dispatch(removeComment(remove));
-        dispatch(removeComment(commentId));
+        dispatch(removeStoryComment(commentId));
     }
     return (response);
 };
@@ -100,17 +85,6 @@ const commentReducer = (state = initialState, action) => {
                 newState[comment.id] = comment;
             });
             // console.log(action, "------get comment-----")
-            return newState;
-        case ADD_COMMENT:
-            newState = {
-                ...state,
-                [action.payload.id]: action.payload,
-            };
-            return newState;
-        case REMOVE_COMMENT:
-            newState = { ...state };
-            // console.log(action.payload, "------remove comment-----")
-            delete newState[action.payload];
             return newState;
         default:
             return state

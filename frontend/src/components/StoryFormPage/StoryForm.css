@@ -1,8 +1,19 @@
+.recipe__create__box {
+    box-shadow: 10px 5px 5px gray;
+    height: 20rem;
+    width: 60rem;
+    border-top-right-radius: 25px;
+    border-bottom-right-radius: 25px;
+    border-top-left-radius: 25px;
+    border-bottom-left-radius: 25px;
+    background-color: white;
+}
+
 h3 {
     justify-content: left;
     align-items: center;
-    /* margin-left: 20rem;
-    margin-top: 1.5rem; */
+    margin-left: 20rem;
+    margin-top: 1.5rem;
 }
 
 .recipe__container {
@@ -11,7 +22,7 @@ h3 {
     /* border: 2px solid rgb(255, 0, 187); */
     width: calc(100vw - 15rem);
     display: flex;
-    margin-left: 6rem;
+    /* margin-left: 1rem; */
     margin-top: 2rem;
 }
 
@@ -25,7 +36,7 @@ h3 {
 .storyform__left_container {
     border: 2px rgb(0, 255, 8);
     width: 30%;
-    margin-left: 10rem;
+    margin-left: 5rem;
 }
 
 .storyform__right_container {
@@ -49,9 +60,10 @@ h3 {
     background-color: #24A0ED;
     border-radius: 25px;
     border-color: #24A0ED;
-    height: 4rem;
-    width: 8rem;
-    margin-left: 5rem;
+    height: 3rem;
+    width: 7rem;
+    margin-right: 1rem;
+    margin-left: 2rem;
 }
 
 .btn__publish {
@@ -63,9 +75,10 @@ h3 {
     background-color: #00AB66;
     border-radius: 25px;
     border-color: #00AB66;
-    height: 4rem;
-    width: 8rem;
-    margin-left: 5rem;
+    height: 3rem;
+    width: 7rem;
+    /* margin-right: 2rem; */
+    /* margin-left: 1rem; */
 
 
 }

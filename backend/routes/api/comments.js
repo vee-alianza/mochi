@@ -48,8 +48,15 @@ router.post('/new', requireAuth, asyncHandler(async (req, res) => {
     content,
     userId,
   };
-  const newComment = await Comment.create(comment)
-  return res.json(newComment);
+  const createdComment = await Comment.create(comment);
+  const queryComment = await Comment.findByPk(createdComment.id, {
+    include: [User]
+  });
+  const newComment = JSON.parse(JSON.stringify(queryComment));
+
+  newComment.likes = 0;
+
+  return res.json({ newComment });
 }));
 
 // POST comment

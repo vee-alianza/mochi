@@ -54,7 +54,9 @@ const CommentForm = ({ story }) => {
         if (data && data.errors) {
           setErrors(data.errors);
         }
-      })
+      });
+
+    setContent("");
     // await dispatch(createComment());
 
     if (errors.length && newestComment) {
@@ -143,6 +145,7 @@ const CommentForm = ({ story }) => {
             <input
               type="text"
               placeholder='Penne for your thoughts'
+              required
               onChange={(e) => setContent(e.target.value)}
               value={content}
               className="comment__input__box"

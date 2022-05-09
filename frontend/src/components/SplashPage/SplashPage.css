@@ -51,11 +51,16 @@ p {
     font-family: 'Sansita', sans-serif;
 }
 
+.story__images__container {
+    display: flex;
+}
+
 .story__images {
-    height: 50vh;
-    width: 50vh;
+    box-shadow: 55px -16px #f25e74;
+    height: 60vh;
+    width: 60vh;
     margin: 5vh 5vw;
-    background-color: red;
+    background-color: #ff00cc;
     /* background-position: center; */
     background-size: cover;
 

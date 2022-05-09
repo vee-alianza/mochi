@@ -1,7 +1,6 @@
 .main__container {
     border: 2px solid blue;
-    /* width: calc(100vw - 15rem); */
-
+    width: calc(100vw - 10rem);
     display: flex;
 }
 

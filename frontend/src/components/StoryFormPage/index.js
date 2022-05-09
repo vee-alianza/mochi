@@ -146,7 +146,7 @@ const StoryForm = ({ props }) => {
 
   return (
     <>
-      <div >
+      <div className="recipe__create__box">
         <h3>Carbs look great on you!</h3>
         <ul>
           {errors.map((error, idx) => (
@@ -220,7 +220,7 @@ const StoryForm = ({ props }) => {
               <label
                 htmlFor="story"
               >
-                Recipe:
+                Munchies:
               </label>
               <textarea
                 name="recipe__story"

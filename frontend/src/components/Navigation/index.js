@@ -77,7 +77,7 @@ function Navigation({ isLoaded }) {
             <p>log out</p>
           </div>
         </div>
-        <div>
+        <div className="navbar__profile__image">
           <img src={sessionUser.profileImage} alt="" />
         </div>
       </div>

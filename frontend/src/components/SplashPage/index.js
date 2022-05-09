@@ -19,9 +19,9 @@ const SplashPage = (isLoaded) => {
                 <div className="splash__logo__letters">m<img src="https://user-images.githubusercontent.com/92604480/167276377-bbafa200-e4d7-497b-9796-dc87f8c7294a.png" align="left" id="splash__logo" />chi</div>
                 <div className='splash__about'>
                     <h1 className="">W</h1>
-                    <h2>here's</h2>
+                    <h2>here's </h2>
                     <h1>T</h1>
-                    <h2>he</h2>
+                    <h2>he </h2>
                     <h1>F</h1>
                     <h2>ood?</h2>
                     <div className="splash__navbar">
@@ -32,7 +32,10 @@ const SplashPage = (isLoaded) => {
                 <p>
                     Share and discover culinary experiences that awakens all senses with Mochi!
                 </p>
-                <div className="story__images">
+                <div className="story__images__container">
+
+                    <div className="story__images">
+                    </div>
 
                 </div>
             </div>

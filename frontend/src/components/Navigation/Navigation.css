@@ -1,13 +1,12 @@
 .navbar__loggedIn {
     border: 2px solid red;
-    width: 160px;
+    width: 10rem;
     height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
     position: sticky;
     top: 0;
-    overflow: hidden;
 }
 
 .navbar__btn__loggedIn {
@@ -29,6 +28,17 @@
 .navbar__btns>img {
     width: 8rem;
     height: 8rem;
+}
+
+.navbar__profile__image {
+    display: flex;
+    justify-content: center;
+}
+
+.navbar__profile__image>img {
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
 }
 
 #btn__logout {

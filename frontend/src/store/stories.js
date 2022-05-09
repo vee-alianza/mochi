@@ -11,6 +11,8 @@ const LIKE_STORY_COMMENT = "stories/likeStoryComment";
 const UNLIKE_STORY_COMMENT = "stories/unlikeStoryComment";
 const GET_CATEGORIES = "categories/get";
 const CLEAR_CATEGORY = "category/clear";
+const ADD_STORY_COMMENT = "stories/addStoryComment";
+const REMOVE_STORY_COMMENT = "stories/removeStoryComment";
 
 
 // Actions
@@ -72,8 +74,20 @@ const allCategories = (categories) => {
 export const clearCategory = () => {
   return {
     type: CLEAR_CATEGORY,
-  }
-}
+  };
+};
+export const addStoryComment = (comment) => {
+  return {
+    type: ADD_STORY_COMMENT,
+    payload: comment
+  };
+};
+export const removeStoryComment = (commentId) => {
+  return {
+    type: REMOVE_STORY_COMMENT,
+    payload: commentId
+  };
+};
 
 // Thunks (Async Actions)
 // Thunk middleware = dispatch
@@ -185,7 +199,6 @@ const storyReducer = (state = initialState, action) => {
       return newState;
     case UPDATE_STORY:
       newState = Object.assign({}, state);
-
       if (state.allStories) {
         newState.allStories = state.allStories.map((story) => {
           if (story.id === action.payload.id) {
@@ -235,7 +248,14 @@ const storyReducer = (state = initialState, action) => {
       newState = Object.assign({}, state);
       newState.categories = null;
       return newState;
-
+    case ADD_STORY_COMMENT:
+      newState = Object.assign({}, state);
+      newState.currentStory.Comments = [...state.currentStory.Comments, action.payload];
+      return newState;
+    case REMOVE_STORY_COMMENT:
+      newState = Object.assign({}, state);
+      newState.currentStory.Comments = state.currentStory.Comments.filter((comment) => comment.id !== action.payload);
+      return newState;
     default:
       return state;
   }
