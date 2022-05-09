@@ -1,7 +1,6 @@
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect } from "react";
-import ReactStars from "react-stars";
-import { useParams } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 import { readStory, deleteStory } from "../../store/stories";
 import EditFormModal from "../EditFormModal";
 import CommentForm from "../CommentForm";
@@ -11,6 +10,7 @@ import StoryCard from "./StoryCard";
 const StoryView = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
+  const history = useHistory();
   const user = useSelector(state => state.session.user);
   const story = useSelector(state => state.stories.currentStory);
   const storyRating = useSelector(state => state.stories.currentStory?.rating);
@@ -21,6 +21,7 @@ const StoryView = () => {
 
   const handleDelete = (storyId) => {
     dispatch(deleteStory(storyId));
+    history.push("/home");
   };
 
   return (

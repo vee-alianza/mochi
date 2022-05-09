@@ -1,7 +1,7 @@
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect } from "react";
 import ReactStars from 'react-stars';
-import { NavLink, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { getStories, deleteStory } from "../../store/stories";
 import EditFormModal from "../EditFormModal";
 import "./StoryList.css"
@@ -12,7 +12,6 @@ const StoryList = () => {
   const user = useSelector(state => state.session.user);
   const history = useHistory();
   const allStories = useSelector(state => state.stories.allStories);
-  // console.log(allStories, "-----StoryList component-----")
 
   useEffect(() => {
     dispatch(getStories());
@@ -32,9 +31,8 @@ const StoryList = () => {
               <div
                 key={story.id}
                 className="story__subcontainer"
-                onClick={() => history.push(`/stories/${story.id}`)}
+                onClick={() => history.push(`/stories/view/${story.id}`)}
               >
-
                 <div className="story__box">
                   <p>Title: {story.title}</p>
                 </div>
@@ -55,8 +53,11 @@ const StoryList = () => {
                   <p> Story: </p>
                   {story.recipe}
                 </div>
+                <div>
+                  <p>{`Username: ${story.User.username}`}</p>
+                </div>
                 <div className="story__box">
-                  <img src={story.image} alt="" />
+                  <img src={story.User.profileImage} alt="" />
                 </div>
                 {user && story.userId === user.id &&
                   <>
@@ -69,7 +70,6 @@ const StoryList = () => {
                     <EditFormModal storyId={story.id} />
                   </>
                 }
-
               </div>
             )
           })

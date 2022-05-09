@@ -25,6 +25,16 @@
     height: 150px;
 }
 
+.navbar__btn__loggedIn>a>img {
+    width: 8rem;
+    height: 8rem;
+}
+
+:is(.navbar__btn__loggedIn > a, .navbar__btns):hover {
+    background-color: rgba(128, 128, 128, 0.137);
+    cursor: pointer;
+}
+
 .navbar__btns>img {
     width: 8rem;
     height: 8rem;

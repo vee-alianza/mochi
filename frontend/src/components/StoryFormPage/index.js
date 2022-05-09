@@ -19,31 +19,24 @@ const StoryForm = ({ props }) => {
   const currentStory = useSelector(state => state.stories.currentStory);
   const categories = useSelector(state => state.stories.categories);
 
-  console.log(props, "PROPS")
-
-  const setData = () => {
-    setTitle(currentStory.title);
-    setCategory(currentStory.Category.title);
-    setTimeframe(currentStory.timeframe);
-    setStory(currentStory.recipe);
-    setIngredients(currentStory.ingredients);
-    setInstructions(currentStory.instructions);
-    setImage(currentStory.image);
-  }
-
   useEffect(() => {
     if (!currentStory && edit) {
       dispatch(readStory(storyId));
     } else if (edit) {
-      setData();
+      setTitle(currentStory.title);
+      setCategory(currentStory.Category.title);
+      setTimeframe(currentStory.timeframe);
+      setStory(currentStory.recipe);
+      setIngredients(currentStory.ingredients);
+      setInstructions(currentStory.instructions);
+      setImage(currentStory.image);
     }
-  }, [storyId, currentStory]);
+  }, [storyId, currentStory, dispatch, edit]);
 
   useEffect(() => {
     if (title.length) {
       setErrors(prevErrors => prevErrors.filter(error => error !== "Title must be 5 or more characters"));
     }
-    // console.log(category, "CATEGORY")
     if (category.length) {
       setErrors(prevErrors => prevErrors.filter(error => error !== "Please enter category"));
     }
@@ -51,13 +44,16 @@ const StoryForm = ({ props }) => {
       setErrors(prevErrors => prevErrors.filter(error => error !== "Please enter timeframe"));
     }
     if (story.length) {
-      setErrors(prevErrors => prevErrors.filter(error => error !== "Need story"));
+      setErrors(prevErrors => prevErrors.filter(error => error !== "Please enter your munchies"));
     }
     if (ingredients.length) {
-      setErrors(prevErrors => prevErrors.filter(error => error !== "Write ingredients"));
+      setErrors(prevErrors => prevErrors.filter(error => error !== "Please enter ingredients"));
     }
     if (instructions.length) {
-      setErrors(prevErrors => prevErrors.filter(error => error !== "Write instructions"));
+      setErrors(prevErrors => prevErrors.filter(error => error !== "Please enter instructions"));
+    }
+    if (image.length) {
+      setErrors(prevErrors => prevErrors.filter(error => error !== "Please provide an image url"));
     }
     // setErrors(errors);
   }, [title, timeframe, story, ingredients, instructions, image, category]);
@@ -66,7 +62,7 @@ const StoryForm = ({ props }) => {
     if (!category.length) {
       dispatch(clearCategory());
     }
-  }, [category]);
+  }, [category, dispatch]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -77,19 +73,22 @@ const StoryForm = ({ props }) => {
     }
     // console.log(category, "CATEGORY")
     if (!category.length) {
-      errors.push("Please enter category")
+      errors.push("Please select a category")
     }
     if (!timeframe.length) {
       errors.push("Please enter timeframe")
     }
     if (!story.length) {
-      errors.push("Need story")
+      errors.push("Please enter your munchies")
     }
     if (!ingredients.length) {
-      errors.push("Write ingredients")
+      errors.push("Please enter ingredients")
     }
     if (!instructions.length) {
-      errors.push("Write instructions")
+      errors.push("Please enter instructions")
+    }
+    if (!image.length) {
+      errors.push("Please provide an image url")
     }
     setErrors(errors);
 
@@ -153,7 +152,6 @@ const StoryForm = ({ props }) => {
             <li key={idx}>{error}</li>
           ))}
         </ul>
-
         <div className="recipe__container" onSubmit={handleSubmit}>
           <div className="storyform__left_container">
             <form>

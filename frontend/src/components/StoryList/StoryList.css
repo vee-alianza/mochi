@@ -1,7 +1,16 @@
+.story__container {
+    overflow-y: scroll;
+}
+
 .story__subcontainer {
     border: 2px solid red;
-    overflow: hidden;
     width: 100vw;
+    overflow: hidden;
+}
+
+.story__subcontainer:hover {
+    background-color: rgba(128, 128, 128, 0.219);
+    cursor: pointer;
 }
 
 .story__box {
@@ -9,5 +18,3 @@
     overflow: hidden;
     width: 100vw;
 }
-
-/* .recipebox__right__container {} */

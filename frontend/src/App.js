@@ -13,6 +13,7 @@ import SignupFormModal from './components/SignupFormModal';
 import LoginFormModal from './components/LoginFormModal';
 import Footer from "./components/Footer";
 import './App.css';
+// import AllRecipes from "./components/AllRecipes";
 
 function App() {
   const dispatch = useDispatch();
@@ -25,15 +26,15 @@ function App() {
 
   return (
     <div className="main__page">
-      {!sessionUser &&
-        <>
-          <LoginFormModal />
-          <SignupFormModal />
-        </>
-      }
       <Switch>
         <Route exact path="/">
           <SplashPage />
+          {!sessionUser &&
+            <>
+              <LoginFormModal />
+              <SignupFormModal />
+            </>
+          }
         </Route>
         {isLoaded && sessionUser && (
           <>
@@ -47,12 +48,15 @@ function App() {
             <Route path="/signup">
               <SignupForm />
             </Route>
-            <Route path="/stories/new">
-              <StoryFormPage props={{ edit: false, setShowModal: null, storyId: null }} />
-            </Route>
-            <Route path="/stories/:id">
+            <Route path="/stories/view/:id">
               <StoryView />
             </Route>
+            <Route exact path="/stories/new">
+              <StoryFormPage props={{ edit: false, setShowModal: null, storyId: null }} />
+            </Route>
+            {/* <Route path="/all-recipes">
+              <AllRecipes />
+            </Route> */}
           </>
         )}
       </Switch>

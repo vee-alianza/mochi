@@ -57,10 +57,9 @@ const CommentForm = ({ story }) => {
       });
 
     setContent("");
-    // await dispatch(createComment());
 
     if (errors.length && newestComment) {
-      history.push(`/stories/${story.id}`)
+      history.push(`/stories/view/${story.id}`)
     };
   };
 

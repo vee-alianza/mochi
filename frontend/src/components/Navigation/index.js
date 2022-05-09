@@ -45,18 +45,18 @@ function Navigation({ isLoaded }) {
           </a>
         </div>
         <div className="navbar__btn__loggedIn">
-          <div
+          {/* <div
             className="navbar__btns"
           >
             <img src="https://user-images.githubusercontent.com/92604480/165881172-2fecedae-a5c5-4f5c-8084-84afd1d01e9c.svg" alt="noms" />
             <p>noms</p>
-          </div>
-          <div
+          </div> */}
+          {/* <div
             className="navbar__btns"
           >
             <img src="https://user-images.githubusercontent.com/92604480/165879974-08803a96-c31c-4e2e-9fa5-268a65f62375.svg" alt="all recipes" />
             <p>all recipes</p>
-          </div>
+          </div> */}
 
           <div
             className="navbar__btns"

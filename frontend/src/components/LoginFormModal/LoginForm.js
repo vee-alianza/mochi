@@ -17,38 +17,36 @@ function LoginForm({ setShowModal }) {
     <Redirect to="/home" />
   );
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setErrors([]);
-    dispatch(sessionActions.login({ credential, password })).catch(
+    const response = await dispatch(sessionActions.login({ credential, password })).catch(
       async (res) => {
         const data = await res.json();
-        if (data && data.errors) setErrors(data.errors);
+        if (data && data.errors) {
+          setErrors(data.errors);
+        }
       }
     );
-    history.push('/home');
+
+    if (!response.ok) {
+      history.push('/home');
+    }
   };
 
-  const demoUser = (e) => {
-    // console.log('----------')
+  const demoUser = () => {
     setErrors([]);
-    dispatch(sessionActions.login({ credential: 'Demo-lition', password: 'password' })).catch(
+    dispatch(sessionActions.demoLogin()).catch(
       async (res) => {
         const data = await res.json();
-        if (data && data.errors) setErrors(data.errors);
+        if (data && data.errors) {
+          setErrors(data.errors);
+        }
       }
     );
     setShowModal(false);
     history.push('/home');
   }
-
-
-
-  // const demoUser = (e) => {
-  //   setCredential('Demo-lition');
-  //   setPassword('password');
-  //   e.submit();
-  // }
 
   return (
     <>

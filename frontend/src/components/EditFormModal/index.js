@@ -13,7 +13,9 @@ function EditFormModal({ storyId }) {
         <>
             <button onClick={() => setShowModal(true)}>Edit</button>
             {showModal && (
-                <Modal onClose={() => setShowModal(false)}>
+                <Modal
+                    onClose={() => setShowModal(false)}
+                >
                     <StoryForm props={{ edit: true, setShowModal, storyId }} />
                     {/* <StoryList />
                     <StoryView /> */}

@@ -8,12 +8,12 @@ const { User, Story, Comment, storyLike, commentLike, } = require('../../db/mode
 
 const router = express.Router();
 
-// const validateComment = [
-//   check("body")
-//     .isLength({ min: 1 })
-//     .withMessage("Please enter a comment"),
-//   handleValidationErrors
-// ]
+const validateComment = [
+  check("content")
+    .isLength({ min: 1, max: 255 })
+    .withMessage("Please enter a comment"),
+  handleValidationErrors
+]
 
 // GET comments
 router.get('/', requireAuth, asyncHandler(async (req, res) => {
@@ -40,7 +40,7 @@ router.get('/:id(\\d+)', requireAuth, asyncHandler(async (req, res) => {
 }));
 
 // POST comment
-router.post('/new', requireAuth, asyncHandler(async (req, res) => {
+router.post('/new', validateComment, requireAuth, asyncHandler(async (req, res) => {
   const { storyId, content } = req.body;
   const userId = req.user.id;
   const comment = {
@@ -60,7 +60,7 @@ router.post('/new', requireAuth, asyncHandler(async (req, res) => {
 }));
 
 // POST comment
-router.post('/:id(\\d+)/like', requireAuth, asyncHandler(async (req, res) => {
+router.post('/:id(\\d+)/like', validateComment, requireAuth, asyncHandler(async (req, res) => {
   const userId = req.user.id;
   const { id } = req.params;
 

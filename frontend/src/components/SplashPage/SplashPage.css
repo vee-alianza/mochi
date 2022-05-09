@@ -1,12 +1,11 @@
-body {
-    display: flex;
-    justify-content: center;
+.splash__page {
+    margin-left: 10rem;
 }
 
 #splash__logo {
     animation: bounce 0.5s;
     animation-direction: alternate;
-    animation-timing-function: cubic-bezier(.5, 0.05, 1, .5);
+    animation-timing-function: cubic-bezier(0.5, 0.05, 1, 0.5);
     animation-iteration-count: infinite;
 }
 
@@ -22,15 +21,12 @@ body {
 
 .splash__logo__letters {
     display: flex;
-    /* flex-direction: row; */
-    /* justify-content: space-evenly; */
     font-family: "Montserrat";
     font-weight: 900;
     font-size: 6rem;
-    margin-top: 1rem;
 }
 
-img {
+.splash__page img {
     width: 10rem;
     height: 10rem;
     position: relative;
@@ -39,23 +35,22 @@ img {
 .splash__about {
     display: flex;
     flex-direction: row;
-
 }
 
-
-h1 {
+.splash__page h1 {
     font-size: 3rem;
     font-weight: 900;
 }
 
-p {
-    font-family: 'Sansita', sans-serif;
+.splash__page p {
+    font-family: "Sansita", sans-serif;
     font-size: 1.5rem;
 }
 
-.story__images__container {
+/* .story__images__container {
     display: flex;
-}
+    margin-left: 10rem;
+} */
 
 .story__images {
     box-shadow: 55px -16px #f25e74;
@@ -63,31 +58,25 @@ p {
     width: 60vh;
     margin: 5vh 5vw;
     background-color: #ff00cc;
-    /* background-position: center; */
     background-size: cover;
-
     animation: image 8s infinite alternate;
+    margin-left: 40rem;
 }
 
 @keyframes image {
     0% {
-
         background-image: url(https://user-images.githubusercontent.com/92604480/167317571-9996e3ca-015b-4fd5-9373-8ec6c0dd70b5.jpg);
     }
 
     25% {
         background-image: url(https://user-images.githubusercontent.com/92604480/167317994-60cfd43d-f703-4c6b-bbb9-c00eb216b895.jpg);
-
     }
 
     50% {
-
         background-image: url(https://user-images.githubusercontent.com/92604480/167329547-a4e4da41-ccc8-4316-89f9-60a4d1b2c2b3.jpg);
     }
 
     100% {
         background-image: url(https://user-images.githubusercontent.com/92604480/167318021-741ae2d4-9303-4f6b-88f4-e3fa46755a64.jpg);
-
     }
-
 }

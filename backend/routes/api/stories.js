@@ -9,12 +9,33 @@ const { Op } = require("sequelize");
 
 const router = express.Router();
 
+
+// const validateStory = [
+//     check('title')
+//         .isLength({ min: 4 })
+//         .withMessage('Please provide a title longer than 4 characters.'),
+//     check('recipe')
+//         .isLength({ min: 4, max: 255 })
+//         .withMessage('Please provide a recipe longer than 4 characters.'),
+//     check('ingredients')
+//         .isLength({ min: 4 })
+//         .withMessage('Please provide ingredients longer than 4 characters.'),
+//     check('instructions')
+//         .isLength({ min: 4 })
+//         .withMessage('Please provide instructions longer than 4 characters.'),
+//     check('imageUrl')
+//         .exists({ checkFalsy: true })
+//         .withMessage("Please provide an image url"),
+//     handleValidationErrors
+// ];
+
+
 // HOMEPAGE
 // GET stories
 router.get('/', asyncHandler(async (req, res) => {
     const stories = await Story.findAll({
         order: [["id", "DESC"]],
-        include: [Category]
+        include: [Category, User]
     });
     return res.json({
         stories,
@@ -92,7 +113,6 @@ router.post('/new', requireAuth, asyncHandler(async (req, res) => {
         const story = await Story.findByPk(newStory.id, { include: [User, Category] });
 
         return res.json({ story });
-
     } catch (error) {
         res.status(500);
         res.send(`${error}`);
@@ -222,9 +242,19 @@ router.patch('/edit/:id(\\d+)', requireAuth, asyncHandler(async (req, res) => {
             story.updatedAt = new Date();
             await story.save();
         }
-        const result = await Story.findByPk(story.id, {
-            include: [Category]
+        const resultQuery = await Story.findByPk(story.id, {
+            include: [Category, User, { model: Comment, include: [User] }]
         });
+        const result = JSON.parse(JSON.stringify(resultQuery));
+
+        for (let i = 0; i < result.Comments.length; i++) {
+            result.Comments[i].likes = await commentLike.count({
+                where: {
+                    commentId: result.Comments[i].id
+                }
+            });
+        }
+
         return res.json({ result });
     } catch (error) {
         res.status(500);

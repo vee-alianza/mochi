@@ -115,9 +115,9 @@ export const newStory = (story) => async dispatch => {
     method: 'POST',
     body: JSON.stringify(story)
   })
-  const stories = await response.json();
-  dispatch(createStory(stories));
-  return (stories);
+  const data = await response.json();
+  dispatch(createStory(data.story));
+  return (response);
 };
 
 export const editStory = (story, id) => async dispatch => {
@@ -217,6 +217,7 @@ const storyReducer = (state = initialState, action) => {
       newState.allStories = state.allStories.filter(story => {
         return story.id !== action.payload;
       });
+      newState.currentStory = null;
       return newState;
     case ADD_STORY_RATING:
       newState = Object.assign({}, state);
