@@ -28,10 +28,7 @@
 </h4>
 
 ## About
-Share and discover culinary experiences that awakens all senses with <span style= "color:#A020F0; font-weight:bold">*Mochi*</span>!
-
-<!-- A food blogger's paradise. A hubspot for food enthusists and food connoisseurs, inspired by [Medium](https://medium.com/), where users can publish recipes of amazing food around the world.  -->
-
+Bringing people together through great food, culture and history! Food lovers, food enthusiasts, food connoisseurs alike can share and discover culinary experiences that awakens all senses with <span style= "color:#A020F0; font-weight:bold">*Mochi*</span>!
 
 <!-- ### Welcome View:
 ### Home View: -->
@@ -99,3 +96,6 @@ Share and discover culinary experiences that awakens all senses with <span style
 8. Log in as a Demo user or create an account.
 
 ## Features
+Logged in users are able to to do the following:
+* Create/Read/View/Delete Stories
+* Create/Read/Delete Comments on stories

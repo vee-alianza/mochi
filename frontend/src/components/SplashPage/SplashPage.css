@@ -1,5 +1,5 @@
 .splash__page {
-    margin-left: 10rem;
+    margin-left: 5rem;
 }
 
 #splash__logo {
@@ -45,7 +45,12 @@
 .splash__page p {
     font-family: "Sansita", sans-serif;
     font-size: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
+
+
 
 /* .story__images__container {
     display: flex;
@@ -55,12 +60,11 @@
 .story__images {
     box-shadow: 55px -16px #f25e74;
     height: 60vh;
-    width: 60vh;
+    width: 90vh;
     margin: 5vh 5vw;
     background-color: #ff00cc;
     background-size: cover;
     animation: image 8s infinite alternate;
-    margin-left: 40rem;
 }
 
 @keyframes image {

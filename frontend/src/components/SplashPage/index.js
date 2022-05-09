@@ -23,17 +23,14 @@ const SplashPage = () => {
                                 <h1 className="about__space">F</h1>
                                 <h2>ood?</h2>
                             </div>
-                            <p>
-                                Share and discover culinary experiences that awakens all senses with Mochi!
-                            </p>
+                            <p>Bringing people together through great food, culture and history! Food lovers, food enthusiasts, food connoisseurs can share and discover culinary experiences that awakens all senses with Mochi!</p>
                         </div>
+                        <div className="story__images"></div>
                     </div>
-                    <div className="story__images__container">
-                        <div className="story__images">
-                        </div>
-                    </div>
+
+
                 </div>
-            </div>
+            </div >
         </>
     )
 }
