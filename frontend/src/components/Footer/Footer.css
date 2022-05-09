@@ -1,13 +1,26 @@
-.footer {
+.footer__info {
     display: flex;
-    flex-direction: row;
-    margin-top: 10px;
+    flex-direction: row-reverse;
+
     color: white;
-    background-color: #000000;
     /* padding: 20px; */
     /* height: 20px; */
     position: fixed;
     bottom: 0px;
     left: 0px;
-    right: 0px;
+    right: 2rem;
+}
+
+.contact__info {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    /* margin-left: 20px; */
+    justify-content: space-evenly;
+}
+
+.footer__info img {
+    height: 50px;
+    width: 50px;
 }
