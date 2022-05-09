@@ -23,11 +23,11 @@ module.exports = {
         type: Sequelize.STRING.BINARY
       },
       about: {
-        allowNull: false,
+        // allowNull: false,
         type: Sequelize.STRING
       },
       profileImage: {
-        allowNull: false,
+        // allowNull: false,
         type: Sequelize.STRING
       },
       createdAt: {

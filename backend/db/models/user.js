@@ -31,11 +31,11 @@ module.exports = (sequelize, DataTypes) => {
       }
     },
     about: {
-      allowNull: false,
+      // allowNull: false,
       type: DataTypes.STRING
     },
     profileImage: {
-      allowNull: false,
+      // allowNull: false,
       type: DataTypes.STRING
     },
   },

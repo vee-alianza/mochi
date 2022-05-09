@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Redirect } from "react-router-dom";
+import { Redirect, useHistory } from "react-router-dom";
 import * as sessionActions from "../../store/session";
 import "./SignupForm.css";
 
@@ -15,6 +15,7 @@ const inputClassNames = {
 
 function SignupFormPage() {
   const dispatch = useDispatch();
+  const history = useHistory();
   const sessionUser = useSelector((state) => state.session.user);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -27,10 +28,10 @@ function SignupFormPage() {
 
   if (sessionUser) return <Redirect to="/signup" />;
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (password === confirmPassword) {
-      return dispatch(sessionActions.signup({ email, username, password }))
+      const response = await dispatch(sessionActions.signup({ email, username, password }))
         .catch(async (res) => {
           const data = await res.json();
           data.errors.forEach((error) => {
@@ -45,6 +46,9 @@ function SignupFormPage() {
             }
           });
         });
+      if (response.ok) {
+        history.push("/home");
+      }
     };
   };
 

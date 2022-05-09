@@ -10,24 +10,24 @@ const { Op } = require("sequelize");
 const router = express.Router();
 
 
-// const validateStory = [
-//     check('title')
-//         .isLength({ min: 4 })
-//         .withMessage('Please provide a title longer than 4 characters.'),
-//     check('recipe')
-//         .isLength({ min: 4, max: 255 })
-//         .withMessage('Please provide a recipe longer than 4 characters.'),
-//     check('ingredients')
-//         .isLength({ min: 4 })
-//         .withMessage('Please provide ingredients longer than 4 characters.'),
-//     check('instructions')
-//         .isLength({ min: 4 })
-//         .withMessage('Please provide instructions longer than 4 characters.'),
-//     check('imageUrl')
-//         .exists({ checkFalsy: true })
-//         .withMessage("Please provide an image url"),
-//     handleValidationErrors
-// ];
+const validateStory = [
+    check('title')
+        .isLength({ min: 4 })
+        .withMessage('Please provide a title longer than 4 characters.'),
+    check('recipe')
+        .isLength({ min: 4, max: 255 })
+        .withMessage('Please provide a recipe longer than 4 characters.'),
+    check('ingredients')
+        .isLength({ min: 4 })
+        .withMessage('Please provide ingredients longer than 4 characters.'),
+    check('instructions')
+        .isLength({ min: 4 })
+        .withMessage('Please provide instructions longer than 4 characters.'),
+    check('imageUrl')
+        .exists({ checkFalsy: true })
+        .withMessage("Please provide an image url"),
+    handleValidationErrors
+];
 
 
 // HOMEPAGE
@@ -120,7 +120,7 @@ router.post('/new', requireAuth, asyncHandler(async (req, res) => {
 }));
 
 // PUT stories
-router.put('/:id(\\d+)/rate', requireAuth, asyncHandler(async (req, res) => {
+router.put('/:id(\\d+)/rate', validateStory, requireAuth, asyncHandler(async (req, res) => {
     const { id } = req.params;
     const { rating } = req.body;
     const userId = req.user.id;
@@ -159,7 +159,7 @@ router.put('/:id(\\d+)/rate', requireAuth, asyncHandler(async (req, res) => {
 }));
 
 // PUT stories
-router.put('/:id(\\d+)/bookmark', requireAuth, asyncHandler(async (req, res) => {
+router.put('/:id(\\d+)/bookmark', validateStory, requireAuth, asyncHandler(async (req, res) => {
     const { id } = req.params;
     const userId = req.user.id;
 
