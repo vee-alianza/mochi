@@ -96,6 +96,6 @@ Bringing people together through great food, culture and history! Food lovers, f
 8. Log in as a Demo user or create an account.
 
 ## Features
-Logged in users are able to to do the following:
+Logged in users are able to do the following:
 * Create/Read/View/Delete Stories
 * Create/Read/Delete Comments on stories
