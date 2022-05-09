@@ -6,6 +6,7 @@ const Footer = () => {
     return (
         <footer>
             <div className="footer__info">
+                <p>Developer</p>
                 <div className="contact__info">
                     <span>
                         <a href="https://github.com/vee-alianza">
