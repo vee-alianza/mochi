@@ -57,7 +57,7 @@ const StoryCard = ({ story, storyRating }) => {
     return (
         <div className="story__card__container">
             <div className="image__container">
-                <img src={story.image} alt="" id="story__image__view" />
+                <img src={story.image} alt="" id="story__image__view" width="150x" />
             </div>
             <div className="content__container">
                 <div className="tab__container">
