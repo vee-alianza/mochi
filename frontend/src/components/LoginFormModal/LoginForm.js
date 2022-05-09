@@ -29,7 +29,7 @@ function LoginForm({ setShowModal }) {
       }
     );
 
-    if (!response.ok) {
+    if (response.ok) {
       history.push('/home');
     }
   };
