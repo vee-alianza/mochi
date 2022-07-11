@@ -33,6 +33,12 @@ const StoryList = () => {
                 className="story__subcontainer"
                 onClick={() => history.push(`/stories/view/${story.id}`)}
               >
+                <div className="story__box" id="profile__username">
+                  <img src={story.User.profileImage} alt="" />
+                  <div>
+                    <p id="username">{`${story.User.username}`}</p>
+                  </div>
+                </div>
                 <div className="story__box">
                   <p>Title: {story.title}</p>
                 </div>
@@ -53,12 +59,8 @@ const StoryList = () => {
                   <p> Story: </p>
                   {story.recipe}
                 </div>
-                <div>
-                  <p>{`Username: ${story.User.username}`}</p>
-                </div>
-                <div className="story__box">
-                  <img src={story.User.profileImage} alt="" />
-                </div>
+
+
                 {user && story.userId === user.id &&
                   <>
                     <button

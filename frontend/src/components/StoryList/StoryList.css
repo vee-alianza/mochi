@@ -18,3 +18,18 @@
     overflow: hidden;
     width: 100vw;
 }
+
+.story__box>img {
+    border-radius: 50%;
+    width: 4rem;
+    margin: 1rem;
+}
+
+#username {
+    margin-left: 6rem;
+    z-index: 1;
+
+    /* justify-content: center; */
+    /* text-align: center */
+
+}
