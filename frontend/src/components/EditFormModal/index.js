@@ -11,7 +11,7 @@ function EditFormModal({ storyId }) {
 
     return (
         <>
-            <button onClick={() => setShowModal(true)}>Edit</button>
+            <button onClick={() => setShowModal(true)}><i class="fa-solid fa-pencil"></i>Edit</button>
             {showModal && (
                 <Modal
                     onClose={() => setShowModal(false)}

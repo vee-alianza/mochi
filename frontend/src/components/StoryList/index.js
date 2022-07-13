@@ -33,10 +33,10 @@ const StoryList = () => {
                 className="story__subcontainer"
                 onClick={() => history.push(`/stories/view/${story.id}`)}
               >
-                <div className="story__box" id="profile__username">
+                <div className="story__box" >
                   <img src={story.User.profileImage} alt="" />
-                  <div>
-                    <p id="username">{`${story.User.username}`}</p>
+                  <div id="username">
+                    <p >{`${story.User.username}`}</p>
                   </div>
                 </div>
                 <div className="story__box">
@@ -67,6 +67,7 @@ const StoryList = () => {
                       type="button"
                       onClick={() => handleDelete(story.id)}
                     >
+                      <i class="fa-solid fa-trash-can"></i>
                       Delete
                     </button>
                     <EditFormModal storyId={story.id} />

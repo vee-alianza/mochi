@@ -1,11 +1,19 @@
 .story__container {
     overflow-y: scroll;
+    /* border-right: 0.1rem solid gray;
+    width: 2rem; */
+    padding-left: 5rem;
+    padding-right: 5rem;
 }
 
 .story__subcontainer {
-    border: 2px solid red;
+    border-bottom: 0.1rem solid gray;
     width: 100vw;
     overflow: hidden;
+    display: block;
+    margin: 0 auto;
+
+
 }
 
 .story__subcontainer:hover {
@@ -14,22 +22,15 @@
 }
 
 .story__box {
-    border: 3px solid pink;
+    /* border: 3px solid pink; */
     overflow: hidden;
     width: 100vw;
+    display: flex;
+    align-items: center;
 }
 
 .story__box>img {
     border-radius: 50%;
-    width: 4rem;
+    width: 3rem;
     margin: 1rem;
-}
-
-#username {
-    margin-left: 6rem;
-    z-index: 1;
-
-    /* justify-content: center; */
-    /* text-align: center */
-
 }
