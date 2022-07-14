@@ -119,7 +119,7 @@ const CommentForm = ({ story }) => {
                     {comment.content}
                   </div>
                   {sessionUser.id === comment.userId && (
-                    <button className="btn__delete" onClick={(e) => handleDelete(e, comment.id)}> <i class="fa-solid fa-trash-can"></i>Delete</button>
+                    <button className="btn__delete" onClick={(e) => handleDelete(e, comment.id)}> <i className="fa-solid fa-trash-can"></i>Delete</button>
                   )}
                   {sessionUser.id !== comment.userId &&
                     handleLike(comment.id)

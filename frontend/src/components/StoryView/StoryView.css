@@ -44,6 +44,9 @@
 .instructions__tab {
     background-color: #48cfae;
     color: white;
+    border-top-left-radius: 1rem;
+    border-top-right-radius: 1rem;
+    height: 2rem;
 }
 
 :is(.munchies__tab, .ingredients__tab, .instructions__tab):hover {
@@ -89,4 +92,9 @@
 
 .munchies__date {
     margin: 0 3rem;
+}
+
+.icon__bookmark {
+    border: none;
+    border-radius: 50%;
 }

@@ -12,8 +12,6 @@
     overflow: hidden;
     display: block;
     margin: 0 auto;
-
-
 }
 
 .story__subcontainer:hover {
@@ -33,4 +31,24 @@
     border-radius: 50%;
     width: 3rem;
     margin: 1rem;
+}
+
+.btn__delete__homepage,
+.btn__edit__modal {
+    display: flex;
+    justify-content: center;
+    border: none;
+    border-radius: 50%;
+    /* background-color: aqua; */
+    width: 2rem;
+    height: 2rem;
+    padding: 1rem;
+    padding-top: 0.5rem;
+    margin: 0.5rem;
+    margin-left: 29.3rem;
+}
+
+.btn__edit__modal {
+    margin-left: 0.2rem;
+    ;
 }

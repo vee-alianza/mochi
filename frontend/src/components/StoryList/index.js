@@ -38,6 +38,18 @@ const StoryList = () => {
                   <div id="username">
                     <p >{`${story.User.username}`}</p>
                   </div>
+                  {user && story.userId === user.id &&
+                    <>
+                      <button
+                        type="button"
+                        className="btn__delete__homepage"
+                        onClick={() => handleDelete(story.id)}
+                      >
+                        <i className="fa-solid fa-trash-can"></i>
+                      </button>
+                      <EditFormModal storyId={story.id} />
+                    </>
+                  }
                 </div>
                 <div className="story__box">
                   <p>Title: {story.title}</p>
@@ -59,20 +71,6 @@ const StoryList = () => {
                   <p> Story: </p>
                   {story.recipe}
                 </div>
-
-
-                {user && story.userId === user.id &&
-                  <>
-                    <button
-                      type="button"
-                      onClick={() => handleDelete(story.id)}
-                    >
-                      <i class="fa-solid fa-trash-can"></i>
-                      Delete
-                    </button>
-                    <EditFormModal storyId={story.id} />
-                  </>
-                }
               </div>
             )
           })

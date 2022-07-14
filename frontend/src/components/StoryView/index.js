@@ -36,7 +36,7 @@ const StoryView = () => {
                   type="button"
                   onClick={() => handleDelete(story.id)}
                 >
-                  <i class="fa-solid fa-trash-can"></i>Delete
+                  <i className="fa-solid fa-trash-can"></i>Delete
                 </button>
                 <EditFormModal storyId={story.id} />
               </>

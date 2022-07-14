@@ -47,9 +47,12 @@ const StoryCard = ({ story, storyRating }) => {
 
         return (
             <button
+                className="icon__bookmark"
                 onClick={() => dispatch(bookmarkStory(story.id))}
             >
-                {bookmarkIcon}
+                {/* <i class="fa-solid fa-bookmark"></i> */}
+                <i class="fa-regular fa-bookmark"></i>
+                {/* {bookmarkIcon} */}
             </button>
         )
     };
@@ -92,7 +95,12 @@ const StoryCard = ({ story, storyRating }) => {
                         <div className="munchies__author__details">
                             <div>{story.User.username}</div>
                             <div className="munchies__date">{new Date(story.updatedAt).toDateString()}</div>
-                            <div>{story.timeframe}</div>
+                            <div className="icon__timeframe">
+                                <i class="fa-regular fa-clock"></i>
+                                {/* <i class="fa-solid fa-clock"></i> */}
+                                &nbsp;&nbsp;
+                                {story.timeframe}
+                            </div>
                         </div>
                         <div>{story.recipe}</div>
                         <ReactStars
