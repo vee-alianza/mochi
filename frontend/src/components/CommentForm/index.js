@@ -92,6 +92,22 @@ const CommentForm = ({ story }) => {
     <>
       <div className="comment__container">
         <h4>COMMENT BOX</h4>
+        <label>
+          <input
+            type="text"
+            placeholder='Penne for your thoughts'
+            required
+            onChange={(e) => setContent(e.target.value)}
+            value={content}
+            className="comment__input__box"
+          >
+          </input>
+        </label>
+        <button
+          type="submit"
+          className="new__comment"
+        >Submit
+        </button>
         {story.userId !== sessionUser.id && currentUserRating &&
           <ReactStars
             size={36}
@@ -105,8 +121,8 @@ const CommentForm = ({ story }) => {
               return (
                 <div key={comment.id}>
                   <div className="comment__header">
-                    <div>
-                      <img src={comment.User.profileImage} alt="" />
+                    <div className="commentbox__align__right" >
+                      <img src={comment.User.profileImage} className="comment__profile__image" alt="" />
                     </div>
                     <div className="commentbox__align__right">
                       {comment.User.username}
@@ -118,13 +134,16 @@ const CommentForm = ({ story }) => {
                   <div className="comment__post">
                     {comment.content}
                   </div>
-                  {sessionUser.id === comment.userId && (
-                    <button className="btn__delete" onClick={(e) => handleDelete(e, comment.id)}> <i className="fa-solid fa-trash-can"></i>Delete</button>
-                  )}
-                  {sessionUser.id !== comment.userId &&
+                  {
+                    sessionUser.id === comment.userId && (
+                      <button className="btn__delete" onClick={(e) => handleDelete(e, comment.id)}> <i className="fa-solid fa-trash-can"></i>Delete</button>
+                    )
+                  }
+                  {
+                    sessionUser.id !== comment.userId &&
                     handleLike(comment.id)
                   }
-                  <div>
+                  <div className="comment__post__like">
                     {`Likes: ${comment.likes}`}
                   </div>
                 </div>
@@ -140,18 +159,6 @@ const CommentForm = ({ story }) => {
               )
             })}
           </ul>
-          <label>
-            <input
-              type="text"
-              placeholder='Penne for your thoughts'
-              required
-              onChange={(e) => setContent(e.target.value)}
-              value={content}
-              className="comment__input__box"
-            >
-            </input>
-          </label>
-          <button type="submit" className="new__comment">Submit</button>
         </form>
       </div>
     </>

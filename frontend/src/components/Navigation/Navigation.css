@@ -1,5 +1,7 @@
 .navbar__loggedIn {
-    border: 2px solid red;
+    border-right: 1px solid black;
+    /* background-color: #cc3377; */
+    color: black;
     width: 10rem;
     height: 100vh;
     display: flex;
@@ -27,7 +29,6 @@
 
 .navbar__btn__loggedIn>a>img {
     width: 8rem;
-    height: 8rem;
 }
 
 :is(.navbar__btn__loggedIn > a, .navbar__btns):hover {
@@ -36,8 +37,17 @@
 }
 
 .navbar__btns>img {
-    width: 8rem;
-    height: 8rem;
+    /* width: 8rem;
+    height: 8rem; */
+    width: 5rem;
+    /* background-color: #FF4499; */
+    border-radius: 50%;
+}
+
+.navbar__btns>img:hover {
+    background: #FF4499;
+    box-shadow: 0 0 100px #FF4499;
+    color: black;
 }
 
 .navbar__profile__image {
@@ -47,8 +57,7 @@
 
 .navbar__profile__image>img {
     border-radius: 50%;
-    width: 120px;
-    height: 120px;
+    width: 5rem;
 }
 
 #btn__logout {

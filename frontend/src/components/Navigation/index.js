@@ -38,8 +38,7 @@ function Navigation({ isLoaded }) {
     <>
       <div className="navbar__loggedIn">
         <div className="navbar__btn__loggedIn">
-          <NavLink exact to="/home">Home</NavLink>
-          {isLoaded && sessionLinks}
+
           <a href="/home">
             <img src="https://user-images.githubusercontent.com/92604480/165882725-37ad9f6f-cbb1-4389-aabb-1a88bfa3c309.png" alt="logo" />
           </a>
@@ -78,7 +77,10 @@ function Navigation({ isLoaded }) {
           </div>
         </div>
         <div className="navbar__profile__image">
-          <img src={sessionUser.profileImage} alt="" />
+          <NavLink exact to="/home">
+            <img src={sessionUser.profileImage} alt="" />
+          </NavLink>
+          {isLoaded && sessionLinks}
         </div>
       </div>
     </>
