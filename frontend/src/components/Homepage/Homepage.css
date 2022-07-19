@@ -1,5 +1,5 @@
 .main__container {
-    border: 2px solid blue;
+    border-right: 1rem solid black;
     width: calc(100vw - 10rem);
     display: flex;
 }

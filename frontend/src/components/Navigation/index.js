@@ -62,7 +62,7 @@ function Navigation({ isLoaded }) {
             onClick={() => history.push("/stories/new")}
           >
             <img src="https://user-images.githubusercontent.com/92604480/165881766-efe5572f-17e9-4ef8-983e-5298f11c5f53.svg" alt="add stories" />
-            <p>add story</p>
+            <p>add recipe</p>
           </div>
         </div>
         <div
@@ -78,7 +78,7 @@ function Navigation({ isLoaded }) {
         </div>
         <div className="navbar__profile__image">
           <NavLink exact to="/home">
-            <img src={sessionUser.profileImage} alt="" />
+            {/* <img src={sessionUser.profileImage} alt="" /> */}
           </NavLink>
           {isLoaded && sessionLinks}
         </div>

@@ -6,6 +6,7 @@ import "./comments.css"
 import ReactStars from "react-stars";
 import { fetchCurrentStoryData } from "../../store/session";
 import { rateStory } from "../../store/stories";
+import { FcLike, FcLikePlaceholder } from 'react-icons/fc';
 
 const CommentForm = ({ story }) => {
   const dispatch = useDispatch();
@@ -74,7 +75,7 @@ const CommentForm = ({ story }) => {
         <button
           onClick={() => dispatch(unlikeComment(commentId))}
         >
-          Unlike
+          <FcLike />
         </button>
       )
     }
@@ -83,7 +84,8 @@ const CommentForm = ({ story }) => {
       <button
         onClick={() => dispatch(likeComment(commentId))}
       >
-        Like
+
+        <FcLikePlaceholder />
       </button>
     )
   };
