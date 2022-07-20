@@ -3,18 +3,18 @@
     flex-direction: column;
 }
 
+.comment__header {
+    margin-top: 2rem;
+}
+
 #comment__user__profile {
     height: 5rem;
     width: 5rem;
 }
 
-.comment__header {
-    padding: 2rem;
+#commentbox__username {
+    padding-top: -10rem;
 }
-
-/* .comment__post{
-
-  } */
 
 .new__comment {
     width: 10rem;
@@ -36,4 +36,10 @@
     width: 450px;
     height: 880px;
     bottom: 0;
+}
+
+.btn__like,
+.btn__unlike {
+    border: none;
+    border-radius: 50%;
 }

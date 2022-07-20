@@ -74,6 +74,7 @@ const CommentForm = ({ story }) => {
       return (
         <button
           onClick={() => dispatch(unlikeComment(commentId))}
+          className="btn__like"
         >
           <FcLike />
         </button>
@@ -83,8 +84,8 @@ const CommentForm = ({ story }) => {
     return (
       <button
         onClick={() => dispatch(likeComment(commentId))}
+        className="btn__unlike"
       >
-
         <FcLikePlaceholder />
       </button>
     )
@@ -126,10 +127,10 @@ const CommentForm = ({ story }) => {
                     <div className="commentbox__align__right" >
                       <img src={comment.User.profileImage} className="comment__profile__image" alt="" />
                     </div>
-                    <div className="commentbox__align__right">
+                    <div className="commentbox__align__right" id="commentbox__username">
                       {comment.User.username}
                     </div>
-                    <div className="commentbox__align__right">
+                    <div className="commentbox__align__right" id="comment__date">
                       {new Date(comment.createdAt).toDateString()}
                     </div>
                   </div>

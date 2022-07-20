@@ -14,7 +14,7 @@ const Homepage = () => {
                 <StoryList />
             </div>
             <div className="right__container">
-
+                {/* <StoryForm /> */}
             </div>
         </div>
     );

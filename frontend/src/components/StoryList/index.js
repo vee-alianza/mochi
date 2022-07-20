@@ -24,7 +24,7 @@ const StoryList = () => {
   return (
     <>
       <div className="story__container">
-        <h4>RECIPE BOX</h4>
+        <h4>TOP RECIPES</h4>
         {allStories &&
           allStories.map((story) => {
             return (
