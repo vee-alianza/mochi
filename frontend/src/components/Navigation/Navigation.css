@@ -51,13 +51,23 @@
 }
 
 .navbar__profile__image {
-    display: flex;
-    justify-content: center;
+    margin: 1rem;
+    margin-left: 1.5rem;
+    object-fit: cover;
 }
 
-.navbar__profile__image>img {
+/* .navbar__profile__image:hover {
+    box-shadow: 0 0 100px #BE00FE;
     border-radius: 50%;
-    width: 5rem;
+    width: 2.5rem;
+    height: 1.5rem;
+
+} */
+
+.navbar__profile__image>img {
+    display: flex;
+    justify-content: center;
+    background-color: #990088;
 }
 
 #btn__logout {
@@ -96,10 +106,10 @@ p {
 
 .profile__dropup {
     position: absolute;
-    right: -2rem;
+    right: -2.5rem;
     background-color: #F1F1F1;
     min-width: 160px;
-    bottom: 4.5rem;
+    bottom: 3rem;
     z-index: 2;
 }
 

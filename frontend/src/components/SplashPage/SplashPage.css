@@ -39,14 +39,15 @@
     font-family: "Montserrat";
     font-weight: 900;
     font-size: 6rem;
+    margin-left: 20rem;
 }
 
 .splash__container img {
     width: 10rem;
     height: 10rem;
     /* position: relative;1 */
-    margin-left: auto;
-    margin-right: auto;
+    margin-left: 20rem;
+    /* margin-right: auto; */
 }
 
 .splash__about {
@@ -75,13 +76,15 @@
 } */
 
 .story__images {
-    box-shadow: 55px -16px #f25e74;
-    height: 60vh;
-    width: 90vh;
-    margin: 5vh 5vw;
+    /* box-shadow: 55px -16px #f25e74; */
+    /* height: 50vh; */
+    width: 100%;
+    /* margin: 5vh 5vw; */
     background-color: #ff00cc;
     background-size: cover;
-    animation: image 8s infinite alternate;
+    background-position: 100%;
+
+    /* animation: image 8s infinite alternate; */
 }
 
 @keyframes image {

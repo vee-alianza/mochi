@@ -1,8 +1,9 @@
 #modal-content.modal__edit__form {
     margin: 0;
-    width: 80rem;
-    height: 40rem;
+    width: 55rem;
+    height: 30rem;
     background-color: #f3939e;
+    z-index: 2;
 }
 
 h3 {

@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import ReactStars from 'react-stars';
 import { useHistory } from "react-router-dom";
 import { getStories, deleteStory } from "../../store/stories";
+import { FiClock } from "react-icons/fi";
 import EditFormModal from "../EditFormModal";
 import "./StoryList.css"
 
@@ -24,7 +25,7 @@ const StoryList = () => {
   return (
     <>
       <div className="story__container">
-        <h4>TOP RECIPES</h4>
+        <h4>RECIPES THAT SLAPS</h4>
         {allStories &&
           allStories.map((story) => {
             return (
@@ -51,25 +52,34 @@ const StoryList = () => {
                     </>
                   }
                 </div>
+                <div className="story__box recipe-title-cook-time">
+                  <div className="story__box recipe-title">
+                    {/* <p>Title: {story.title}</p> */}
+                    <p>{story.title}</p>
+                    <div className="story__box recipe-cook-time">
+                      <p> <FiClock size={20} />
+                        &nbsp;&nbsp;
+                        {story.timeframe}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div className="story__box recipe">
+                  {/* <p> Story: </p> */}
+                  {story.recipe}
+                </div>
                 <div className="story__box">
-                  <p>Title: {story.title}</p>
+                  {/* <p>Cuisine: {story.Category.title}</p> */}
+                  <p>{story.Category.title}</p>
                 </div>
                 <div>
-                  <p>Rating: {story.rating}</p>
                   <ReactStars
                     edit={false}
                     value={Number(story.rating)}
+                    size={28}
+                    color2={'#00D8D8'}
                   />
-                </div>
-                <div className="story__box">
-                  <p>Category: {story.Category.title}</p>
-                </div>
-                <div className="story__box">
-                  <p>Time: {story.timeframe}</p>
-                </div>
-                <div className="story__box">
-                  <p> Story: </p>
-                  {story.recipe}
+                  <p>Rating: {story.rating}</p>
                 </div>
               </div>
             )

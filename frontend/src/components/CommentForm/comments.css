@@ -1,3 +1,29 @@
+.comment__container {
+    /* border-top: 0.1rem solid black; */
+    /* overflow-y: scroll; */
+    /* width: 450px;
+    height: 880px; */
+    height: 20rem;
+    bottom: 0;
+    /* margin-top: 8rem; */
+    margin-left: 150rem;
+}
+
+.comment__container h4 {
+    margin-left: 8rem;
+}
+
+.comment__box {
+    margin-left: 10rem;
+    margin-right: 10rem;
+}
+
+.comment__box.stars {
+    margin: 1rem;
+    margin-left: 0.01rem;
+    margin-bottom: 1.5rem;
+}
+
 .commentbox__align__right {
     display: flex;
     flex-direction: column;
@@ -5,18 +31,37 @@
 
 .comment__header {
     margin-top: 2rem;
+    margin-bottom: 1.5rem;
+    margin-left: -1rem;
+    display: flex;
 }
 
-#comment__user__profile {
+.commentbox__align__right.username,
+.commentbox__align__right.date {
+    margin-top: 2rem;
+}
+
+.commentbox__align__right.date {
+    margin-left: 2rem;
+}
+
+.comment__post {
+    margin-left: 4rem;
+    text-align: justify;
+    word-break: break-word;
+    width: 43rem;
+}
+
+/* #comment__user__profile {
     height: 5rem;
+    width: 5rem;
+} */
+
+.comment__profile__image {
     width: 5rem;
 }
 
-#commentbox__username {
-    padding-top: -10rem;
-}
-
-.new__comment {
+.btn__submit__new__comment {
     width: 10rem;
     height: 2.5rem;
     border: none;
@@ -30,16 +75,32 @@
     margin: 1rem;
 }
 
-.comment__container {
-    border: 1px solid red;
-    overflow-y: scroll;
-    width: 450px;
-    height: 880px;
-    bottom: 0;
+.comment__post__like {
+    margin: 1rem;
+    padding-bottom: 2rem;
 }
+
 
 .btn__like,
 .btn__unlike {
     border: none;
     border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    margin: 0.4rem;
+    width: 2.5rem;
+    padding-top: 0.4rem;
+    padding-bottom: 0.4rem;
+}
+
+.btn__delete__comment {
+    border-radius: 50%;
+    border: blue;
+    margin: 0.4rem;
+    margin-top: -6rem;
+    margin-left: 45rem;
+    width: 2.5rem;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+
 }

@@ -2,6 +2,8 @@ import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import ReactStars from "react-stars";
 import { bookmarkStory } from "../../store/stories";
+import { FiClock } from "react-icons/fi";
+import { AiTwotoneCalendar } from "react-icons/ai";
 import "./StoryView.css";
 
 const tabClasses = {
@@ -50,19 +52,15 @@ const StoryCard = ({ story, storyRating }) => {
                 className="icon__bookmark"
                 onClick={() => dispatch(bookmarkStory(story.id))}
             >
-                {/* <i class="fa-solid fa-bookmark"></i> */}
                 <i class="fa-regular fa-bookmark"></i>
-                {/* {bookmarkIcon} */}
             </button>
         )
     };
 
     return (
         <div className="story__card__container">
-            <div className="story__image__container">
-                <img src={story.image} alt="" id="story__image__view" width="300%" />
-            </div>
             <div className="content__container">
+
                 <div className="tab__container">
                     <div
                         className={`${tabClasses.munchies} ${munchiesTab}`}
@@ -83,31 +81,42 @@ const StoryCard = ({ story, storyRating }) => {
                         INSTRUCTIONS
                     </div>
                 </div>
+                <div className="story__image__container">
+                    <img src={story.image} alt="" id="story__image__view" width="300%" />
+                </div>
                 <div className="content__subcontainer">
+
                     <div className={`munchies__subcontainer ${munchiesContainer}`}>
                         <div className="munchies__title">
                             <div>{story.title}</div>
-                            {handleBookmark()}
+                            {/* {handleBookmark()} */}
                         </div>
                         <div className="munchies__category">
                             {story.Category.title}
                         </div>
                         <div className="munchies__author__details">
-                            <div>{story.User.username}</div>
-                            <div className="munchies__date">{new Date(story.updatedAt).toDateString()}</div>
-                            <div className="icon__timeframe">
-                                <i class="fa-regular fa-clock"></i>
-                                {/* <i class="fa-solid fa-clock"></i> */}
+                            <div>
+                                <img src="https://user-images.githubusercontent.com/92604480/165881172-2fecedae-a5c5-4f5c-8084-84afd1d01e9c.svg" alt="" className="user__icon" />
+                                {story.User.username}</div>
+                            <div className="munchies__date">
+                                <AiTwotoneCalendar size={23} />
+                                &nbsp;&nbsp;
+                                {new Date(story.updatedAt).toDateString()}</div>
+                            <div className="munchies__clock">
+                                <FiClock size={23} />
                                 &nbsp;&nbsp;
                                 {story.timeframe}
                             </div>
                         </div>
-                        <div>{story.recipe}</div>
-                        <ReactStars
-                            value={Number(storyRating)}
-                            size={24}
-                            edit={false}
-                        />
+                        <div className="munchies__recipe">{story.recipe}</div>
+                        <div className="munchies__stars">
+                            <ReactStars
+                                value={Number(storyRating)}
+                                size={28}
+                                edit={false}
+                                color2={'#00D8D8'}
+                            />
+                        </div>
                     </div>
                     <div className={`ingredients__subcontainer ${ingredientsContainer}`}>
                         <div>{story.ingredients}</div>

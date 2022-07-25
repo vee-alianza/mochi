@@ -39,7 +39,9 @@ const StoryView = () => {
                 >
                   <i className="fa-solid fa-trash-can"></i>
                 </button>
-                <EditFormModal storyId={story.id} />
+                <div className="btn__edit__modal__story">
+                  <EditFormModal storyId={story.id} />
+                </div>
               </>
             }
           </div>

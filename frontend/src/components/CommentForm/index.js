@@ -76,7 +76,7 @@ const CommentForm = ({ story }) => {
           onClick={() => dispatch(unlikeComment(commentId))}
           className="btn__like"
         >
-          <FcLike />
+          <FcLike size={24} />
         </button>
       )
     }
@@ -86,7 +86,7 @@ const CommentForm = ({ story }) => {
         onClick={() => dispatch(likeComment(commentId))}
         className="btn__unlike"
       >
-        <FcLikePlaceholder />
+        <FcLikePlaceholder size={24} />
       </button>
     )
   };
@@ -94,31 +94,35 @@ const CommentForm = ({ story }) => {
   return (
     <>
       <div className="comment__container">
-        <h4>COMMENT BOX</h4>
-        <label>
-          <input
-            type="text"
-            placeholder='Penne for your thoughts'
-            required
-            onChange={(e) => setContent(e.target.value)}
-            value={content}
-            className="comment__input__box"
-          >
-          </input>
-        </label>
-        <button
-          type="submit"
-          className="new__comment"
-        >Submit
-        </button>
-        {story.userId !== sessionUser.id && currentUserRating &&
-          <ReactStars
-            size={36}
-            value={userRating}
-            onChange={handleRating}
-          />
-        }
+        <h4>TACO 'BOUT IT!</h4>
         <div className="comment__box">
+          <div className="comment__box stars">
+            {story.userId !== sessionUser.id && currentUserRating &&
+              <ReactStars
+                size={40}
+                value={userRating}
+                onChange={handleRating}
+                color2={'#00D8D8'}
+              />
+            }
+          </div>
+          <label>
+            <input
+              type="text"
+              placeholder='Penne for your thoughts'
+              required
+              onChange={(e) => setContent(e.target.value)}
+              value={content}
+              className="comment__input__box"
+            >
+            </input>
+            <button
+              type="submit"
+              className="btn__submit__new__comment "
+            >Submit
+            </button>
+          </label>
+
           <div className="comments__list">
             {comments?.map((comment) => {
               return (
@@ -127,25 +131,31 @@ const CommentForm = ({ story }) => {
                     <div className="commentbox__align__right" >
                       <img src={comment.User.profileImage} className="comment__profile__image" alt="" />
                     </div>
-                    <div className="commentbox__align__right" id="commentbox__username">
+                    <div className="commentbox__align__right username">
                       {comment.User.username}
                     </div>
-                    <div className="commentbox__align__right" id="comment__date">
+                    <div className="commentbox__align__right date">
                       {new Date(comment.createdAt).toDateString()}
                     </div>
                   </div>
                   <div className="comment__post">
                     {comment.content}
                   </div>
-                  {
-                    sessionUser.id === comment.userId && (
-                      <button className="btn__delete" onClick={(e) => handleDelete(e, comment.id)}> <i className="fa-solid fa-trash-can"></i>Delete</button>
-                    )
-                  }
-                  {
-                    sessionUser.id !== comment.userId &&
-                    handleLike(comment.id)
-                  }
+                  <div className="commentbox__align__right delete-btn">
+                    {
+                      sessionUser.id === comment.userId && (
+                        <button
+                          className="btn__delete__comment"
+                          onClick={(e) => handleDelete(e, comment.id)}>
+                          <i className="fa-solid fa-trash-can"></i>
+                        </button>
+                      )
+                    }
+                    {
+                      sessionUser.id !== comment.userId &&
+                      handleLike(comment.id)
+                    }
+                  </div>
                   <div className="comment__post__like">
                     {`Likes: ${comment.likes}`}
                   </div>
