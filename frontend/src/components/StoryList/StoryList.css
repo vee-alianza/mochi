@@ -26,6 +26,7 @@
     display: flex;
     align-items: center;
     word-break: break-word;
+    margin: 0.5rem;
 }
 
 .story__box.recipe-title-cook-time {
@@ -36,6 +37,7 @@
 
 .story__box.recipe-title {
     font-size: 100px;
+    margin-bottom: -1.5rem;
 }
 
 .story__box.recipe-cook-time {
@@ -45,11 +47,34 @@
 }
 
 .story__box.recipe {
-    margin: 1rem;
-    margin-bottom: 2rem;
-    margin-left: -0.01rem;
+    margin: -1rem;
+    margin-bottom: -2rem;
+    margin-left: 1rem;
     text-align: justify;
     word-break: break-word;
+    z-index: 2;
+}
+
+.story__box.recipe-cuisine,
+.story__box.recipe-stars {
+    margin-left: 1rem;
+}
+
+.story__box.recipe-rating {
+    margin-top: 5rem;
+    margin-left: -7rem;
+}
+
+.story__box.recipe-image>img {
+    position: relative;
+    width: 25rem;
+    height: 15rem;
+    margin-top: 1rem;
+    margin-right: 30rem;
+    margin-left: -4rem;
+    /* border-radius: 1rem; */
+    padding: -5rem;
+    padding-left: 5rem;
 }
 
 .story__box>img {

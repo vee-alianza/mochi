@@ -5,11 +5,40 @@
 }
 
 .left__container {
-    /* border: 2rem solid green; */
     width: 65%;
 }
 
 .right__container {
-    /* border: 2rem solid orange; */
     width: 35%;
+    margin-top: 25rem;
+    padding: 2rem;
+}
+
+.right__container h2 {
+    margin-top: 2rem;
+    margin-bottom: -1rem;
+    margin-left: 2rem;
+    font-size: 20px;
+}
+
+.contact__info__container {
+    border-top: 0.01rem solid black;
+    width: 25rem;
+    margin: 2rem;
+}
+
+.linkedIn,
+.angelList,
+.gitHub,
+.portfolio-logo {
+    border: 0.01rem solid black;
+    border-radius: 50%;
+    /* background-color: blue; */
+    width: 3.5rem;
+    margin: 1rem;
+    display: flex;
+    justify-content: center;
+    padding: 1rem;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
 }

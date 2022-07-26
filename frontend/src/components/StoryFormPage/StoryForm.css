@@ -18,6 +18,12 @@ h3 {
     margin-top: 2rem;
 }
 
+/* .recipe__create__box {
+    display: flex;
+    justify-content: center;
+    margin-top: 2rem;
+} */
+
 /* .recipe__form {
       display: flex;
       flex-direction: column;
@@ -33,7 +39,7 @@ h3 {
 }
 
 .storyform__right_container {
-    /* border: 2px orange; */
+    border: 2px orange;
     width: 50%;
 }
 

@@ -1,8 +1,27 @@
-.splash__container {
+/* .splash__container {
+    display: flex;
     margin-left: 5rem;
-}
+    height: 100vh;
+} */
 
+/* .splash__navbar.background img {
+    width: 100%;
+    height: 100%;
+    margin-top: 5rem;
+} */
 
+/* .splash__navbar.background {
+    position: absolute;
+    z-index: -5;
+    background-repeat: no-repeat;
+    background-size: auto;
+    padding: 1rem;
+    border: 1rem solid red;
+    width: 100%;
+    height: 20rem;
+    margin-top: 5rem;
+
+} */
 
 .splash__logo {
     margin: auto;
@@ -14,7 +33,8 @@
 }
 
 #splash__logo {
-    margin-top: 10rem;
+    /* margin-top: 10rem; */
+    margin-top: 45rem;
     animation: bounce 0.5s;
     animation-direction: alternate;
     animation-timing-function: cubic-bezier(0.5, 0.05, 1, 0.5);
@@ -45,8 +65,8 @@
 .splash__container img {
     width: 10rem;
     height: 10rem;
-    /* position: relative;1 */
     margin-left: 20rem;
+    /* position: relative; */
     /* margin-right: auto; */
 }
 
@@ -69,38 +89,46 @@
 }
 
 
-
-/* .story__images__container {
+.story__images__container {
     display: flex;
     margin-left: 10rem;
-} */
+}
 
 .story__images {
     /* box-shadow: 55px -16px #f25e74; */
-    /* height: 50vh; */
+    height: 70vh;
     width: 100%;
     /* margin: 5vh 5vw; */
-    background-color: #ff00cc;
-    background-size: cover;
+    /* background-color: #ff00cc;
+    background-size: cover; */
     background-position: 100%;
-
-    /* animation: image 8s infinite alternate; */
+    /* animation: image 4s infinite ease-out; */
+    animation: image 7s 20s infinite;
+    position: absolute;
+    z-index: -5;
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding: 1rem;
+    /* border: 1rem solid red; */
+    /* width: 100%; */
+    /* height: 20rem; */
+    margin-top: 5rem;
 }
 
 @keyframes image {
     0% {
-        background-image: url(https://user-images.githubusercontent.com/92604480/167317571-9996e3ca-015b-4fd5-9373-8ec6c0dd70b5.jpg);
+        background-image: url(https://user-images.githubusercontent.com/92604480/180843322-3448df92-eda0-422d-8c5b-a52b3c666504.jpg);
     }
 
     25% {
-        background-image: url(https://user-images.githubusercontent.com/92604480/167317994-60cfd43d-f703-4c6b-bbb9-c00eb216b895.jpg);
+        background-image: url(https://user-images.githubusercontent.com/92604480/180846699-5b78555c-1549-43cd-8d0a-0640efb89177.png);
     }
 
     50% {
-        background-image: url(https://user-images.githubusercontent.com/92604480/167329547-a4e4da41-ccc8-4316-89f9-60a4d1b2c2b3.jpg);
+        background-image: url(https://user-images.githubusercontent.com/92604480/180846868-4daa6f1b-14ee-4935-ae4f-fb2f949a2340.jpg);
     }
 
     100% {
-        background-image: url(https://user-images.githubusercontent.com/92604480/167318021-741ae2d4-9303-4f6b-88f4-e3fa46755a64.jpg);
+        background-image: url(https://user-images.githubusercontent.com/92604480/180847193-86819a63-03e4-4363-b64c-2f062b8ccd86.jpg);
     }
 }

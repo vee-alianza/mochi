@@ -67,19 +67,24 @@ const StoryList = () => {
                 <div className="story__box recipe">
                   {/* <p> Story: </p> */}
                   {story.recipe}
+                  <div className="story__box recipe-image">
+                    <img src={story.image} alt="" />
+                  </div>
                 </div>
-                <div className="story__box">
+                <div className="story__box recipe-cuisine">
                   {/* <p>Cuisine: {story.Category.title}</p> */}
                   <p>{story.Category.title}</p>
                 </div>
-                <div>
+                <div className="story__box recipe-stars">
                   <ReactStars
                     edit={false}
                     value={Number(story.rating)}
                     size={28}
                     color2={'#00D8D8'}
                   />
-                  <p>Rating: {story.rating}</p>
+                  <div className="story__box recipe-rating">
+                    <p>Rating: {story.rating}</p>
+                  </div>
                 </div>
               </div>
             )
