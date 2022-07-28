@@ -1,4 +1,5 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 // import Footer from '../Footer';
 import macaroons from '../../image/mochi-splashpage.png';
@@ -6,6 +7,7 @@ import './SplashPage.css';
 
 const SplashPage = () => {
     const history = useHistory();
+    const session = useSelector((state => state.session.user))
 
     return (
         <>
@@ -15,7 +17,7 @@ const SplashPage = () => {
                         <img src={macaroons} />
                         <div className="story__images"></div>
                         <div
-                            onClick={() => history.push("/home")}
+                            onClick={session ? () => history.push("/home") : null}
                             className="splash__left__box"
                         >
                             <div className="splash__logo">
