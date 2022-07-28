@@ -43,7 +43,7 @@
 #splash__logo {
     /* margin-top: 45rem; */
     margin-top: 5.5rem;
-    margin-right: -19rem;
+    margin-right: -48rem;
     animation: bounce 0.5s;
     animation-direction: alternate;
     animation-timing-function: cubic-bezier(0.5, 0.05, 1, 0.5);
@@ -64,11 +64,12 @@
     display: flex;
     padding: 20rem;
     margin-top: -20rem;
+    margin-right: -28rem;
+    margin-left: 20rem;
     justify-content: center;
     font-family: "Montserrat";
     font-weight: 900;
     font-size: 6rem;
-    margin-left: 20rem;
 }
 
 .splash__container img {
