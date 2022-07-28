@@ -21,6 +21,14 @@
     font-size: 20px;
 }
 
+/* .right__container img {
+    margin-top: 2rem;
+    margin-left: 17rem;
+
+    width: 6.5rem;
+    z-index: -5;
+} */
+
 .contact__info__container {
     border-top: 0.01rem solid black;
     width: 25rem;
@@ -33,12 +41,37 @@
 .portfolio-logo {
     border: 0.01rem solid black;
     border-radius: 50%;
-    /* background-color: blue; */
     width: 3.5rem;
     margin: 1rem;
     display: flex;
     justify-content: center;
+    /* align-items: center; */
     padding: 1rem;
     padding-top: 0.5rem;
     padding-bottom: 0.5rem;
+    /* position: relative; */
 }
+
+/*
+.linkedIn__details {
+    padding-left: 5rem;
+}
+
+.info__title {
+    font-size: 1.3rem;
+    margin-top: -1rem;
+    padding: -0.5rem;
+}
+
+.linkedIn h4 {
+    font-size: 1rem;
+    margin-top: -1rem;
+    margin-bottom: -2rem;
+}
+
+.linkedIn a {
+    margin-left: 20.5rem;
+    padding: 1rem;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+} */

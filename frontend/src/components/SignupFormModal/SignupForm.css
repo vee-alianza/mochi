@@ -23,10 +23,17 @@
     margin-left: 33rem;
 }
 
+.signup__right__container img {
+    margin-top: 1.8rem;
+    margin-left: -7rem;
+}
+
 .signup__right__container h3 {
     font-weight: 100;
     font-size: 2.5rem;
     position: absolute;
+    margin-top: 3.5rem;
+    margin-right: 14rem;
 }
 
 li {
@@ -76,7 +83,7 @@ label {
 
 .btn__signup,
 .signup__btn {
-    width: 10rem;
+    width: 13rem;
     height: 2.5rem;
     border: none;
     border-radius: 0.8rem;
@@ -87,6 +94,17 @@ label {
     font-weight: bold;
     flex-direction: row;
     margin: 1rem;
+    margin-right: 6rem;
+    margin-left: 1rem;
+}
+
+.signup__btn {
+    width: 13rem;
+    margin-left: 6rem;
+    padding: 1.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 :is(.btn__signup, .signup__btn):hover {

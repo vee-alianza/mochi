@@ -106,11 +106,12 @@ p {
 
 .profile__dropup {
     position: absolute;
-    right: -2.5rem;
+    right: -2.7rem;
     background-color: #F1F1F1;
     min-width: 160px;
-    bottom: 3rem;
+    bottom: 2rem;
     z-index: 2;
+
 }
 
 .profile__dropup li {

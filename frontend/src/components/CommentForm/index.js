@@ -106,22 +106,31 @@ const CommentForm = ({ story }) => {
               />
             }
           </div>
-          <label>
-            <input
-              type="text"
-              placeholder='Penne for your thoughts'
-              required
-              onChange={(e) => setContent(e.target.value)}
-              value={content}
-              className="comment__input__box"
-            >
-            </input>
+          <form onSubmit={newerComment} className="comment__form">
+            <ul className="errors__message">
+              {errors.map(error => {
+                return (
+                  <li key={error}>{error}</li>
+                )
+              })}
+            </ul>
+            <label>
+              <input
+                type="text"
+                placeholder='Penne for your thoughts'
+                required
+                onChange={(e) => setContent(e.target.value)}
+                value={content}
+                className="comment__input__box"
+              >
+              </input>
+            </label>
             <button
               type="submit"
               className="btn__submit__new__comment "
             >Submit
             </button>
-          </label>
+          </form>
 
           <div className="comments__list">
             {comments?.map((comment) => {
@@ -164,15 +173,6 @@ const CommentForm = ({ story }) => {
             })}
           </div>
         </div>
-        <form onSubmit={newerComment} className="comment__form">
-          <ul className="errors__message">
-            {errors.map(error => {
-              return (
-                <li key={error}>{error}</li>
-              )
-            })}
-          </ul>
-        </form>
       </div>
     </>
   )

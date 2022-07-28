@@ -18,7 +18,7 @@ const router = express.Router();
 // GET comments
 router.get('/', requireAuth, asyncHandler(async (req, res) => {
   const comments = await Comment.findAll({
-    order: [["createdAt", "DESC"]],
+    order: [["createdAt", "ASC"]],
   });
   return res.json({
     comments,
@@ -30,7 +30,7 @@ router.get('/', requireAuth, asyncHandler(async (req, res) => {
 router.get('/:id(\\d+)', requireAuth, asyncHandler(async (req, res) => {
   const { id } = req.params;
   const comments = await Comment.findByPk(id, {
-    order: [["createdAt", "DESC"]],
+    order: [["createdAt", "ASC"]],
     include: [User]
   });
   return res.json({

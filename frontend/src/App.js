@@ -11,7 +11,7 @@ import StoryFormPage from "./components/StoryFormPage"
 import StoryView from "./components/StoryView";
 import SignupFormModal from './components/SignupFormModal';
 import LoginFormModal from './components/LoginFormModal';
-import Footer from "./components/Footer";
+// import Footer from "./components/Footer";
 import './App.css';
 // import AllRecipes from "./components/AllRecipes";
 
@@ -60,7 +60,7 @@ function App() {
           </>
         )}
       </Switch>
-      < Footer />
+      {/* < Footer /> */}
     </div>
   );
 }
