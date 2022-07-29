@@ -12,6 +12,7 @@
     overflow: hidden;
     display: block;
     margin: 0 auto;
+    min-width: 30rem;
 }
 
 .story__subcontainer:hover {
@@ -65,19 +66,22 @@
     margin-bottom: -2rem;
     margin-left: 1rem;
     text-align: justify;
-    word-break: break-word;
+    word-wrap: break-word;
+    /* min-width: fit-content; */
+    /* display: inline-block; */
 }
 
 .story__box.recipe-image>img {
-    width: 25rem;
+    min-width: 25rem;
     height: 15rem;
-    margin-top: 3rem;
+    margin-top: 5rem;
     margin-right: 30rem;
     margin-bottom: 1rem;
     margin-left: -5rem;
     border-radius: 0.02rem;
-    padding: -5rem;
+    /* padding: -5rem; */
     padding-left: 6rem;
+
 }
 
 .story__box.recipe-cuisine,
@@ -110,7 +114,7 @@
     padding: 1rem;
     padding-top: 0.5rem;
     margin: 0.5rem;
-    margin-left: 29.7rem;
+    margin-left: 45rem;
 }
 
 .btn__edit__modal {

@@ -100,8 +100,11 @@
 .munchies__title {
     display: flex;
     /* justify-content: space-between; */
+    padding-top: 2rem;
     padding-bottom: 1rem;
     font-size: 20px;
+    text-align: justify;
+    word-wrap: break-word;
 }
 
 .munchies__category {
@@ -147,6 +150,16 @@
 .icon__bookmark {
     border: none;
     border-radius: 50%;
+}
+
+.ingredients__content__container,
+.instructions__content__container {
+    display: flex;
+    padding-top: 2rem;
+    font-size: 1rem;
+    text-align: justify;
+    word-wrap: break-word;
+
 }
 
 .comment__container {

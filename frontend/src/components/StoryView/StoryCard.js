@@ -118,11 +118,15 @@ const StoryCard = ({ story, storyRating }) => {
                             />
                         </div>
                     </div>
-                    <div className={`ingredients__subcontainer ${ingredientsContainer}`}>
-                        <div>{story.ingredients}</div>
+                    <div className="ingredients__content__container">
+                        <div className={`ingredients__subcontainer ${ingredientsContainer}`}>
+                            <div>{story.ingredients}</div>
+                        </div>
                     </div>
-                    <div className={`instructions__subcontainer ${instructionsContainer}`}>
-                        <div>{story.instructions}</div>
+                    <div className="instructions__content__container">
+                        <div className={`instructions__subcontainer ${instructionsContainer}`}>
+                            <div>{story.instructions}</div>
+                        </div>
                     </div>
                 </div>
             </div>
